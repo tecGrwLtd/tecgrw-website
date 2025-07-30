@@ -1,3 +1,4 @@
+import { Suspense, useState } from 'react';
 import {
   FaFacebookF, FaTwitter, FaLinkedinIn,
   FaInstagram, FaEnvelope, FaPhone,
@@ -57,6 +58,22 @@ const ContactPage = () => {
     );
   }
 
+function Map() {
+  return (
+    <div className="rounded-lg overflow-hidden shadow border border-[#e5e7eb] w-full h-64 md:h-full">
+      <iframe
+        title="Tecgrw Location"
+        src="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda&output=embed"
+        width="100%"
+        height="100%"
+        style={{ border: 0, minHeight: '220px' }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  );
+}
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
@@ -72,41 +89,8 @@ const ContactPage = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-16">
-          
           {/* Left Column - Company Info */}
           <div className="space-y-8">
-            {/* Company Overview */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#b2c935] rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-[#231f1f]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
-                    <path d="M5 12L6.09 18.26L13 19L6.09 19.74L5 26L3.91 19.74L-3 19L3.91 18.26L5 12Z" opacity="0.6"/>
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-[#231f1f]">Tecgrw</h2>
-                  <p className="text-gray-600">Growing Technology, Harvesting Success</p>
-                </div>
-              </div>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                At Tecgrw, we're revolutionizing agriculture through innovative technology solutions. 
-                From precision farming to smart irrigation systems, we help farmers maximize yields 
-                while minimizing environmental impact.
-              </p>
-              
-              {/* Key Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-[#095aa3] rounded-full mr-3"></div>
-                  <span className="text-gray-700">Expert Team</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-[#b2c935] rounded-full mr-3"></div>
-                  <span className="text-gray-700">Proven Results</span>
-                </div>
-              </div>
-            </div>
 
             {/* Contact Information */}
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
@@ -119,7 +103,14 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Office Address</h4>
-                    <p className="text-gray-600">123 Innovation Drive<br />Agritech Park, Kigali 00100<br />Rwanda</p>
+                    <p className="text-gray-600">100 KG 9 Ave, Kigali, Rwanda</p>
+                  {/* Map */}
+                  <div className="mt-2 w-48 h-32 rounded-lg overflow-hidden">
+                  <Suspense fallback={<div className="w-48 h-32 bg-[#e5e7eb] animate-pulse" />}>
+                  <Map />
+                  </Suspense>
+                  </div>
+                  {/* <Suspense fallback={<div className=" w-32 h-24 bg-[#e5e7eb] rounded-lg animate-pulse mt-2" />}> <Map className="w-32 h-24 rounded-lg mt-2"/> </Suspense> */}
                   </div>
                 </div>
 
@@ -129,7 +120,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Email</h4>
-                    <p className="text-gray-600">info@tecgrw.com<br />support@tecgrw.com</p>
+                    <p className="text-gray-600">info@tecgrw.com</p>
                   </div>
                 </div>
 
@@ -139,7 +130,8 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Phone</h4>
-                    <p className="text-gray-600">+250 123 456 789<br />+250 987 654 321</p>
+                    <p className="text-gray-600">+250 7989 75878</p>
+                    <p className="text-gray-600">+250 795583795</p>
                   </div>
                 </div>
 
@@ -149,7 +141,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 2:00 PM<br />Sunday: Closed</p>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 2:00 PM<br />Sunday: Closed</p>
                   </div>
                 </div>
               </div>
@@ -159,12 +151,12 @@ const ContactPage = () => {
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
               <h3 className="text-xl font-bold text-[#231f1f] mb-6">Follow Us</h3>
               <div className="flex space-x-4">
-                {/* <a 
-                  href="#" 
+                <a 
+                  href="https://www.facebook.com/tecGrw1" 
                   className="w-12 h-12 bg-[#b2c935] text-[#231f1f] rounded-lg flex items-center justify-center hover:bg-[#095aa3] hover:text-white transition-colors"
                 >
                   <FaFacebookF className="w-5 h-5" />
-                </a> */}
+                </a>
                 <a 
                   href="https://www.linkedin.com/company/tecgrw.com"
                   target="_blank"

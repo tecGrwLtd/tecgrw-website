@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedinIn, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
 import ContactSection from './ContactSection';
 
@@ -41,6 +42,10 @@ export default function Footer() {
                 <div className="flex items-center space-x-3">
                   <FaPhone className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
                   <a href="tel:+250798975878" className="hover:text-[#b2c935] transition-colors duration-200">+250 7989 75878</a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <FaPhone className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
+                  <a href="tel:+250795583795" className="hover:text-[#b2c935] transition-colors duration-200">+250 7955 83795</a>
                 </div>
               </div>
             </div>

@@ -4,7 +4,9 @@ import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
 import MetricsSection from '../components/MetricsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
-import ContactSection from '../components/ContactSection';
+import AccreditationsSection from '../components/Accreditions'
+// import ContactSection from '../components/ContactSection';
+
 
 function HomePage() {
   return (
@@ -14,8 +16,9 @@ function HomePage() {
         <AboutSection />
         <ServicesSection />
         <MetricsSection />
+        <AccreditationsSection />
         <TestimonialsSection />
-        <ContactSection />
+        {/* <ContactSection /> */}
       </Layout>
     </>
   );

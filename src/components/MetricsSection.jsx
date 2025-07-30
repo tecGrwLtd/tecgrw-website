@@ -4,22 +4,22 @@ import FadeInSection from './FadeInSection';
 const metrics = [
   {
     label: 'Farmers Empowered',
-    value: '5,000+',
+    value: '40',
     color: '#b2c935',
   },
   {
-    label: 'AI Projects Delivered',
-    value: '30+',
+    label: 'Greenhouses Built',
+    value: '4',
     color: '#095aa3',
   },
   {
-    label: 'Training Sessions',
-    value: '120+',
+    label: ' graduated student batches',
+    value: '1',
     color: '#231f1f',
   },
   {
-    label: 'Rwanda Regions Served',
-    value: '12',
+    label: 'AI Projects Delivered',
+    value: '5',
     color: '#b2c935',
   },
 ];

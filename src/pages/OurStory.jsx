@@ -32,11 +32,11 @@ const OurStory = () => {
         }}
       >
         <div className="text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          {/* <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Our Story
-          </h1>
+          </h1> */}
           <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-            Pioneering the future of agriculture through innovation, technology, and sustainable practices
+            To be at the forefront of technological transformation in agriculture, business, and education creating a future where innovation drives sustainable growth, efficiency, and empowerment.
           </p>
         </div>
       </section>
@@ -48,11 +48,9 @@ const OurStory = () => {
             Our Mission
           </h2>
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-            At Tecgrw, we believe that technology has the power to transform agriculture for the better. 
-            Our mission is to empower farmers worldwide with intelligent solutions that increase productivity, 
-            reduce environmental impact, and create sustainable food systems for future generations. 
-            Through cutting-edge AI and data-driven insights, we're building bridges between traditional 
-            farming wisdom and modern innovation.
+            At tecGrw, we revolutionize industries by providing cutting-edge AI solutions for farmers and businesses while
+            equipping students with real-world tech skills. Through innovation and education, we empower individuals and
+            organizations to thrive in a data-driven future.
           </p>
         </div>
       </section>
