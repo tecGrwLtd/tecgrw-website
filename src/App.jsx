@@ -18,7 +18,7 @@ import ContactPage from './pages/ContactPage';
 import Careers from './pages/Careers';
 import NotFound from './pages/NotFound';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <ScrollToTop />

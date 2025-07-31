@@ -5,10 +5,8 @@ import ServicesSection from '../components/ServicesSection';
 import MetricsSection from '../components/MetricsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import AccreditationsSection from '../components/Accreditions'
-// import ContactSection from '../components/ContactSection';
 
-
-function HomePage() {
+const HomePage = () => {
   return (
     <>
       <HeroSection />
@@ -18,7 +16,6 @@ function HomePage() {
         <MetricsSection />
         <AccreditationsSection />
         <TestimonialsSection />
-        {/* <ContactSection /> */}
       </Layout>
     </>
   );

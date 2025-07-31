@@ -24,7 +24,7 @@ const metrics = [
   },
 ];
 
-export default function MetricsSection() {
+const MetricsSection = () => {
   return (
     <section id="metrics" className="py-16 md:py-24 bg-[#f8f9fa]">
       <div className="max-w-7xl mx-auto px-4">
@@ -53,4 +53,6 @@ export default function MetricsSection() {
       </div>
     </section>
   );
-} 
+}
+
+export default  MetricsSection;

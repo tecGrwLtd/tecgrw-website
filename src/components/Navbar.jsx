@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import Logo from '../assets/images/tecGrw.png';
 
 const navItems = [
   { name: 'Home', href: '/' },
   {
     name: 'About Us',
-    href: '/#about', // Will scroll to AboutSection
+    href: '/#about',
     isHash: true,
     children: [
       { name: 'Our Story', href: '/about/our-story' },
@@ -39,7 +38,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
@@ -82,7 +81,7 @@ export default function Navbar() {
           aria-label="Tecgrw homepage"
         >
           <img
-            src={Logo}
+            src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
             className="max-h-16 md:max-h-20 h-auto w-auto"
             loading="lazy"
@@ -249,3 +248,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default Navbar;

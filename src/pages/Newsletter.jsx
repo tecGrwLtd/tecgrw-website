@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Newsletter() {
+const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   return (
@@ -35,4 +35,6 @@ export default function Newsletter() {
       {submitted && <div className="mt-4 text-green-600 font-semibold">Thank you for subscribing!</div>}
     </section>
   );
-} 
+}
+
+export default Newsletter;

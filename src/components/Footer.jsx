@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaLinkedinIn, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
-import ContactSection from './ContactSection';
+import {
+    FaInstagram,
+    FaLinkedinIn,
+    FaTwitter,
+    FaMapMarkerAlt,
+    FaEnvelope,
+    FaPhone } from 'react-icons/fa';
 
-export default function Footer() {
+const Footer = () => {
     return (
       <>
       <footer className="w-full bg-gradient-to-r from-[#231f1f] to-[#2d2a2a] text-white pt-12 pb-8 mt-12">
@@ -82,3 +87,4 @@ export default function Footer() {
     </>
     )
 }
+export default Footer;

@@ -19,7 +19,7 @@ const accreditations = [
   }
 ];
 
-export default function AccreditationsSection() {
+const AccreditationsSection = () => {
   return (
     <section className="py-16 md:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -78,3 +78,5 @@ export default function AccreditationsSection() {
     </section>
   );
 }
+
+export default AccreditationsSection;

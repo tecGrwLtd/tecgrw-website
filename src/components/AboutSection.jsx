@@ -1,9 +1,7 @@
 import React from 'react';
 import FadeInSection from './FadeInSection';
 
-import mahama_greenhouse from '../assets/images/mahama_greenhouse.jpeg';
-
-export default function AboutSection() {
+const AboutSection = () => {
   return (
     <section id="about" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
@@ -52,7 +50,7 @@ export default function AboutSection() {
                 {/* Main large image */}
                 <div className="col-span-2 row-span-1 relative overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src={mahama_greenhouse}
+                    src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg"
                     alt="Smart agriculture technology and data analysis"
                     className="w-full h-full object-cover"
                   />
@@ -102,3 +100,5 @@ export default function AboutSection() {
     </section>
   );
 }
+
+export default AboutSection;

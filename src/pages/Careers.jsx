@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Careers() {
+ const Careers = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -114,3 +114,5 @@ export default function Careers() {
     </div>
   );
 }
+
+export default Careers;

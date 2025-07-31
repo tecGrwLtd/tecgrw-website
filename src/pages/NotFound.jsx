@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <section className="flex flex-col items-center justify-center min-h-[60vh] py-16 px-4 text-center">
       <h1 className="text-5xl font-bold text-[#b2c935] mb-4">404</h1>
@@ -12,4 +12,6 @@ export default function NotFound() {
       </Link>
     </section>
   );
-} 
+}
+
+export default NotFound;

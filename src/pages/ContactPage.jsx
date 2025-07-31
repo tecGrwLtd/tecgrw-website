@@ -1,9 +1,10 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import {
   FaFacebookF, FaTwitter, FaLinkedinIn,
   FaInstagram, FaEnvelope, FaPhone,
-  FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle
+  FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaExclamationCircle
 } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,24 @@ const ContactPage = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState(null); // State to hold error message
+
+  // Access environment variables.
+  // Use import.meta.env for Vite/modern bundlers, fallback to process.env for Create React App/Next.js.
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+  // Initialize EmailJS with your public key once when the component mounts
+  useEffect(() => {
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.warn("EmailJS Public Key is not set. Please check your .env.local file and ensure it's prefixed correctly (e.g., VITE_ or NEXT_PUBLIC_).");
+      // Optionally, you might want to prevent form submission if key is missing
+      setSubmissionError("Email service not configured. Please contact support.");
+    }
+  }, [publicKey]); // Dependency array ensures this runs only if publicKey changes
 
   const handleInputChange = (e) => {
     setFormData({
@@ -23,17 +42,71 @@ const ContactPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior (page reload)
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setSubmissionError(null); // Clear any previous errors
+
+    // Basic validation for EmailJS credentials
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmissionError('Email service credentials are not fully configured. Please check your .env.local file.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // EmailJS expects an object where keys match your template variables.
+      // Make sure these keys (from_name, from_email, subject, message)
+      // match exactly what you defined in your EmailJS template.
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        // If you added {{current_year}} to your template, include it here:
+        current_year: new Date().getFullYear(),
+      };
+
+      // Send the email using EmailJS SDK
+      // The send method returns a Promise that resolves with a response object
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      if (response.status === 200) {
+        // Email sent successfully
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form fields
+      } else {
+        // EmailJS API returned an error
+        setSubmissionError(`Failed to send message. Please try again. Error: ${response.text || 'Unknown error'}`);
+        console.error('EmailJS Error Response:', response);
+      }
+    } catch (error) {
+      // Network error or other unexpected issues
+      console.error('Error submitting form via EmailJS:', error);
+      setSubmissionError('Network error or problem connecting to the email service. Please try again.');
+    } finally {
+      setIsSubmitting(false); // Always stop submitting state
+    }
   };
 
+  // Map component for lazy loading
+  const  Map = () => {
+    return (
+      <div className="rounded-lg overflow-hidden shadow border border-[#e5e7eb] w-full h-64 md:h-full">
+        <iframe
+          title="Tecgrw Location"
+          src="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0, minHeight: '220px' }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    );
+  }
+
+  // Render success message if form was submitted
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -58,31 +131,15 @@ const ContactPage = () => {
     );
   }
 
-function Map() {
-  return (
-    <div className="rounded-lg overflow-hidden shadow border border-[#e5e7eb] w-full h-64 md:h-full">
-      <iframe
-        title="Tecgrw Location"
-        src="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda&output=embed"
-        width="100%"
-        height="100%"
-        style={{ border: 0, minHeight: '220px' }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-  );
-}
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
       <div className="bg-[#095aa3] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+          {/* <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1> */}
+          {/* <p className="text-xl text-blue-100 max-w-2xl mx-auto">
             Ready to transform your agricultural practices? Let's discuss how Tecgrw can help you grow smarter.
-          </p>
+          </p> */}
         </div>
       </div>
 
@@ -110,7 +167,6 @@ function Map() {
                   <Map />
                   </Suspense>
                   </div>
-                  {/* <Suspense fallback={<div className=" w-32 h-24 bg-[#e5e7eb] rounded-lg animate-pulse mt-2" />}> <Map className="w-32 h-24 rounded-lg mt-2"/> </Suspense> */}
                   </div>
                 </div>
 
@@ -190,8 +246,9 @@ function Map() {
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100 sticky top-8">
               <h3 className="text-2xl font-bold text-[#231f1f] mb-2">Send us a Message</h3>
               <p className="text-gray-600 mb-8">We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
-              
-              <div className="space-y-6">
+
+              {/* Form element with onSubmit handler */}
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-[#231f1f] mb-2">
@@ -239,9 +296,12 @@ function Map() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
                   >
                     <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="partnership">Partnership Opportunities</option>
-                    <option value="education">Education Information</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Partnership Opportunities">Partnership Opportunities</option>
+                    <option value="Education Information">Education Information</option>
+                    <option value="Smart Greenhouses">Smart Greenhouses</option>
+                    <option value="AI & Data Science Education">AI & Data Science Education</option>
+                    <option value="AI in Businesses">AI in Businesses</option>
                   </select>
                 </div>
 
@@ -261,8 +321,16 @@ function Map() {
                   />
                 </div>
 
+                {/* Display submission error if any */}
+                {submissionError && (
+                  <div className="flex items-center text-red-600 text-sm mt-2">
+                    <FaExclamationCircle className="mr-2" />
+                    {submissionError}
+                  </div>
+                )}
+
                 <button
-                  onClick={handleSubmit}
+                  type="submit" // Changed to type="submit" for proper form submission
                   disabled={isSubmitting}
                   className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
@@ -278,7 +346,7 @@ function Map() {
                     </>
                   )}
                 </button>
-              </div>
+              </form>
 
               <p className="text-sm text-gray-500 mt-4 text-center">
                 * Required fields. We respect your privacy and will never share your information.

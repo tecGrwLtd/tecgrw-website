@@ -7,7 +7,7 @@ const DESCRIPTION = `We help businesses and farmers level up with the latest tec
 
 Our aim is to not only shake up how businesses and the agricultural industry work but also to prepare the next generation to confidently navigate the worlds of data and artificial intelligence.`;
 
-export default function HeroSection() {
+ const HeroSection = () => {
   return (
     <section 
       className="relative w-full min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat pt-20 md:pt-24"
@@ -45,3 +45,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+export default HeroSection;

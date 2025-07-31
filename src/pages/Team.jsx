@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaLinkedinIn, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
-export default function Team() {
+const Team = () => {
   // Real team members data
   const teamMembers = [
     {
@@ -172,3 +172,5 @@ export default function Team() {
     </div>
   );
 }
+
+export default Team;

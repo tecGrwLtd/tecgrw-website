@@ -14,7 +14,7 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
+const TestimonialsSection = () => {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
@@ -108,3 +108,5 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
+export default TestimonialsSection;

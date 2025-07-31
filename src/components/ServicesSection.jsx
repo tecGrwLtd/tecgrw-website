@@ -24,7 +24,7 @@ const services = [
   }
 ];
 
-export default function ServicesSection() {
+const ServicesSection = () => {
   return (
     <section id="services" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -50,3 +50,5 @@ export default function ServicesSection() {
     </section>
   );
 }
+
+export default ServicesSection;

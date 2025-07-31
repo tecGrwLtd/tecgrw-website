@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CaseStudies() {
+const CaseStudies = () => {
   return (
     <section className="max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#095aa3]">Case Studies</h1>
@@ -10,4 +10,7 @@ export default function CaseStudies() {
       </div>
     </section>
   );
-} 
+}
+
+export default CaseStudies;
+

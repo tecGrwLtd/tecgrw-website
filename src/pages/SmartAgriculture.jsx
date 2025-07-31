@@ -1,4 +1,3 @@
-import mahama_greenhouse from '../assets/images/mahama_greenhouse.jpeg'
 
 const SmartAgriculture = () => {
   const features = [
@@ -162,7 +161,7 @@ const SmartAgriculture = () => {
             </div>
             <div>
               <img 
-                src={mahama_greenhouse}
+                src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg"
                 alt="Smart agriculture technology in action"
                 className="rounded-lg shadow-lg w-full h-[400px] object-cover"
               />
