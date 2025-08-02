@@ -13,4 +13,4 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 
-
+Pass the bg color of navbar as a prop to NavBar and change it anywhere.

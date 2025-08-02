@@ -17,22 +17,18 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState(null); // State to hold error message
 
-  // Access environment variables.
-  // Use import.meta.env for Vite/modern bundlers, fallback to process.env for Create React App/Next.js.
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-  // Initialize EmailJS with your public key once when the component mounts
   useEffect(() => {
     if (publicKey) {
       emailjs.init(publicKey);
     } else {
       console.warn("EmailJS Public Key is not set. Please check your .env.local file and ensure it's prefixed correctly (e.g., VITE_ or NEXT_PUBLIC_).");
-      // Optionally, you might want to prevent form submission if key is missing
       setSubmissionError("Email service not configured. Please contact support.");
     }
-  }, [publicKey]); // Dependency array ensures this runs only if publicKey changes
+  }, [publicKey]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -42,11 +38,9 @@ const ContactPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior (page reload)
+    e.preventDefault();
     setIsSubmitting(true);
-    setSubmissionError(null); // Clear any previous errors
-
-    // Basic validation for EmailJS credentials
+    setSubmissionError(null); 
     if (!serviceId || !templateId || !publicKey) {
       setSubmissionError('Email service credentials are not fully configured. Please check your .env.local file.');
       setIsSubmitting(false);
@@ -54,26 +48,19 @@ const ContactPage = () => {
     }
 
     try {
-      // EmailJS expects an object where keys match your template variables.
-      // Make sure these keys (from_name, from_email, subject, message)
-      // match exactly what you defined in your EmailJS template.
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        // If you added {{current_year}} to your template, include it here:
         current_year: new Date().getFullYear(),
       };
-
-      // Send the email using EmailJS SDK
-      // The send method returns a Promise that resolves with a response object
       const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       if (response.status === 200) {
         // Email sent successfully
         setIsSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form fields
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         // EmailJS API returned an error
         setSubmissionError(`Failed to send message. Please try again. Error: ${response.text || 'Unknown error'}`);
@@ -84,7 +71,7 @@ const ContactPage = () => {
       console.error('Error submitting form via EmailJS:', error);
       setSubmissionError('Network error or problem connecting to the email service. Please try again.');
     } finally {
-      setIsSubmitting(false); // Always stop submitting state
+      setIsSubmitting(false);
     }
   };
 
@@ -132,17 +119,7 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-[#095aa3] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1> */}
-          {/* <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Ready to transform your agricultural practices? Let's discuss how Tecgrw can help you grow smarter.
-          </p> */}
-        </div>
-      </div>
-
+    <>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-16">
@@ -197,7 +174,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 2:00 PM<br />Sunday: Closed</p>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: Closed<br />Sunday: Closed</p>
                   </div>
                 </div>
               </div>
@@ -355,7 +332,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -22,24 +22,6 @@ const AboutSection = () => {
               <p className="text-lg text-[#231f1f] mb-8 leading-relaxed">
                 At Tecgrw, we revolutionize industries by providing cutting-edge AI solutions for farmers and businesses while equipping students with real-world tech skills. Through innovation and education, we empower individuals and organizations to thrive in a data-driven future.
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="/about/our-story"
-                  className="inline-flex items-center px-6 py-3 rounded-lg bg-[#b2c935] text-white font-semibold shadow-lg hover:bg-[#9db82a] hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  Learn Our Story
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a
-                  href="/solutions/smart-agriculture"
-                  className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#095aa3] text-[#095aa3] font-semibold hover:bg-[#095aa3] hover:text-white transition-all duration-200"
-                >
-                  Explore Solutions
-                </a>
-              </div>
             </FadeInSection>
           </div>
 

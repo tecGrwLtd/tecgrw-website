@@ -24,24 +24,7 @@ const OurStory = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.7), rgba(9, 90, 163, 0.7)), url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=2000&h=1000&fit=crop')`
-        }}
-      >
-        <div className="text-center text-white px-4">
-          {/* <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our Story
-          </h1> */}
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-            To be at the forefront of technological transformation in agriculture, business, and education creating a future where innovation drives sustainable growth, efficiency, and empowerment.
-          </p>
-        </div>
-      </section>
-
+    <>
       {/* Mission Statement */}
       <section className="px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
@@ -177,7 +160,7 @@ const OurStory = () => {
           </a>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

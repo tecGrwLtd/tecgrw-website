@@ -14,7 +14,7 @@ const testimonials = [
   },
 ];
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({Heading }) => {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
@@ -25,10 +25,10 @@ const TestimonialsSection = () => {
         <div className="text-center mb-12">
           <FadeInSection direction="up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#231f1f]">
-              What Our Clients Say
+              { Heading }
             </h2>
             <p className="text-lg text-[#231f1f]/70 max-w-2xl mx-auto">
-              Hear from families and organizations who have experienced the transformative power of our programs
+              Hear from families a who have experienced the transformative power of our programs
             </p>
           </FadeInSection>
         </div>
@@ -44,7 +44,7 @@ const TestimonialsSection = () => {
                   </svg>
                 </div>
               </div>
-              
+
               {/* Quote Text */}
               <blockquote className="text-lg md:text-xl text-[#231f1f]/80 mb-8 leading-relaxed text-center font-normal italic">
                 "{testimonials[idx].quote}"
@@ -94,8 +94,8 @@ const TestimonialsSection = () => {
               <button
                 key={i}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  i === idx 
-                    ? 'bg-[#b2c935] scale-110' 
+                  i === idx
+                    ? 'bg-[#b2c935] scale-110'
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to testimonial ${i + 1}`}

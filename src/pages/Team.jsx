@@ -9,14 +9,16 @@ const Team = () => {
       role: "CEO & Founder",
       bio: "Passionate about using technology to drive change in agriculture, business and education sectors. With a background in data science, AI and agriculture, she leads Tecgrw's mission to empower farmers and businesses in Rwanda.",
       email: "samreen.nurmohamed@tecgrw.com",
-      linkedin: "https://www.linkedin.com/in/samreen-nurmohamed-8a1aa3201/"
+      linkedin: "https://www.linkedin.com/in/samreen-nurmohamed-8a1aa3201/",
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/samreen_gapag4.jpg"
     },
     {
       name: "DUSENGIMANA Patrick",
       role: "Senior Agronomist",
       bio: "Competent and result-oriented agricultural engineer and agronomist with extensive expertise in crop production, horticulture, and irrigation system design.",
       email: "duspatty@gmail.com",
-      linkedin: "https://www.linkedin.com/in/dusengimana-patrick-ba7949359/"
+      linkedin: "https://www.linkedin.com/in/dusengimana-patrick-ba7949359/",
+      image:"https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975545/DUSENGIMANA_Patrick_tmrqvg.jpg"
     },
     {
       name: "Nadra Ramzan",
@@ -24,39 +26,62 @@ const Team = () => {
       bio: "Driven and adaptable professional with expertise in digital marketing, data analysis and research.",
       email: "nadra@tecgrw.com",
       linkedin: "https://www.linkedin.com/in/nadra-ramzan-6470a429/",
-      twitter: "https://x.com/jinga_89"
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/nadra_asqigl.jpg"
     },
     {
       name: "Kevin Harerimana",
       role: "Junior AI Engineer",
       bio: "Holds a Master's in Engineering with a focus on Artificial Intelligence, bringing expertise in AI solutions, including AI agents and policy frameworks.",
       email: "kevinharerimana@outlook.com",
-      linkedin: "https://www.linkedin.com/in/kevin-harerimana-88641b1a4/"
+      linkedin: "https://www.linkedin.com/in/kevin-harerimana-88641b1a4/",
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975543/Kevin_mmjqq4.jpg"
     },
     {
       name: "Iradukunda Irene",
       role: "Software Engineer",
       bio: "Software developer with over 4 years of experience crafting user-friendly and efficient web solutions.",
       email: "iradukundairenee9@gmail.com",
-      linkedin: "https://www.linkedin.com/in/irenee-iradukunda/"
+      linkedin: "https://www.linkedin.com/in/irenee-iradukunda/",
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/Irene_f4v9gf.jpg"
     },
     {
       name: "GAKIZA Angel",
       role: "Data Science Intern",
       bio: "A data science intern with a keen interest in programming and data analysis.",
-      email: "angelgakiza@gmail.com"
+      email: "angelgakiza@gmail.com",
+      linkedin: "https://www.linkedin.com/in/gakiza-angel-9360102b5/",
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975543/angel_bb91qo.jpg"
     },
     {
       name: "NIYONSHUTI Emmanuel",
       role: "Software Engineer Intern",
       bio: "A software developer with a passion for creating innovative solutions.",
       email: "emmanuelniyonshuti13@tecgrw.com",
-      twitter: "https://x.com/emmanulio"
+      linkedin: "https://www.linkedin.com/in/niyonshuti-emmanuel-82877b285/",
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975545/NIYONSHUTI_Emmanuel_pdaqpi.jpg"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section 
+        className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.7), rgba(9, 90, 163, 0.7)), url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=2000&h=1000&fit=crop')`
+        }}
+      >
+        <div className="text-center text-white px-4">
+          {/* <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Our Story
+          </h1> */}
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            To be at the forefront of technological transformation in agriculture, business, and education creating a future where innovation drives sustainable growth, efficiency, and empowerment.
+          </p>
+        </div>
+      </section>
+
+    {/* <div className="min-h-screen bg-gray-50"> */}
       {/* Header Section */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -84,12 +109,20 @@ const Team = () => {
               {/* Placeholder Image */}
               <div className="h-64 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-[#b2c935] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-[#231f1f]">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <p className="text-gray-500 text-sm">Photo Coming Soon</p>
+                  {member.image ? (
+                    <img 
+                      src={member.image}
+                      alt={member.name}
+                      className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-[#b2c935] shadow"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 bg-[#b2c935] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl font-bold text-[#231f1f]">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                  )}
+                  {/* <p className="text-gray-500 text-sm">Photo Coming Soon</p> */}
                 </div>
               </div>
 
@@ -125,17 +158,6 @@ const Team = () => {
                       aria-label={`${member.name} LinkedIn`}
                     >
                       <FaLinkedinIn className="w-4 h-4" />
-                    </a>
-                  )}
-                  {member.twitter && (
-                    <a
-                      href={member.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-[#b2c935] text-[#231f1f] rounded-lg flex items-center justify-center hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
-                      aria-label={`${member.name} Twitter`}
-                    >
-                      <FaTwitter className="w-4 h-4" />
                     </a>
                   )}
                 </div>

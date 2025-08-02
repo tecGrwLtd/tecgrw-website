@@ -80,27 +80,7 @@ const BusinessAI = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.8), rgba(9, 90, 163, 0.8)), url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=2000&h=1200&fit=crop')`
-        }}
-      >
-        <div className="text-center text-white px-4 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            AI Solutions for African Businesses
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-            Transform your business operations with custom artificial intelligence solutions designed for the African market
-          </p>
-          <button className="bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200">
-            Explore Our Solutions
-          </button>
-        </div>
-      </section>
-
+    <>
       {/* Overview */}
       <section className="px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
@@ -181,66 +161,6 @@ const BusinessAI = () => {
           </div>
         </div>
       </section>
-
-      {/* Case Study Highlight for later*/}
-      {/* <section className="px-4 py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-6">
-                Success Story: Smart Inventory Management
-              </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                We helped a leading retail chain in Kigali implement an AI-powered inventory management system 
-                that reduced stockouts by 45% and decreased excess inventory by 30%.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-[#b2c935] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Predictive demand forecasting</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-[#b2c935] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Automated reorder notifications</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-[#b2c935] rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Real-time analytics dashboard</span>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold text-[#231f1f] mb-6 text-center">Results Achieved</h3>
-              <div className="space-y-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-[#095aa3] mb-2">45%</div>
-                  <div className="text-gray-600">Reduction in Stockouts</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-[#095aa3] mb-2">30%</div>
-                  <div className="text-gray-600">Less Excess Inventory</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-[#095aa3] mb-2">25%</div>
-                  <div className="text-gray-600">Cost Savings</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Visual Element */}
       <section className="px-4 py-16">
@@ -338,7 +258,7 @@ const BusinessAI = () => {
           </a>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import FadeInSection from './FadeInSection';
 const metrics = [
   {
     label: 'Farmers Empowered',
-    value: '40',
+    value: '70+',
     color: '#b2c935',
   },
   {
@@ -13,7 +13,7 @@ const metrics = [
     color: '#095aa3',
   },
   {
-    label: ' graduated student batches',
+    label: 'Graduated Student Batche',
     value: '1',
     color: '#231f1f',
   },

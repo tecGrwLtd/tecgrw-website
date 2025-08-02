@@ -1,4 +1,6 @@
 import React from 'react';
+import TestimonialsSection from '../components/TestimonialsSection';
+import Navbar from '../components/Navbar';
 
 const AIEducation = () => {
   const programHighlights = [
@@ -22,7 +24,7 @@ const AIEducation = () => {
     },
     {
       title: "Real-world Mentors",
-      description: "Industry professionals and experienced developers guide students, sharing practical insights and career guidance in technology fields.",
+      description: "Industry professional guide students, sharing practical insights and career guidance in technology fields.",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
@@ -31,7 +33,7 @@ const AIEducation = () => {
     },
     {
       title: "Practical Projects",
-      description: "Students build real applications and solve local problems, from simple games to agricultural data analysis projects that impact their communities.",
+      description: "We teach our students AI, programming, and data science through hands-on learning and real-world projects, with professional mentoring.",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -41,29 +43,14 @@ const AIEducation = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.8), rgba(9, 90, 163, 0.8)), url('https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?auto=compress&cs=tinysrgb&w=2000&h=1200&fit=crop')`
-        }}
-      >
-        <div className="text-center text-white px-4 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            AI Education for Future Leaders
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-            Empowering Rwanda's youth with data science, programming, and machine learning skills to build tomorrow's innovations
-          </p>
-          <button className="bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200">
-            Discover Our Programs
-          </button>
-        </div>
-      </section>
-
+    <>
+      <Navbar
+        initialBgColor="bg-[#095aa3] shadow-md"
+        initialTextColor="text-white"
+        changeOnScroll={false}
+      />
       {/* Overview */}
-      <section className="px-4 py-16">
+      <section className=" mt-24 px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-8">
             Building Tomorrow's Innovators Today
@@ -74,7 +61,7 @@ const AIEducation = () => {
             and machine learning through engaging, hands-on experiences.
           </p>
           <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-            We're not just teaching code – we're nurturing problem-solvers, critical thinkers, and the next generation 
+            We're not just teaching code we're nurturing problem-solvers, critical thinkers, and the next generation 
             of innovators who will drive Rwanda's digital transformation and contribute to global technological advancement.
           </p>
         </div>
@@ -100,66 +87,6 @@ const AIEducation = () => {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why It Matters */}
-      <section className="px-4 py-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-6">
-                Why AI Education Matters for Rwanda
-              </h2>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-[#b2c935] rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-[#231f1f] mb-2">Economic Growth</h3>
-                    <p className="text-gray-600">Technology skills create high-value jobs and drive innovation-based economic development across all sectors.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-[#b2c935] rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-[#231f1f] mb-2">Global Competitiveness</h3>
-                    <p className="text-gray-600">Early exposure to AI and data science prepares students to compete in the global digital economy.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-[#b2c935] rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-[#231f1f] mb-2">Local Problem Solving</h3>
-                    <p className="text-gray-600">Students learn to apply technology to address local challenges in agriculture, healthcare, and education.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-[#b2c935] rounded-full flex-shrink-0 mt-1"></div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-[#231f1f] mb-2">Future Readiness</h3>
-                    <p className="text-gray-600">AI literacy will be as fundamental as reading and math in tomorrow's world – we're preparing students now.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="bg-[#095aa3] text-white p-6 rounded-lg">
-                <div className="text-3xl font-bold mb-2">500+</div>
-                <div className="text-lg">Students Trained</div>
-                <div className="text-sm text-blue-200 mt-1">Across various programs</div>
-              </div>
-              <div className="bg-[#b2c935] text-white p-6 rounded-lg">
-                <div className="text-3xl font-bold mb-2">12</div>
-                <div className="text-lg">School Partnerships</div>
-                <div className="text-sm text-green-200 mt-1">Growing network nationwide</div>
-              </div>
-              <div className="bg-gray-800 text-white p-6 rounded-lg">
-                <div className="text-3xl font-bold mb-2">95%</div>
-                <div className="text-lg">Program Completion</div>
-                <div className="text-sm text-gray-300 mt-1">High engagement rates</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -232,7 +159,8 @@ const AIEducation = () => {
           </div>
         </div>
       </section>
-
+      {/* Testimonials Section */}
+      <TestimonialsSection Heading={"What Parents are saying"}/>
       {/* Call to Action */}
       <section className="px-4 py-16 bg-[#095aa3]">
         <div className="max-w-3xl mx-auto text-center">
@@ -240,18 +168,17 @@ const AIEducation = () => {
             Ready to Shape the Future?
           </h2>
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Whether you're a parent looking to enroll your child, an educator interested in partnerships, 
-            or an organization wanting to sponsor our programs – let's work together to build Rwanda's tech-savvy generation.
+            Are you a parent looking to enroll your child? Let’s work together to build Rwanda’s tech-savvy generation.
           </p>
           <a 
             href="/contact"
             className="inline-block bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200"
           >
-            Enroll or Partner with Us
+            Enroll
           </a>
         </div>
       </section>
-    </div>
+  </>
   );
 };
 

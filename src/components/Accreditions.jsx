@@ -1,21 +1,17 @@
-import React from 'react';
 import FadeInSection from './FadeInSection';
-
-import farmtechsocietylogo from '../assets/images/farmtechsocietylogo.jpg';
-import wageningenunilogo from '../assets/images/wageningenunilogo.jpg';
 
 const accreditations = [
   {
     id: 1,
     name: 'Farm Tech Society',
     description: 'EU society for controlled environment greenhouses and indoor farms',
-    logo: farmtechsocietylogo
+    logo: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753955610/farmtechsocietylogo_hsgl82.jpg",
   },
   {
     id: 2,
     name: 'Wageningen University',
     description: 'Leading agricultural research and education institution',
-    logo: wageningenunilogo
+    logo: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753955253/wageningenunilogo_aun6ok.jpg",
   }
 ];
 
@@ -58,6 +54,17 @@ const AccreditationsSection = () => {
                   <p className="text-sm text-[#231f1f]/60 leading-relaxed">
                     {accreditation.description}
                   </p>
+                    {/* <a   learn more section
+                      href={accreditation.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-[#095aa3] hover:text-[#b2c935] font-medium text-sm transition-colors duration-200 group/link"
+                    >
+                      Learn More
+                      <svg className="w-4 h-4 ml-1 transition-transform duration-200 group-hover/link:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a> */}
                 </div>
               </div>
             </FadeInSection>
@@ -65,7 +72,7 @@ const AccreditationsSection = () => {
         </div>
 
         {/* Separator Line */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-10 pt-8 border-t border-gray-200">
           <FadeInSection direction="up">
             <div className="text-center">
               <p className="text-sm text-[#231f1f]/50 font-medium">

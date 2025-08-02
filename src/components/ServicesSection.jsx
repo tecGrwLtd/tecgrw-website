@@ -6,7 +6,7 @@ const services = [
     icon: (
       <svg className="w-10 h-10 mb-4 text-[#b2c935]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" /><circle cx="12" cy="12" r="9" stroke="#b2c935" strokeWidth="2" fill="none" /></svg>
     ),
-    desc: 'Smart Green Houses, Controlled Environment Farming, Hydroponics, Vertical Farming, Precision Farming Solutions, Drone Integration'
+    desc: 'Smart Green Houses, Controlled Environment Farming, Hydroponics, Vertical Farming, Precision Farming Solutions'
   },
   {
     title: 'AI Education',
@@ -20,7 +20,7 @@ const services = [
     icon: (
       <svg className="w-10 h-10 mb-4 text-[#231f1f]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" /><path d="M9 9h6v6H9z" /></svg>
     ),
-    desc: 'Customized AI Solutions, AI Strategy Development, Predicted models for forecasting trends and behaviors, Risk Management & Compliance, Optimize supply chain movements'
+    desc: 'Customized AI Solutions, AI Strategy Development, Predicted models for forecasting trends and behaviors, Risk Management & Compliance'
   }
 ];
 
