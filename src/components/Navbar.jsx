@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 const navItems = [
@@ -41,7 +41,6 @@ const classNames = (...classes) => {
 }
 
 const Navbar = ({ 
-  // Background colors
   initialBgColor = 'bg-transparent',
   scrolledBgColor = 'bg-white',
 
@@ -120,7 +119,7 @@ const Navbar = ({
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto px-6 lg:px-8 py-3">
         {/* Logo */}
-        <Link
+        <NavLink
           to="/"
           className="flex flex-col items-center group mr-8 select-none flex-shrink-0"
           tabIndex={0}
@@ -134,7 +133,7 @@ const Navbar = ({
             width={48}
             height={48}
           />
-        </Link>
+        </NavLink>
 
         {/* Desktop nav */}
         <ul className="hidden md:flex gap-6 lg:gap-8 items-center flex-1 justify-end pr-2">
@@ -163,7 +162,7 @@ const Navbar = ({
                   <ul className="absolute left-0 top-full mt-2 min-w-[180px] bg-white shadow-lg rounded-lg py-2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-all z-50 border border-[#e5e7eb]">
                     {item.children.map((sub) => (
                       <li key={sub.name}>
-                        <Link
+                        <NavLink
                           to={sub.href}
                           className={`block px-4 py-2 text-[#231f1f] hover:bg-[#f8f9fa] hover:text-[#b2c935] focus:bg-[#f8f9fa] focus:text-[#b2c935] rounded transition-colors duration-200 ${
                             isActiveLink(sub.href) ? 'bg-[#f8f9fa] text-[#b2c935]' : ''
@@ -171,7 +170,7 @@ const Navbar = ({
                           tabIndex={0}
                         >
                           {sub.name}
-                        </Link>
+                        </NavLink>
                       </li>
                     ))}
                   </ul>
@@ -185,12 +184,12 @@ const Navbar = ({
                   {item.name}
                 </HashLink>
               ) : (
-                <Link
+                <NavLink
                   to={item.href}
                   className={getLinkClasses(item.href)}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               )}
             </li>
           ))}
@@ -263,14 +262,14 @@ const Navbar = ({
                     <ul className="pl-4 py-1">
                       {item.children.map((sub) => (
                         <li key={sub.name}>
-                          <Link
+                          <NavLink
                             to={sub.href}
                             className={`block px-4 py-2 text-[#231f1f] hover:bg-[#f8f9fa] hover:text-[#b2c935] focus:bg-[#f8f9fa] focus:text-[#b2c935] rounded transition-colors duration-200 ${
                               isActiveLink(sub.href) ? 'bg-[#f8f9fa] text-[#b2c935]' : ''
                             }`}
                           >
                             {sub.name}
-                          </Link>
+                          </NavLink>
                         </li>
                       ))}
                     </ul>
@@ -288,14 +287,14 @@ const Navbar = ({
                   {item.name}
                 </HashLink>
               ) : (
-                <Link
+                <NavLink
                   to={item.href}
                   className={`block px-2 py-2 text-[#231f1f] hover:text-[#b2c935] font-medium rounded transition-colors duration-200 ${
                     isActiveLink(item.href) ? 'text-[#b2c935]' : ''
                   }`}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               )}
             </li>
           ))}

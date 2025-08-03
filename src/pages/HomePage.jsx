@@ -29,7 +29,6 @@ const HomePage = () => {
         <MetricsSection />
         <AccreditationsSection />
         <PartnersSection />
-        <Footer />
     </>
   );
 }

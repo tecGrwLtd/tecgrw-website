@@ -1,8 +1,9 @@
-import Navbar from './Navbar'
-import Footer from './Footer';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 
-const Layout = ({ children }) => {
+const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#f8f9fa] text-[#231f1f]">
       <Navbar
@@ -11,10 +12,10 @@ const Layout = ({ children }) => {
         changeOnScroll={false}
       />
       <main className="flex-1 pt-16">
-      {children}
+      <Outlet />
       </main>
       <Footer />
     </div>
   );
 }
-export default Layout;
+export default MainLayout;

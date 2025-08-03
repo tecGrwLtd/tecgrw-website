@@ -1,12 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
-import Layout from './components/Layout';
+import MainLayout from './layouts/MainLayout';
 
 import HomePage from './pages/HomePage';
-import OurStory from './pages/OurStory';
-import Team from './pages/Team';
 import SmartAgriculture from './pages/SmartAgriculture';
 import AIEducation from './pages/AIEducation';
 import BusinessAI from './pages/BusinessAI';
@@ -17,28 +14,30 @@ import ContactPage from './pages/ContactPage';
 import Careers from './pages/Careers';
 import NotFound from './pages/NotFound';
 
-import Navbar from './components/Navbar';
 const App = () => {
   return (
     <Router>
       <ScrollToTop />
         <Routes>
-        <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<MainLayout />}> 
+
+        <Route index element={<HomePage />} />
         {/* Solutions */}
-        <Route path="/solutions/smart-agriculture" element={<Layout><SmartAgriculture /></Layout>} />
-        <Route path="/solutions/ai-education" element={<Layout><AIEducation /></Layout>} />
-        <Route path="/solutions/business-ai" element={<Layout><BusinessAI /></Layout>} />
-        <Route path="/solutions/case-studies" element={<Layout><CaseStudies /></Layout>} />
+        <Route path="/solutions/smart-agriculture" element={<SmartAgriculture />} />
+        <Route path="/solutions/ai-education" element={<AIEducation />} />
+        <Route path="/solutions/business-ai" element={<BusinessAI />} />
+        <Route path="/solutions/case-studies" element={<CaseStudies />} />
         {/* Resources */}
-        <Route path="/resources/blog" element={<Layout><Blog /></Layout>} />
-        <Route path="/resources/newsletter" element={<Layout><Newsletter /></Layout>} />
+        <Route path="/resources/blog" element={<Blog />} />
+        <Route path="/resources/newsletter" element={<Newsletter />} />
         {/* Careers */}
-        <Route path="/careers" element={<Layout><Careers /></Layout>} />
+        <Route path="/careers" element={<Careers />} />
         {/* Contact */}
-        <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
+        <Route path="/contact" element={<ContactPage />} />
         {/* 404 */}
-        <Route path="*" element={<Layout><NotFound /></Layout>} />
-          </Routes>
+        <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
