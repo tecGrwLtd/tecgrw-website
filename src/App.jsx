@@ -12,6 +12,7 @@ import Blog from './pages/Blog';
 import Newsletter from './pages/Newsletter';
 import ContactPage from './pages/ContactPage';
 import Careers from './pages/Careers';
+import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         {/* Resources */}
         <Route path="/resources/blog" element={<Blog />} />
         <Route path="/resources/newsletter" element={<Newsletter />} />
+        <Route path="/gallery" element={<Gallery />} />
         {/* Careers */}
         <Route path="/careers" element={<Careers />} />
         {/* Contact */}
