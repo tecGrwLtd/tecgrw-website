@@ -17,8 +17,8 @@ const AIEducation = () => {
       )
     },
     {
-      title: "Machine Learning Basics",
-      description: "Age-appropriate introduction to AI concepts, pattern recognition, and how machines learn from data through fun, visual examples.",
+      title: "Our Curriculum",
+      description: "We cover all important aspects of AI and Data Science including Machine Learning, Generative AI, Conversational AI integration, Data.",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -55,13 +55,13 @@ const AIEducation = () => {
       registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSdQMhmEISvSXM2qI-mHns269IgREN7o1kY2bRkUCAsGlfWcWA/viewform?usp=sharing&ouid=100715152190629375156",
       highlights: [
         'Fundamentals of AI',
-        'Basic programming with Scratch & Python basics',
+        'Basic programming with Python',
         'Data interpretation and storytelling',
         'Simple AI projects',
         'Maths and statistics for Data Science'
       ],
       description: 'Perfect introduction to the world of data and AI for young minds.',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-[#095aa3] to-[#4f93ce]'
     },
     {
       id: 'advanced',
@@ -71,15 +71,16 @@ const AIEducation = () => {
       duration: '10 months',
       registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSc5IMwTs30V963zyKcqjS_KUUUCebYHr7-QRke314GLi6PscA/viewform?usp=sharing&ouid=100715152190629375156",
       highlights: [
-        'Introduction to Machine Learning',
+        'Focus on Generative aI',
+        'Advanced Machine Learning',
         'Programming in Python',
         'Principles of Data Science',
-        'AI projects & real applications',
+        'AI projects',
         'Conversational AI integration',
         'Advanced Maths and Statistics for Data Science'
       ],
       description: 'Advanced concepts and real-world applications for tech-savvy teens.',
-      color: 'from-green-500 to-green-600'
+      color: 'from-[#095aa3] to-[#4f93ce]'
     }
   ];
 
