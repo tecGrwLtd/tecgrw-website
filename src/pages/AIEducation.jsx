@@ -1,6 +1,5 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import TestimonialsSection from '../components/TestimonialsSection';
-import Navbar from '../components/Navbar';
 
 const AIEducation = () => {
   const programHighlights = [
@@ -165,12 +164,12 @@ const AIEducation = () => {
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
             Are you a parent looking to enroll your child? Let’s work together to build Rwanda’s tech-savvy generation.
           </p>
-          <a 
-            href="/contact"
+          <Link 
+            to="/contact" // later it will go to registration form.
             className="inline-block bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200"
           >
             Enroll
-          </a>
+          </Link>
         </div>
       </section>
   </>
