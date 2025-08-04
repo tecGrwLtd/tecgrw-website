@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BusinessAI = () => {
   const benefits = [
@@ -250,12 +251,12 @@ const BusinessAI = () => {
             Let our experts help you identify AI opportunities in your business and create a custom solution 
             that drives real results. Schedule a consultation today and take the first step toward intelligent automation.
           </p>
-          <a 
-            href="/contact"
+          <Link 
+            to="/contact"
             className="inline-block bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200"
           >
             Request a Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </>

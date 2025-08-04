@@ -15,7 +15,6 @@ const navItems = [
       { name: 'Smart Agriculture', href: '/solutions/smart-agriculture' },
       { name: 'AI Education', href: '/solutions/ai-education' },
       { name: 'Business AI', href: '/solutions/business-ai' },
-      { name: 'Case Studies', href: '/solutions/case-studies' },
     ],
   },
   {
@@ -23,6 +22,7 @@ const navItems = [
     children: [
       { name: 'Blog', href: '/resources/blog' },
       { name: 'Newsletter', href: '/resources/newsletter' },
+      { name: 'Case Studies', href: '/solutions/case-studies' },
     ],
   },
   { name: 'Gallery', href: "/gallery" },
