@@ -6,11 +6,6 @@ const Newsletter = () => {
   const [submitted, setSubmitted] = useState(false);
   return (
     <>
-    <Navbar
-    initialBgColor="bg-[#095aa3] shadow-md"
-    initialTextColor="text-white"
-    changeOnScroll={false}
-    />
     <section className="mt-24 max-w-3xl mx-auto px-4 py-16">
       <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#095aa3]">Newsletter</h1>
       <p className="mb-8 text-lg text-[#231f1f]">Subscribe to Tecgrw's newsletter for the latest updates and insights.</p>
