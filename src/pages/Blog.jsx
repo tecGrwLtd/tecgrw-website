@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaExternalLinkAlt, FaCalendarAlt, FaClock } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
  const Blog = () => {
   // Real article data
@@ -46,7 +47,7 @@ import { FaExternalLinkAlt, FaCalendarAlt, FaClock } from 'react-icons/fa';
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
@@ -86,7 +87,7 @@ import { FaExternalLinkAlt, FaCalendarAlt, FaClock } from 'react-icons/fa';
                   </div>
                 </div>
                 
-                <a
+                <Link
                   href={featuredArticle.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -94,7 +95,7 @@ import { FaExternalLinkAlt, FaCalendarAlt, FaClock } from 'react-icons/fa';
                 >
                   <span>Read Full Article</span>
                   <FaExternalLinkAlt className="w-4 h-4 ml-2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -161,22 +162,22 @@ import { FaExternalLinkAlt, FaCalendarAlt, FaClock } from 'react-icons/fa';
             Follow us for updates on new articles and industry developments.
           </p>
           <div className="flex justify-center space-x-4">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center px-6 py-3 bg-[#b2c935] text-[#231f1f] font-semibold rounded-lg hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
             >
               Subscribe to Updates
-            </a>
-            <a
-              href="/"
+            </Link>
+            <Link
+              to="/"
               className="inline-flex items-center px-6 py-3 border-2 border-[#095aa3] text-[#095aa3] font-semibold rounded-lg hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
             >
               Explore Our Solutions
-            </a>
+            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
