@@ -25,13 +25,7 @@ const navItems = [
       { name: 'Newsletter', href: '/resources/newsletter' },
     ],
   },
-  {
-    name: 'Gallery',
-    // children: [
-    //   { name: '', href: '' },
-    //   { name: '', href: '' },
-    // ],
-  },
+  { name: 'Gallery', href: "/gallery" },
   { name: 'Careers', href: '/careers' },
   { name: 'Contact', href: '/contact' },
 ];
