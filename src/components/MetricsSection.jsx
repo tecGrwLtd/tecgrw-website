@@ -4,27 +4,27 @@ import FadeInSection from './FadeInSection';
 const metrics = [
   {
     label: 'Farmers Empowered',
-    value: '5,000+',
+    value: '70+',
     color: '#b2c935',
   },
   {
-    label: 'AI Projects Delivered',
-    value: '30+',
+    label: 'Greenhouses Built',
+    value: '4',
     color: '#095aa3',
   },
   {
-    label: 'Training Sessions',
-    value: '120+',
+    label: 'Graduated Student Batche',
+    value: '1',
     color: '#231f1f',
   },
   {
-    label: 'Rwanda Regions Served',
-    value: '12',
+    label: 'AI Projects Delivered',
+    value: '5',
     color: '#b2c935',
   },
 ];
 
-export default function MetricsSection() {
+const MetricsSection = () => {
   return (
     <section id="metrics" className="py-16 md:py-24 bg-[#f8f9fa]">
       <div className="max-w-7xl mx-auto px-4">
@@ -53,4 +53,6 @@ export default function MetricsSection() {
       </div>
     </section>
   );
-} 
+}
+
+export default  MetricsSection;

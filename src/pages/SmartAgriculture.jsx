@@ -1,4 +1,4 @@
-import mahama_greenhouse from '../assets/images/mahama_greenhouse.jpeg'
+import Navbar from "../components/Navbar";
 
 const SmartAgriculture = () => {
   const features = [
@@ -28,15 +28,6 @@ const SmartAgriculture = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       )
-    },
-    {
-      title: "AI-Powered Insights",
-      description: "Machine learning algorithms that predict crop diseases, optimize planting schedules, and recommend precision farming techniques.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      )
     }
   ];
 
@@ -45,41 +36,11 @@ const SmartAgriculture = () => {
       location: "Bugesera District",
       title: "Smart Greenhouse Initiative",
       description: "Deployed GSM-controlled greenhouse systems near Mahama refugee camp, improving food security and creating sustainable farming opportunities for local communities."
-    },
-    {
-      location: "Nyaruguru District",
-      title: "Precision Agriculture Program",
-      description: "Implemented data-driven farming solutions helping smallholder farmers increase productivity through AI-powered crop monitoring and soil analysis."
-    },
-    {
-      location: "Gatsibo District",
-      title: "Hydroponic Farming Project",
-      description: "Established modern hydroponic systems enabling year-round production of high-value crops with 90% less water usage than traditional farming."
     }
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.8), rgba(9, 90, 163, 0.8)), url('https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop')`
-        }}
-      >
-        <div className="text-center text-white px-4 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Smart Agriculture Solutions
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-            Transforming farming with AI-driven technology, sustainable practices, and data-powered insights for Rwanda's agricultural future
-          </p>
-          <button className="bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200">
-            Learn More
-          </button>
-        </div>
-      </section>
-
+    <>
       {/* Overview */}
       <section className="px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
@@ -162,7 +123,7 @@ const SmartAgriculture = () => {
             </div>
             <div>
               <img 
-                src={mahama_greenhouse}
+                src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg"
                 alt="Smart agriculture technology in action"
                 className="rounded-lg shadow-lg w-full h-[400px] object-cover"
               />
@@ -196,26 +157,7 @@ const SmartAgriculture = () => {
           </div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <section className="px-4 py-16 bg-[#095aa3]">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Farm?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Join the farmers across Rwanda who are already benefiting from smart agriculture technology. 
-            Let's work together to build a more productive and sustainable future.
-          </p>
-          <a 
-            href="/contact"
-            className="inline-block bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200"
-          >
-            Contact Us Today
-          </a>
-        </div>
-      </section>
-    </div>
+  </>
   );
 };
 

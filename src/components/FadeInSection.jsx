@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function FadeInSection({
+const FadeInSection = ({
   children,
   direction = 'up',
   delay = 0,
   className = '',
   as = 'div',
-}) {
+}) => {
   const Comp = as;
 
   return (
@@ -17,4 +17,6 @@ export default function FadeInSection({
       {children}
     </Comp>
   );
-} 
+}
+
+export default FadeInSection;

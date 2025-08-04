@@ -1,8 +1,10 @@
+import { Suspense, useState, useEffect } from 'react';
 import {
   FaFacebookF, FaTwitter, FaLinkedinIn,
   FaInstagram, FaEnvelope, FaPhone,
-  FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle
+  FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaExclamationCircle
 } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +14,21 @@ const ContactPage = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [submissionError, setSubmissionError] = useState(null); // State to hold error message
+
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+  useEffect(() => {
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.warn("EmailJS Public Key is not set. Please check your .env.local file and ensure it's prefixed correctly (e.g., VITE_ or NEXT_PUBLIC_).");
+      setSubmissionError("Email service not configured. Please contact support.");
+    }
+  }, [publicKey]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -24,15 +40,60 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setSubmissionError(null); 
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmissionError('Email service credentials are not fully configured. Please check your .env.local file.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        current_year: new Date().getFullYear(),
+      };
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      if (response.status === 200) {
+        // Email sent successfully
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        // EmailJS API returned an error
+        setSubmissionError(`Failed to send message. Please try again. Error: ${response.text || 'Unknown error'}`);
+        console.error('EmailJS Error Response:', response);
+      }
+    } catch (error) {
+      // Network error or other unexpected issues
+      console.error('Error submitting form via EmailJS:', error);
+      setSubmissionError('Network error or problem connecting to the email service. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  // Map component for lazy loading
+  const  Map = () => {
+    return (
+      <div className="rounded-lg overflow-hidden shadow border border-[#e5e7eb] w-full h-64 md:h-full">
+        <iframe
+          title="Tecgrw Location"
+          src="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0, minHeight: '220px' }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    );
+  }
+
+  // Render success message if form was submitted
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -58,55 +119,12 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-[#095aa3] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Ready to transform your agricultural practices? Let's discuss how Tecgrw can help you grow smarter.
-          </p>
-        </div>
-      </div>
-
+    <>
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-16">
-          
           {/* Left Column - Company Info */}
           <div className="space-y-8">
-            {/* Company Overview */}
-            <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-[#b2c935] rounded-lg flex items-center justify-center mr-4">
-                  <svg className="w-6 h-6 text-[#231f1f]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
-                    <path d="M5 12L6.09 18.26L13 19L6.09 19.74L5 26L3.91 19.74L-3 19L3.91 18.26L5 12Z" opacity="0.6"/>
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-[#231f1f]">Tecgrw</h2>
-                  <p className="text-gray-600">Growing Technology, Harvesting Success</p>
-                </div>
-              </div>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                At Tecgrw, we're revolutionizing agriculture through innovative technology solutions. 
-                From precision farming to smart irrigation systems, we help farmers maximize yields 
-                while minimizing environmental impact.
-              </p>
-              
-              {/* Key Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-[#095aa3] rounded-full mr-3"></div>
-                  <span className="text-gray-700">Expert Team</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-[#b2c935] rounded-full mr-3"></div>
-                  <span className="text-gray-700">Proven Results</span>
-                </div>
-              </div>
-            </div>
 
             {/* Contact Information */}
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
@@ -119,7 +137,13 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Office Address</h4>
-                    <p className="text-gray-600">123 Innovation Drive<br />Agritech Park, Kigali 00100<br />Rwanda</p>
+                    <p className="text-gray-600">100 KG 9 Ave, Kigali, Rwanda</p>
+                  {/* Map */}
+                  <div className="mt-2 w-48 h-32 rounded-lg overflow-hidden">
+                  <Suspense fallback={<div className="w-48 h-32 bg-[#e5e7eb] animate-pulse" />}>
+                  <Map />
+                  </Suspense>
+                  </div>
                   </div>
                 </div>
 
@@ -129,7 +153,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Email</h4>
-                    <p className="text-gray-600">info@tecgrw.com<br />support@tecgrw.com</p>
+                    <p className="text-gray-600">info@tecgrw.com</p>
                   </div>
                 </div>
 
@@ -139,7 +163,8 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Phone</h4>
-                    <p className="text-gray-600">+250 123 456 789<br />+250 987 654 321</p>
+                    <p className="text-gray-600">+250 7989 75878</p>
+                    <p className="text-gray-600">+250 795583795</p>
                   </div>
                 </div>
 
@@ -149,7 +174,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#231f1f]">Business Hours</h4>
-                    <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 2:00 PM<br />Sunday: Closed</p>
+                    <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: Closed<br />Sunday: Closed</p>
                   </div>
                 </div>
               </div>
@@ -159,12 +184,12 @@ const ContactPage = () => {
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
               <h3 className="text-xl font-bold text-[#231f1f] mb-6">Follow Us</h3>
               <div className="flex space-x-4">
-                {/* <a 
-                  href="#" 
+                <a 
+                  href="https://www.facebook.com/tecGrw1" 
                   className="w-12 h-12 bg-[#b2c935] text-[#231f1f] rounded-lg flex items-center justify-center hover:bg-[#095aa3] hover:text-white transition-colors"
                 >
                   <FaFacebookF className="w-5 h-5" />
-                </a> */}
+                </a>
                 <a 
                   href="https://www.linkedin.com/company/tecgrw.com"
                   target="_blank"
@@ -198,8 +223,9 @@ const ContactPage = () => {
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100 sticky top-8">
               <h3 className="text-2xl font-bold text-[#231f1f] mb-2">Send us a Message</h3>
               <p className="text-gray-600 mb-8">We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
-              
-              <div className="space-y-6">
+
+              {/* Form element with onSubmit handler */}
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-[#231f1f] mb-2">
@@ -247,9 +273,12 @@ const ContactPage = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
                   >
                     <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="partnership">Partnership Opportunities</option>
-                    <option value="education">Education Information</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Partnership Opportunities">Partnership Opportunities</option>
+                    <option value="Education Information">Education Information</option>
+                    <option value="Smart Greenhouses">Smart Greenhouses</option>
+                    <option value="AI & Data Science Education">AI & Data Science Education</option>
+                    <option value="AI in Businesses">AI in Businesses</option>
                   </select>
                 </div>
 
@@ -269,8 +298,16 @@ const ContactPage = () => {
                   />
                 </div>
 
+                {/* Display submission error if any */}
+                {submissionError && (
+                  <div className="flex items-center text-red-600 text-sm mt-2">
+                    <FaExclamationCircle className="mr-2" />
+                    {submissionError}
+                  </div>
+                )}
+
                 <button
-                  onClick={handleSubmit}
+                  type="submit" // Changed to type="submit" for proper form submission
                   disabled={isSubmitting}
                   className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
@@ -286,7 +323,7 @@ const ContactPage = () => {
                     </>
                   )}
                 </button>
-              </div>
+              </form>
 
               <p className="text-sm text-gray-500 mt-4 text-center">
                 * Required fields. We respect your privacy and will never share your information.
@@ -295,7 +332,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
