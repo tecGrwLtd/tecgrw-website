@@ -197,7 +197,7 @@ const Navbar = ({
           onClick={() => setMenuOpen((v) => !v)}
         >
           <svg
-            className="w-6 h-6 text-[#095aa3]"
+            className="w-6 h-6 text-[#231f1f]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
