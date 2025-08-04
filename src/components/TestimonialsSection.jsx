@@ -46,7 +46,7 @@ const TestimonialsSection = ({Heading }) => {
               </div>
 
               {/* Quote Text */}
-              <blockquote className="text-lg md:text-xl text-[#231f1f]/80 mb-8 leading-relaxed text-center font-normal italic">
+              <blockquote className="text-lg md:text-xl text-[#231f1f]/80 mb-3 leading-relaxed text-center font-normal italic">
                 "{testimonials[idx].quote}"
               </blockquote>
               

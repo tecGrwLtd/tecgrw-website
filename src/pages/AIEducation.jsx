@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { ArrowDown, Users, Clock, MapPin, Check, ChevronRight } from 'lucide-react';
+
 import TestimonialsSection from '../components/TestimonialsSection';
 
 const AIEducation = () => {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
   const programHighlights = [
     {
       title: "Hands-on Coding",
@@ -22,8 +26,8 @@ const AIEducation = () => {
       )
     },
     {
-      title: "Real-world Mentors",
-      description: "Industry professional guide students, sharing practical insights and career guidance in technology fields.",
+      title: "Real-world Problems",
+      description: "We teach kids how to solve real world problems using AI and Data Science such as climate change, predicting customer satisfaction, weather prediction etc.",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
@@ -41,28 +45,110 @@ const AIEducation = () => {
     }
   ];
 
+  const courses = [
+    {
+      id: 'basic',
+      title: 'Junior Data Science Course (Basic)',
+      ageRange: 'Age 8 and above',
+      level: 'Beginner',
+      duration: '6 months',
+      registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSdQMhmEISvSXM2qI-mHns269IgREN7o1kY2bRkUCAsGlfWcWA/viewform?usp=sharing&ouid=100715152190629375156",
+      highlights: [
+        'Fundamentals of AI',
+        'Basic programming with Scratch & Python basics',
+        'Data interpretation and storytelling',
+        'Simple AI projects',
+        'Maths and statistics for Data Science'
+      ],
+      description: 'Perfect introduction to the world of data and AI for young minds.',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      id: 'advanced',
+      title: 'Junior Data Science Course (Advanced)',
+      ageRange: 'Age 8 and above',
+      level: 'Intermediate',
+      duration: '10 months',
+      registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSc5IMwTs30V963zyKcqjS_KUUUCebYHr7-QRke314GLi6PscA/viewform?usp=sharing&ouid=100715152190629375156",
+      highlights: [
+        'Introduction to Machine Learning',
+        'Programming in Python',
+        'Principles of Data Science',
+        'AI projects & real applications',
+        'Conversational AI integration',
+        'Advanced Maths and Statistics for Data Science'
+      ],
+      description: 'Advanced concepts and real-world applications for tech-savvy teens.',
+      color: 'from-green-500 to-green-600'
+    }
+  ];
+
+  const whyChooseUs = [
+    { icon: '🏢', title: 'Prime Location in Kigali', desc: 'garden and dedicated learning spaces' },
+    { icon: '🛠️', title: 'Hands-on Learning', desc: 'Project-based, not just theory' },
+    { icon: '👥', title: 'Small Class Sizes', desc: 'Personalized support for every student' },
+  ];
+
+  const scrollToRegistration = () => {
+    document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Overview */}
-      <section className=" mt-24 px-4 py-16">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-8">
-            Building Tomorrow's Innovators Today
-          </h2>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-            At Tecgrw, we believe that every child aged 8 and above has the potential to become a technology leader. 
-            Our AI education programs introduce young minds to the fascinating world of data science, programming, 
-            and machine learning through engaging, hands-on experiences.
-          </p>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-            We're not just teaching code we're nurturing problem-solvers, critical thinkers, and the next generation 
-            of innovators who will drive Rwanda's digital transformation and contribute to global technological advancement.
-          </p>
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="order-2 lg:order-1">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#231f1f] mb-6">
+                AI Education for the Next Generation
+              </h1>
+              <h2 className="text-xl md:text-2xl font-semibold text-[#095aa3] mb-6">
+                Building Future-Ready Skills Through Real-World Learning
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                At TecGrw AI Academy, we're equipping children, teens, and adults in Rwanda with essential digital skills. 
+                From data science and machine learning to coding and AI, our courses are designed for learners starting as early as age 8.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={scrollToRegistration}
+                  className="inline-flex items-center px-6 py-3 rounded-full bg-[#b2c935] text-[#231f1f] font-semibold shadow-lg hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
+                >
+                  Join our September 2025 session
+                  <ArrowDown className="ml-2 w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            
+            {/* Image */}
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <img 
+                  src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754304806/al_students_bow_graduation_day_pkwbv8.jpg"
+                  alt="Students learning data science and programming"
+                  className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-[#095aa3] rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">AI</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-[#231f1f]">Age 8 and above</p>
+                      <p className="text-sm text-gray-600">Future Tech Leaders</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Program Highlights Grid */}
-      <section className="px-4 py-16 bg-gray-50">
+      {/* Program Highlights */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] text-center mb-12">
             What Makes Our Programs Special
@@ -85,49 +171,96 @@ const AIEducation = () => {
         </div>
       </section>
 
-      {/* Visual Element */}
-      <section className="px-4 py-16 bg-gray-50">
+      {/* Course Offerings */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] text-center mb-12">
-            Learning in Action
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <img 
-                src="https://images.pexels.com/photos/8364026/pexels-photo-8364026.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop"
-                alt="Students learning programming and AI concepts"
-                className="rounded-lg shadow-lg w-full h-[300px] object-cover"
-              />
-            </div>
-            <div>
-              <img 
-                src="https://images.pexels.com/photos/5905445/pexels-photo-5905445.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop"
-                alt="Young learners engaged in coding activities"
-                className="rounded-lg shadow-lg w-full h-[300px] object-cover"
-              />
-            </div>
-          </div>
-          <div className="text-center mt-8">
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Our interactive learning environment combines theory with practice, ensuring students not only understand 
-              AI concepts but can apply them to create meaningful projects that benefit their communities.
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-4">
+              Our Course Offerings
+            </h2>
+            <p className="text-lg text-gray-600">
+              Choose the perfect program for your child's learning journey
             </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {courses.map((course) => (
+              <div key={course.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div className={`bg-gradient-to-r ${course.color} p-6 text-white`}>
+                  <h3 className="text-2xl font-bold mb-2">{course.title}</h3>
+                  <div className="flex items-center gap-4 text-blue-100">
+                    <span className="flex items-center gap-1">
+                      <Users className="w-4 h-4" />
+                      {course.ageRange}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {course.duration}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4">{course.description}</p>
+                  
+                  <h4 className="font-semibold text-[#231f1f] mb-3">What You'll Learn:</h4>
+                  <ul className="space-y-2 mb-6">
+                    {course.highlights.map((highlight, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-[#b2c935] flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button 
+                    onClick={() => {
+                      setSelectedCourse(course.id);
+                      scrollToRegistration();
+                    }}
+                    className="w-full py-3 px-4 bg-[#095aa3] text-white rounded-lg font-semibold hover:bg-[#074a8a] transition-colors duration-200"
+                  >
+                    Enroll in {course.level} Course
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Program Structure */}
-      <section className="px-4 py-16">
+      {/* Why Choose Us */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] text-center mb-12">
-            Our Learning Journey
+            Why Choose TecGrw AI Academy?
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="flex items-start gap-4 p-4">
+                <div className="text-3xl">{item.icon}</div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[#231f1f] mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Journey */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] text-center mb-12">
+            The Learning Journey
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-20 h-20 bg-[#095aa3] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 1
               </div>
-              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Foundation Level</h3>
+              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Foundation Building</h3>
               <p className="text-gray-600 leading-relaxed">
                 Introduction to computers, basic programming concepts, and computational thinking through games and visual programming.
               </p>
@@ -136,43 +269,93 @@ const AIEducation = () => {
               <div className="w-20 h-20 bg-[#095aa3] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 2
               </div>
-              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Intermediate Level</h3>
+              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Skill Development</h3>
               <p className="text-gray-600 leading-relaxed">
-                Text-based programming, data analysis basics, and introduction to machine learning concepts with practical examples.
+                hands on programming, data analysis basics, and introduction to machine learning concepts with practical examples.
               </p>
             </div>
             <div className="text-center">
               <div className="w-20 h-20 bg-[#095aa3] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 3
               </div>
-              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Advanced Projects</h3>
+              <h3 className="text-xl font-bold text-[#231f1f] mb-3">Real-World Application</h3>
               <p className="text-gray-600 leading-relaxed">
-                Real-world project development, AI application building, and mentorship opportunities with industry professionals.
+                Project development, AI application building.
               </p>
             </div>
           </div>
         </div>
       </section>
-      {/* Testimonials Section */}
-      <TestimonialsSection Heading={"What Parents are saying"}/>
-      {/* Call to Action */}
-      <section className="px-4 py-16 bg-[#095aa3]">
-        <div className="max-w-3xl mx-auto text-center">
+
+      {/* Call to Action / Registration */}
+      <section id="registration" className="px-4 sm:px-6 lg:px-8 py-16 bg-[#095aa3]">
+        <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Shape the Future?
+            Ready to Shape Rwanda's Digital Future?
           </h2>
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Are you a parent looking to enroll your child? Let’s work together to build Rwanda’s tech-savvy generation.
+            Join our September 2025 session.
           </p>
-          <Link 
-            to="/contact" // later it will go to registration form.
-            className="inline-block bg-[#b2c935] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#9db82a] transition-colors duration-200"
-          >
-            Enroll
-          </Link>
+          
+          {selectedCourse ? (
+            <div className="bg-white rounded-2xl p-8 mb-8">
+              <h3 className="text-2xl font-bold text-[#231f1f] mb-4">
+                Selected: {courses.find(c => c.id === selectedCourse)?.title}
+              </h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href={courses.find(c => c.id === selectedCourse)?.registrationForm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-8 py-4 rounded-full bg-[#b2c935] text-[#231f1f] font-semibold shadow-lg hover:bg-[#9db82a] transition-colors duration-200"
+                >
+                  Register Now
+                  <ChevronRight className="ml-2 w-5 h-5" />
+                </a>
+                <button 
+                  onClick={() => setSelectedCourse(null)}
+                  className="inline-flex items-center px-6 py-4 rounded-full border-2 border-[#095aa3] text-[#095aa3] font-semibold hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
+                >
+                  View All Courses
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <p className="text-blue-100 mb-6">Which course interests you?</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => setSelectedCourse('basic')}
+                  className="px-8 py-4 rounded-full bg-white text-[#095aa3] font-semibold hover:bg-blue-50 transition-colors duration-200"
+                >
+                  Basic Course (Age 8 and above)
+                </button>
+                <button
+                  onClick={() => setSelectedCourse('advanced')}
+                  className="px-8 py-4 rounded-full bg-white text-[#095aa3] font-semibold hover:bg-blue-50 transition-colors duration-200"
+                >
+                  Advanced Course (Age 10 and above)
+                </button>
+              </div>
+            </div>
+          )}
+          
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-blue-100">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-5 h-5" />
+              <span>TecGrw HQ, Kigali City Center</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-5 h-5" />
+              <span>After-school & Weekend on Saturday</span>
+            </div>
+          </div>
         </div>
       </section>
-  </>
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection Heading={"What Parents are saying"}/>
+    </>
   );
 };
 
