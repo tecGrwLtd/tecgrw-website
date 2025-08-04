@@ -4,6 +4,7 @@ import ScrollToTop from './components/ScrollToTop';
 import MainLayout from './layouts/MainLayout';
 
 import HomePage from './pages/HomePage';
+import AboutUs from './pages/AboutUs';
 import SmartAgriculture from './pages/SmartAgriculture';
 import AIEducation from './pages/AIEducation';
 import BusinessAI from './pages/BusinessAI';
@@ -11,7 +12,7 @@ import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
 import Newsletter from './pages/Newsletter';
 import ContactPage from './pages/ContactPage';
-import Careers from './pages/Careers';
+import Careers from './pages/Team';
 import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
 
@@ -24,6 +25,7 @@ const App = () => {
 
         <Route index element={<HomePage />} />
         {/* Solutions */}
+        <Route path="/about" element={< AboutUs/>}/>
         <Route path="/solutions/smart-agriculture" element={<SmartAgriculture />} />
         <Route path="/solutions/ai-education" element={<AIEducation />} />
         <Route path="/solutions/business-ai" element={<BusinessAI />} />
@@ -31,9 +33,9 @@ const App = () => {
         {/* Resources */}
         <Route path="/resources/blog" element={<Blog />} />
         <Route path="/resources/newsletter" element={<Newsletter />} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/resources/gallery" element={<Gallery />} />
         {/* Careers */}
-        <Route path="/careers" element={<Careers />} />
+        <Route path="/team" element={<Careers />} />
         {/* Contact */}
         <Route path="/contact" element={<ContactPage />} />
         {/* 404 */}
