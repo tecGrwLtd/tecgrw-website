@@ -44,11 +44,6 @@ const AIEducation = () => {
 
   return (
     <>
-      <Navbar
-        initialBgColor="bg-[#095aa3] shadow-md"
-        initialTextColor="text-white"
-        changeOnScroll={false}
-      />
       {/* Overview */}
       <section className=" mt-24 px-4 py-16">
         <div className="max-w-3xl mx-auto text-center">
