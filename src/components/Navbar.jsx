@@ -19,7 +19,7 @@ const Navbar = ({
   // Text colors when scrolled
   scrolledTextColor = 'text-[#231f1f]',
   scrolledHoverColor = 'hover:text-[#b2c935]',
-  
+
   // Shadow when scrolled
   scrolledShadow = 'shadow-md',
   

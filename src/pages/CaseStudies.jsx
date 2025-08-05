@@ -1,40 +1,11 @@
 import { Link } from 'react-router-dom';
+import caseStudies from '../assets/data/caseStudies';
 
 const CaseStudies = () => {
-  const caseStudies = [
-    {
-      id: 1,
-      title: "Smart Irrigation System for Smallholder Farmers",
-      category: "Smart Agriculture",
-      description: "Implemented IoT-based irrigation solutions that reduced water consumption by 40% while increasing crop yields for over 500 farmers in rural Rwanda.",
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&h=250&fit=crop",
-      readTime: "5 min read",
-      slug: "smart-irrigation-smallholder-farmers"
-    },
-    {
-      id: 2,
-      title: "AI-Powered Crop Disease Detection",
-      category: "AI Technology",
-      description: "Developed machine learning models that help farmers identify crop diseases early, preventing up to 60% of potential crop losses through mobile app diagnostics.",
-      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=250&fit=crop",
-      readTime: "7 min read",
-      slug: "ai-crop-disease-detection"
-    },
-    {
-      id: 3,
-      title: "Digital Farm Management Platform",
-      category: "Business AI",
-      description: "Created comprehensive farm management software that streamlined operations for agricultural cooperatives, improving efficiency by 35% and reducing costs.",
-      image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=400&h=250&fit=crop",
-      readTime: "6 min read",
-      slug: "digital-farm-management-platform"
-    },
-  ];
-
   return (
     <>
       {/* Header Section */}
-      <section className="mt-24 pt-24 pb-8 bg-white">
+      <section className="pt-24 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#231f1f]">
