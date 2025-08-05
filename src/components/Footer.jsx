@@ -66,7 +66,7 @@ const Footer = () => {
                 <Link to="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Smart Agriculture</Link>
                 <Link to="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">AI Education</Link>
                 <Link to="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Business AI</Link>
-                <Link to="/our-story" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Our Story</Link>
+                <Link to="/our-story" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Careers</Link>
               </div>
             </div>
           </div>
