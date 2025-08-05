@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
@@ -6,7 +6,11 @@ const navItems = [
   { name: 'Home', href: '/' },
   {
     name: 'About Us',
-    href: '/#about',
+    href: '/about',
+  },
+  {
+    name: 'Partners',
+    href: '/#partners',
     isHash: true,
   },
   {
@@ -22,12 +26,12 @@ const navItems = [
     children: [
       { name: 'Blog', href: '/resources/blog' },
       { name: 'Newsletter', href: '/resources/newsletter' },
-      { name: 'Case Studies', href: '/solutions/case-studies' },
+      { name: 'Case Studies', href: '/resources/case-studies' },
+      { name: 'Gallery', href: '/resources/gallery' },
     ],
   },
-  { name: 'Gallery', href: "/gallery" },
-  { name: 'Careers', href: '/careers' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Team', href: "/team" },
+  { name: 'Contact', href: '/contact' }
 ];
 
 const classNames = (...classes) => {

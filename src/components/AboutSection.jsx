@@ -1,4 +1,3 @@
-import React from 'react';
 import FadeInSection from './FadeInSection';
 
 const AboutSection = () => {
@@ -42,7 +41,6 @@ const AboutSection = () => {
                     <p className="text-sm opacity-90">Data-driven farming solutions</p>
                   </div>
                 </div>
-
                 {/* Bottom left image */}
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
