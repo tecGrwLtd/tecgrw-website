@@ -42,13 +42,14 @@ const AboutSection = () => {
                   </div>
                 </div>
                 {/* Bottom left image */}
-                <div className="relative overflow-hidden rounded-xl shadow-lg">
+                <div className="relative overflow-hidden rounded-xl">
                   <img
-                    src="https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop"
+                    src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754304806/al_students_bow_graduation_day_pkwbv8.jpg"
                     alt="Students learning programming and AI concepts"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#b2c935]/70 to-transparent"></div>
+                  {/* from-[#b2c935]/70 to-transparent */}
+                  <div className="absolute inset-0 bg-gradient-to-t"></div>
                   <div className="absolute bottom-3 left-3 text-white">
                     <h4 className="font-semibold text-sm">AI Education</h4>
                     <p className="text-xs opacity-90">Future innovators</p>
