@@ -1,28 +1,5 @@
-import React from 'react';
 import FadeInSection from './FadeInSection';
-
-const metrics = [
-  {
-    label: 'Farmers Empowered',
-    value: '70+',
-    color: '#b2c935',
-  },
-  {
-    label: 'Greenhouses Built',
-    value: '4',
-    color: '#095aa3',
-  },
-  {
-    label: 'Graduated Student Batche',
-    value: '1',
-    color: '#231f1f',
-  },
-  {
-    label: 'AI Projects Delivered',
-    value: '5',
-    color: '#b2c935',
-  },
-];
+import metrics from '../assets/data/metricsData';
 
 const MetricsSection = () => {
   return (
