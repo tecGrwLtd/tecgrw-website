@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import FadeInSection from './FadeInSection';
 
 const HeroSection = ({ headline, description, bgImg, getInTouch = false }) => {
-
   const sectionStyle = {
-    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.7), rgba(9, 90, 163, 0.7)), url(${bgImg})`,
+    // Reduced opacity from 0.7 to 0.3 to make background more visible
+    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.3), rgba(9, 90, 163, 0.3)), url(${bgImg})`,
+    
   };
 
   return (
@@ -30,7 +31,7 @@ const HeroSection = ({ headline, description, bgImg, getInTouch = false }) => {
               <p className="text-lg md:text-xl text-white font-medium whitespace-pre-line mb-8 drop-shadow leading-relaxed">
                 {description}
               </p>
-
+              
               {getInTouch && (
                 <Link
                   to="/contact"

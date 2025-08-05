@@ -2,37 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-const navItems = [
-  { name: 'Home', href: '/' },
-  {
-    name: 'About Us',
-    href: '/about',
-  },
-  {
-    name: 'Partners',
-    href: '/#partners',
-    isHash: true,
-  },
-  {
-    name: 'Solutions',
-    children: [
-      { name: 'Smart Agriculture', href: '/solutions/smart-agriculture' },
-      { name: 'AI Education', href: '/solutions/ai-education' },
-      { name: 'Business AI', href: '/solutions/business-ai' },
-    ],
-  },
-  {
-    name: 'Resources',
-    children: [
-      { name: 'Blog', href: '/resources/blog' },
-      { name: 'Newsletter', href: '/resources/newsletter' },
-      { name: 'Case Studies', href: '/resources/case-studies' },
-      { name: 'Gallery', href: '/resources/gallery' },
-    ],
-  },
-  { name: 'Team', href: "/team" },
-  { name: 'Contact', href: '/contact' }
-];
+import { navItems } from '../assets/data/navItems';
 
 const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ');
@@ -45,7 +15,7 @@ const Navbar = ({
   // Text colors when not scrolled
   initialTextColor = 'text-white',
   initialHoverColor = 'hover:text-[#b2c935]',
-  
+
   // Text colors when scrolled
   scrolledTextColor = 'text-[#231f1f]',
   scrolledHoverColor = 'hover:text-[#b2c935]',
@@ -55,7 +25,7 @@ const Navbar = ({
   
   // Whether to change colors on scroll
   changeOnScroll = true,
-  
+
   // Custom scroll threshold
   scrollThreshold = 0
 }) => {
@@ -106,7 +76,7 @@ const Navbar = ({
   };
 
   // Background class based on scroll state and props
-  const bgClass = (changeOnScroll && scrolled) 
+  const bgClass = (changeOnScroll && scrolled)
     ? `${scrolledBgColor} ${scrolledShadow}`
     : initialBgColor;
 
