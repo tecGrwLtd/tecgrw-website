@@ -12,9 +12,9 @@ import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
 import Newsletter from './pages/Newsletter';
 import ContactPage from './pages/ContactPage';
-import Careers from './pages/Team';
 import Gallery from './pages/Gallery';
 import NotFound from './pages/NotFound';
+import Team from './pages/Team';
 
 const App = () => {
   return (
@@ -24,8 +24,10 @@ const App = () => {
           <Route path="/" element={<MainLayout />}> 
 
         <Route index element={<HomePage />} />
+      {/* About Us */}
+        <Route path="/our-story" element={< AboutUs/>}/>
+        <Route path="/team" element={<Team />} />
         {/* Solutions */}
-        <Route path="/about" element={< AboutUs/>}/>
         <Route path="/solutions/smart-agriculture" element={<SmartAgriculture />} />
         <Route path="/solutions/ai-education" element={<AIEducation />} />
         <Route path="/solutions/business-ai" element={<BusinessAI />} />
@@ -34,8 +36,6 @@ const App = () => {
         <Route path="/resources/blog" element={<Blog />} />
         <Route path="/resources/newsletter" element={<Newsletter />} />
         <Route path="/resources/gallery" element={<Gallery />} />
-        {/* Careers */}
-        <Route path="/team" element={<Careers />} />
         {/* Contact */}
         <Route path="/contact" element={<ContactPage />} />
         {/* 404 */}
