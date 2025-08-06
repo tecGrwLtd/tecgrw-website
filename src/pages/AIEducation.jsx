@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { ArrowDown, Users, Clock, MapPin, Check, ChevronRight } from 'lucide-react';
 
+import { courses } from '../assets/data/aIEducation';
+import StudentRegistration from '../components/StudentRegistration';
 import TestimonialsSection from '../components/TestimonialsSection';
+
 
 const AIEducation = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -42,45 +45,6 @@ const AIEducation = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
       )
-    }
-  ];
-
-  const courses = [
-    {
-      id: 'basic',
-      title: 'Junior Data Science Course (Basic)',
-      ageRange: 'Age 8 and above',
-      level: 'Beginner',
-      duration: '6 months',
-      registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSdQMhmEISvSXM2qI-mHns269IgREN7o1kY2bRkUCAsGlfWcWA/viewform?usp=sharing&ouid=100715152190629375156",
-      highlights: [
-        'Fundamentals of AI',
-        'Basic programming with Python',
-        'Data interpretation and storytelling',
-        'Simple AI projects',
-        'Maths and statistics for Data Science'
-      ],
-      description: 'Perfect introduction to the world of data and AI for young minds.',
-      color: 'from-[#095aa3] to-[#4f93ce]'
-    },
-    {
-      id: 'advanced',
-      title: 'Junior Data Science Course (Advanced)',
-      ageRange: 'Age 8 and above',
-      level: 'Intermediate',
-      duration: '10 months',
-      registrationForm: "https://docs.google.com/forms/d/e/1FAIpQLSc5IMwTs30V963zyKcqjS_KUUUCebYHr7-QRke314GLi6PscA/viewform?usp=sharing&ouid=100715152190629375156",
-      highlights: [
-        'Focus on Generative aI',
-        'Advanced Machine Learning',
-        'Programming in Python',
-        'Principles of Data Science',
-        'AI projects',
-        'Conversational AI integration',
-        'Advanced Maths and Statistics for Data Science'
-      ],
-      description: 'Advanced concepts and real-world applications for tech-savvy teens.',
-      color: 'from-[#095aa3] to-[#4f93ce]'
     }
   ];
 
@@ -287,73 +251,7 @@ const AIEducation = () => {
           </div>
         </div>
       </section>
-
-      {/* Call to Action / Registration */}
-      <section id="registration" className="px-4 sm:px-6 lg:px-8 py-16 bg-[#095aa3]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Shape Rwanda's Digital Future?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Join our September 2025 session.
-          </p>
-          
-          {selectedCourse ? (
-            <div className="bg-white rounded-2xl p-8 mb-8">
-              <h3 className="text-2xl font-bold text-[#231f1f] mb-4">
-                Selected: {courses.find(c => c.id === selectedCourse)?.title}
-              </h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href={courses.find(c => c.id === selectedCourse)?.registrationForm}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-4 rounded-full bg-[#b2c935] text-[#231f1f] font-semibold shadow-lg hover:bg-[#9db82a] transition-colors duration-200"
-                >
-                  Register Now
-                  <ChevronRight className="ml-2 w-5 h-5" />
-                </a>
-                <button 
-                  onClick={() => setSelectedCourse(null)}
-                  className="inline-flex items-center px-6 py-4 rounded-full border-2 border-[#095aa3] text-[#095aa3] font-semibold hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
-                >
-                  View All Courses
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <p className="text-blue-100 mb-6">Which course interests you?</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => setSelectedCourse('basic')}
-                  className="px-8 py-4 rounded-full bg-white text-[#095aa3] font-semibold hover:bg-blue-50 transition-colors duration-200"
-                >
-                  Basic Course (Age 8 and above)
-                </button>
-                <button
-                  onClick={() => setSelectedCourse('advanced')}
-                  className="px-8 py-4 rounded-full bg-white text-[#095aa3] font-semibold hover:bg-blue-50 transition-colors duration-200"
-                >
-                  Advanced Course (Age 10 and above)
-                </button>
-              </div>
-            </div>
-          )}
-          
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-blue-100">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5" />
-              <span>TecGrw HQ, Kigali City Center</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              <span>After-school & Weekend on Saturday</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      
+      <StudentRegistration />
       {/* Testimonials Section */}
       <TestimonialsSection Heading={"What Parents are saying"}/>
     </>
