@@ -6,7 +6,7 @@ const Team = () => {
       {/* Mission Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="mb-12 max-w-3xl text-left">
+        <div className="mb-12 max-w-3xl text-center">
            <p className="text-3xl text-[#231f1f] font-semibold leading-snug">
               Working with us means being part of a mission-driven team that's shaping the future of <span className="text-[#b2c935] font-bold">Agriculture</span>, 
              <span className="text-[#095aa3] font-bold"> Education</span>, and 
@@ -17,7 +17,7 @@ const Team = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-4">

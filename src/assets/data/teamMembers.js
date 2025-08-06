@@ -2,19 +2,20 @@
     {
       name: "Samreen Nurmohamed",
       role: "CEO & Founder",
-      quote: "Technology has the power to transform agriculture, business education and create sustainable solutions worldwide.",
+      quote: `We are approaching a frontier where anything is possible, This wave can only be sustained by Education, AI expertise and Smart Agriculture to feed the world.
+              At tecGrw, we understand this and  are harnessing the power of these three verticals to drive a force that will sustain and elevate a rapid new future.`,
       image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/samreen_gapag4.jpg"
     },
     {
       name: "DUSENGIMANA Patrick",
       role: "Senior Agronomist",
-      quote: "Combining traditional farming wisdom with modern technology creates the most effective agricultural solutions.",
+      quote: "Bridging engineering excellence with on-ground agronomy: Optimizing crop systems, training farmers, and scaling sustainable solutions to turn challenges into growth for farms and communities.",
       image:"https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754327465/WhatsApp_Image_2025-08-04_at_16.13.21_ave1o9.jpg"
     },
     {
       name: "Nadra Ramzan",
       role: "Head of Marketing and Business Analysis",
-      quote: "Data-driven insights help us understand and serve our farming communities better.",
+      quote: "The future of marketing belongs to those who can interpret data as well as they craft messages.",
       image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/nadra_asqigl.jpg"
     },
     {
