@@ -1,12 +1,6 @@
 import FadeInSection from './FadeInSection';
 
-const partners = [
-  {
-    id: 1,
-    name: 'Plan International',
-    logo: 'https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754041377/Plan_International_Logo_dhpdtj.png',
-  }
-];
+import partners from '../assets/data/partners';
 
 const PartnersSection = () => {
   const shouldSlide = partners.length > 2;
@@ -31,11 +25,11 @@ const PartnersSection = () => {
             {/* Gradient overlays for fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
-            
+
             {/* Scrolling container */}
             <div className={`flex ${shouldSlide ? 'animate-scroll' : 'justify-center'}`}>
               {displayPartners.map((partner, index) => (
-                <div 
+                <div
                   key={`${partner.id}-${index}`}
                   className="flex-shrink-0 mx-8 md:mx-12"
                 >
@@ -52,15 +46,6 @@ const PartnersSection = () => {
             </div>
           </div>
         </FadeInSection>
-
-        {/* Bottom text */}
-        <div className="mt-12 text-center">
-          <FadeInSection direction="up" delay={400}>
-            <p className="text-sm text-[#231f1f]/50 font-medium">
-              Trusted by leading organizations worldwide
-            </p>
-          </FadeInSection>
-        </div>
       </div>
 
       {/* Custom CSS for smooth infinite scroll animation */}
