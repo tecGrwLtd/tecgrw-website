@@ -8,7 +8,7 @@ import MainLayout from './layouts/MainLayout';
 import HomeLayout from './layouts/HomeLayout';
 
 import HomePage from './pages/HomePage';
-import AboutUs from './pages/AboutUs';
+import About from './pages/about';
 import SmartAgriculture from './pages/SmartAgriculture';
 import AIEducation from './pages/AIEducation';
 import BusinessAI from './pages/BusinessAI';
@@ -30,7 +30,7 @@ const App = () => {
         <Route index element={<HomePage />} />
         </Route>
         <Route element={<MainLayout />}> 
-        <Route path="/our-story" element={< AboutUs/>}/>
+        <Route path="/our-story" element={<About/>}/>
         <Route path="/team" element={<Team />} />
         <Route path="/solutions/smart-agriculture" element={<SmartAgriculture />} />
         <Route path="/solutions/ai-education" element={<AIEducation />} />
