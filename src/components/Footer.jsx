@@ -16,9 +16,9 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#b2c935] mb-4">tecgrw</h3>
+              <h3 className="text-xl font-bold text-[#b2c935] mb-4">tecGrw</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Empowering agriculture and business with AI-driven solutions in Rwanda.
+                Empowering agriculture and businesses with AI-driven solutions in Rwanda.
               </p>
               <div className="flex space-x-4 pt-2">
                 <a href="https://www.linkedin.com/company/tecgrw.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
@@ -66,7 +66,6 @@ const Footer = () => {
                 <Link to="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Smart Agriculture</Link>
                 <Link to="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">AI Education</Link>
                 <Link to="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Business AI</Link>
-                <Link to="/our-story" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200">Careers</Link>
               </div>
             </div>
           </div>
