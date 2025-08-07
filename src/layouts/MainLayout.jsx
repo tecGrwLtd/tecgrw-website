@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#f8f9fa] text-[#231f1f]">
       <Navbar
-        initialBgColor="bg-[#095aa3] shadow-md"
+        initialBgColor="bg-[#095aa3]"
         initialTextColor="text-white"
         changeOnScroll={false}
       />

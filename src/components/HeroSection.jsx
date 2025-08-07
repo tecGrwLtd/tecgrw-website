@@ -3,17 +3,19 @@ import FadeInSection from './FadeInSection';
 
 const HeroSection = ({ headline, description, bgImg, getInTouch = false }) => {
   const sectionStyle = {
-    // Reduced opacity from 0.7 to 0.3 to make background more visible
-    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.3), rgba(9, 90, 163, 0.3)), url(${bgImg})`,
-    
+    // Increased overlay opacity for better navbar contrast
+    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.6), rgba(9, 90, 163, 0.6)), url(${bgImg})`,
   };
 
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat pt-20 md:pt-24"
+      className="relative w-full min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat"
       style={sectionStyle}
     >
-      <div className="relative z-10 flex items-center min-h-[calc(100vh-5rem)] md:min-h-[calc(100vh-6rem)] max-w-7xl mx-auto px-4 md:px-8">
+      {/* Top gradient overlay for navbar area */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/30 to-transparent z-0"></div>
+      
+      <div className="relative z-10 flex items-center min-h-screen max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-24">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 w-full py-8 md:py-12">
           
           {/* Left: Headline */}

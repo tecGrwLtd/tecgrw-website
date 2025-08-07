@@ -10,24 +10,21 @@ const classNames = (...classes) => {
 
 const Navbar = ({ 
   initialBgColor = 'bg-transparent',
-  scrolledBgColor = 'bg-white',
+  scrolledBgColor = 'bg-[#095aa3]',
 
-  // Text colors when not scrolled
   initialTextColor = 'text-white',
   initialHoverColor = 'hover:text-[#b2c935]',
 
-  // Text colors when scrolled
   scrolledTextColor = 'text-[#231f1f]',
   scrolledHoverColor = 'hover:text-[#b2c935]',
 
-  // Shadow when scrolled
   scrolledShadow = 'shadow-md',
-  
-  // Whether to change colors on scroll
+
   changeOnScroll = true,
 
-  // Custom scroll threshold
-  scrollThreshold = 0
+  scrollThreshold = 0,
+
+  useBackdrop = false
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -57,33 +54,37 @@ const Navbar = ({
     return location.pathname === href;
   };
 
-  // Check if any child of a dropdown is active
   const isActiveParent = (children) => {
     if (!children) return false;
     return children.some(child => location.pathname === child.href);
   };
 
-  // Get link classes with active state
   const getLinkClasses = (href, isHash = false, hasChildren = false, children = null) => {
-    const baseClasses = (changeOnScroll && scrolled) 
-      ? `${scrolledTextColor} ${scrolledHoverColor}`
-      : `${initialTextColor} ${initialHoverColor}`;
-    
-    const isActive = hasChildren ? isActiveParent(children) : isActiveLink(href, isHash);
-    const activeColor = (changeOnScroll && scrolled) ? 'text-[#b2c935]' : 'text-[#b2c935]';
-    
-    return `${baseClasses} ${isActive ? activeColor : ''} font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] rounded px-2 py-1`;
-  };
+    const baseClasses = `text-[#231f1f] ${scrolledHoverColor}`;
 
-  // Background class based on scroll state and props
-  const bgClass = (changeOnScroll && scrolled)
-    ? `${scrolledBgColor} ${scrolledShadow}`
-    : initialBgColor;
+    const isActive = hasChildren ? isActiveParent(children) : isActiveLink(href, isHash);
+    const activeColor = 'text-[#b2c935]';
+
+    const visibility = (!scrolled && changeOnScroll) ? 'drop-shadow-md' : '';
+    
+    return `${baseClasses} ${isActive ? activeColor : ''} ${visibility} font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] rounded px-3 py-2`;
+  };
+  const getBgClass = () => {
+    if (changeOnScroll && scrolled) {
+      return `${scrolledBgColor} ${scrolledShadow}`;
+    }
+    
+    if (useBackdrop && !scrolled) {
+      return 'bg-black/20 backdrop-blur-sm border-b border-white/10';
+    }
+    
+    return initialBgColor;
+  };
 
   return (
     <nav
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 w-screen transition-colors duration-300 ${bgClass}`}
+      className={`fixed top-0 left-0 right-0 z-50 w-screen transition-all duration-300 ${getBgClass()}`}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto px-6 lg:px-8 py-3">
         {/* Logo */}
@@ -96,7 +97,11 @@ const Navbar = ({
           <img
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
-            className="max-h-16 md:max-h-20 h-auto w-auto"
+            className={`max-h-12 md:max-h-16 h-auto w-auto transition-all duration-300 ${
+              (!scrolled && changeOnScroll) 
+                ? 'drop-shadow-lg filter brightness-110 contrast-110' 
+                : ''
+            }`}
             loading="lazy"
             width={48}
             height={48}
@@ -165,13 +170,17 @@ const Navbar = ({
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden ml-2 p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] flex-shrink-0"
+          className={`md:hidden ml-2 p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] flex-shrink-0 transition-all duration-300 ${
+            (!scrolled && changeOnScroll) 
+              ? 'bg-white/90 backdrop-blur-sm text-[#231f1f] drop-shadow-md' 
+              : 'text-[#231f1f]'
+          }`}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((v) => !v)}
         >
           <svg
-            className="w-6 h-6 text-[#231f1f]"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
