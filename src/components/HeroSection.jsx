@@ -4,7 +4,7 @@ import FadeInSection from './FadeInSection';
 const HeroSection = ({ headline, description, bgImg, getInTouch = false }) => {
   const sectionStyle = {
     // Increased overlay opacity for better navbar contrast
-    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.6), rgba(9, 90, 163, 0.6)), url(${bgImg})`,
+    backgroundImage: `linear-gradient(rgba(9, 90, 163, 0.3), rgba(9, 90, 163, 0.3)), url(${bgImg})`,
   };
 
   return (
