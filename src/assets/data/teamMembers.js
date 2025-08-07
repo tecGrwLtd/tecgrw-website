@@ -9,14 +9,14 @@
     {
       name: "DUSENGIMANA Patrick",
       role: "Senior Agronomist",
-      quote: "Bridging engineering excellence with on-ground agronomy: Optimizing crop systems, training farmers, and scaling sustainable solutions to turn challenges into growth for farms and communities.",
+      quote: "Bridging engineering excellence with on-ground agronomy: Optimizing crop systems, training farmers, and scaling sustainable solutions to turn challenges into growth for farm and community.",
       image:"https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754327465/WhatsApp_Image_2025-08-04_at_16.13.21_ave1o9.jpg"
     },
     {
       name: "Nadra Ramzan",
       role: "Head of Marketing and Business Analysis",
       quote: "The future of marketing belongs to those who can interpret data as well as they craft messages.",
-      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975544/nadra_asqigl.jpg"
+      image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754578163/nadra_1_hpnt1d.png"
     },
     {
       name: "Kevin Harerimana",
