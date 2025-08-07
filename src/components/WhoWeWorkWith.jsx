@@ -41,28 +41,6 @@ const WhoWeWorkWith = () => {
             );
           })}
         </div>
-
-        <div className="text-center mt-12">
-          <div className="bg-white rounded-xl p-6 shadow-md border-2 border-[#b2c935]/20 max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-[#231f1f] mb-3">
-              Ready to Transform Your Organization?
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Join our network of partners leveraging AI for positive impact.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <span className="bg-[#095aa3]/10 text-[#095aa3] px-3 py-1 rounded-full text-xs font-medium">
-                Custom Solutions
-              </span>
-              <span className="bg-[#b2c935]/10 text-[#b2c935] px-3 py-1 rounded-full text-xs font-medium">
-                Local Expertise
-              </span>
-              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
-                Ongoing Support
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

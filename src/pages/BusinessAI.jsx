@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { aiServices } from '../assets/data/aIBusiness';
-import ProjectSpotlight from '../components/ProjectSpotlight';
 import WhatWeOffer from '../components/WhatWeOffer';
 import WhoWeWorkWith from '../components/WhoWeWorkWith';
 
@@ -38,59 +36,6 @@ const AIBusiness = () => {
         </div>
       </section>
 
-      {/* Interactive AI Services Section */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-block bg-[#b2c935]/10 text-[#095aa3] px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Our Core Solutions
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#231f1f] mb-4">
-              AI That Works for Your Mission
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Choose the AI solution that fits your organization's needs
-            </p>
-          </div>
-
-          {/* Interactive Service Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {aiServices.map((service, index) => {
-              const IconComponent = service.icon;
-              const isActive = activeService === index;
-              
-              return (
-                <div
-                  key={index}
-                  className={`group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border cursor-pointer transform hover:-translate-y-1 ${
-                    isActive ? 'border-[#b2c935] ring-2 ring-[#b2c935]/20' : 'border-gray-200 hover:border-[#095aa3]/30'
-                  }`}
-                  onMouseEnter={() => setActiveService(index)}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-3 transition-opacity duration-300`}></div>
-                  
-                  <div className="relative p-6">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent size={24} />
-                    </div>
-                    
-                    <h3 className="text-lg font-bold text-[#231f1f] mb-3 line-clamp-2">
-                      {service.title}
-                    </h3>
-                    
-                    <p className={`text-gray-600 text-sm leading-relaxed transition-all duration-300 ${
-                      isActive ? 'opacity-100' : 'opacity-80'
-                    }`}>
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose TecGrw Section */}
       <section className="py-16 lg:py-20 bg-gradient-to-br from-gray-50/50 to-blue-50/30">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -122,7 +67,6 @@ const AIBusiness = () => {
           </div>
         </div>
       </section>
-      <ProjectSpotlight />
       <WhatWeOffer />
       <WhoWeWorkWith />
 
@@ -150,12 +94,6 @@ const AIBusiness = () => {
               className="bg-[#b2c935] hover:bg-[#9bb82d] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
             >
               Reach out to Us
-            </Link>
-            <Link 
-              to="/team"
-              className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:bg-white/10"
-            >
-              Meet Our Team
             </Link>
           </div>
         </div>
