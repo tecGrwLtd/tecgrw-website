@@ -79,7 +79,7 @@ const Blog = () => {
                       {article.category}
                     </span>
                   </div>
-                  
+
                   <h3 className="text-lg font-bold text-[#231f1f] mb-3 leading-tight group-hover:text-[#095aa3] transition-colors duration-200">
                     {article.title}
                   </h3>
@@ -107,7 +107,7 @@ const Blog = () => {
                       Read More
                       <svg 
                         className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" 
-                        fill="none" 
+                        fill="none"
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
                       >
@@ -129,24 +129,6 @@ const Blog = () => {
               </div>
             ))}
           </div>
-
-          {/* Call to Action */}
-          {/* <div className="mt-16 text-center">
-            <div className="bg-gradient-to-br from-[#095aa3]/5 to-[#b2c935]/5 rounded-xl p-8 border border-gray-100">
-              <h3 className="text-2xl font-bold text-[#231f1f] mb-4">
-                Stay Updated with Our Latest Insights
-              </h3>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Get the latest updates on smart agriculture, AI technology, and innovation directly from our team of experts.
-              </p>
-              <Link 
-                to="/contact" 
-                className="inline-block px-8 py-3 bg-[#b2c935] text-white font-semibold rounded-lg hover:bg-[#9db82a] transform hover:scale-105 transition-all duration-200 shadow-lg"
-              >
-                Subscribe to Updates
-              </Link>
-            </div>
-          </div> */}
         </div>
       </div>
     </>

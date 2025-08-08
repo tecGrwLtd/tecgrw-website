@@ -18,7 +18,7 @@ export const recentBlogs = [
     readTime: "8 min read",
     slug: "innovating-agriculture-with-smart-technology",
     status: "published",
-    author: "Nadra Ramzan",
+    author: "Angel Gakiza",
     authorRole: "Agricultural Technology Specialist",
     authorBio: "Nadra Ramzan.",
     content: `Agriculture is undergoing digital transformation. As traditional methods reach their limits due to resource constraints and environmental challenges, forward-thinking solutions are becoming essential. At the forefront of this shift is tecGrw, which leverages advanced technology, including smart greenhouses and AI-driven tools, to modernize farming in Rwanda.
