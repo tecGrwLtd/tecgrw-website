@@ -1,4 +1,5 @@
-  export const courses = [
+import { Code, Lightbulb, Users, FlaskConical } from 'lucide-react';
+export const courses = [
     {
       id: 'basic',
       title: 'Junior Data Science Course (Basic)',
@@ -34,5 +35,28 @@
       ],
       description: 'Advanced concepts and real-world applications for tech-savvy teens.',
       color: 'from-[#095aa3] to-[#4f93ce]'
+    }
+  ];
+
+export const programHighlights = [
+    {
+      title: "Hands-on Coding",
+      description: "Students learn programming fundamentals through interactive coding sessions using Python, Scratch, and other beginner-friendly languages.",
+      icon: Code
+    },
+    {
+      title: "Our Curriculum",
+      description: "We cover all important aspects of AI and Data Science including Machine Learning, Generative AI, Conversational AI integration, Data.",
+      icon: Lightbulb
+    },
+    {
+      title: "Real-world Problems",
+      description: "We teach kids how to solve real world problems using AI and Data Science such as climate change, predicting customer satisfaction, weather prediction etc.",
+      icon: Users
+    },
+    {
+      title: "Practical Projects",
+      description: "We teach our students AI, programming, and data science through hands-on learning and real-world projects, with professional mentoring.",
+      icon: FlaskConical
     }
   ];

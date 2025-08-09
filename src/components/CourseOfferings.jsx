@@ -2,7 +2,11 @@ import {Users, Clock, MapPin, Check, ChevronRight } from 'lucide-react'
 
 import { courses } from '../assets/data/aIEducation';
 
-const CourseOfferings = () => {
+const CourseOfferings = ({
+  scrollToRegistration,
+  setSelectedCourse
+}
+) => {
   return (
       <section className="px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-6xl mx-auto">
