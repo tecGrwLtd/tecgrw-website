@@ -1,13 +1,13 @@
-import HeroSection from '../components/HeroSection';
+import HomeHero from '../components/HomeHero';
+import PartnersSection from '../components/PartnersSection';
 import ServicesSection from '../components/ServicesSection';
 import MetricsSection from '../components/MetricsSection';
 import AccreditationsSection from '../components/Accreditions'
-import PartnersSection from '../components/PartnersSection';
 
 const HomePage = () => {
   return (
     <>
-      <HeroSection
+      <HomeHero
         headline='Growth, Revolutionized'
         description={`We help businesses and farmers level up with the latest tech solutions, while also teaching and guiding students through the same cutting-edge technologies we use in the real world.
 

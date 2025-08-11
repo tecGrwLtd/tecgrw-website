@@ -10,7 +10,7 @@ const metrics = [
     color: '#095aa3',
   },
   {
-    label: 'Graduated Student Batche',
+    label: 'Graduated Student Batch',
     value: '1',
     color: '#231f1f',
   },
