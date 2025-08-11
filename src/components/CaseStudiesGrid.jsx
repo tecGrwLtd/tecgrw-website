@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import caseStudies from '../assets/data/caseStudies';
+
 const CaseStudiesGrid = () => {
   return (
       <section className="py-16 bg-gray-50">
