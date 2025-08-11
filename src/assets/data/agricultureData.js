@@ -59,7 +59,7 @@ const projects = [
     description: `tecGrw in collaboration with Imbaraga Farmers association built three 
                   green houses in three districts of Rwanda. The initiative has successfully 
                   produced a yield of crops 4-5 times more than that of open field farming. 
-                  The ioT support like.`
+                  `
   },
   {
     location: "Mahama refugee camp, Kihera Ditrict",
@@ -93,5 +93,25 @@ const stats = [
       icon: BarChart3
     }
   ];
+
+  export const projectImages = [
+    {
+      src: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754548698/yellow_peppers_qnfejm.jpg",
+      alt: "Yellow peppers in smart greenhouse",
+      caption: "yellow pepper cultivation"
+    },
+    {
+      src: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg", 
+      alt: "Mahama greenhouse facility",
+      caption: "Smart greenhouse in Mahama refugee camp"
+    },
+    {
+      src: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754548698/yellow_peppers_qnfejm.jpg",
+      alt: "Additional project image",
+      caption: "<>"
+    }
+  ];
+
+
 
 export { features, projects, stats };
