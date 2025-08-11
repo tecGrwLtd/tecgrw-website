@@ -30,4 +30,4 @@ npm install
 npm run dev
 ```
 5. Open in browser
-Visit the local development URL printed in your terminal (usually http://localhost:3000).
+Visit the local development URL (http://localhost:3000).
