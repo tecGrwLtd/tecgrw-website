@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FadeInSection from './FadeInSection';
 
-const testimonials = [
-  {
-    quote: 'Ms Samreen, thanks for sowing into our little ones—like the mother and tech guru that you are. Making an 8 year old a junior data scientist was not an easy task yet you made it enjoyable, memorable and achievable. You went way beyond our expectations!',
-    name: 'Patricie & Kabasha',
-    role: 'Parents',
-  },
-  {
-    quote: 'I wholeheartedly encourage any parent to consider enrolling their child in this programme. Watching the kids present their data models and connect what they\'d learned to real-life scenarios was not only a proud moment but also a powerful affirmation of the programme\'s value. It\'s an experience that goes far beyond the classroom.',
-    name: 'Parent Testimonial',
-    role: 'AI Education Program',
-  },
-];
+import testimonials from '../assets/data/testimonials';
 
-const TestimonialsSection = ({Heading }) => {
+const TestimonialsSection = ({Heading, subHeading}) => {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
   const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
@@ -28,7 +17,7 @@ const TestimonialsSection = ({Heading }) => {
               { Heading }
             </h2>
             <p className="text-lg text-[#231f1f]/70 max-w-2xl mx-auto">
-              Hear from families a who have experienced the transformative power of our programs
+              { subHeading }
             </p>
           </FadeInSection>
         </div>
