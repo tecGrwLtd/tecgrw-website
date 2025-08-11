@@ -97,7 +97,8 @@ const Navbar = ({
           <img
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
-            className={`max-h-12 md:max-h-16 h-auto w-auto transition-all duration-300 ${
+            // 12-16
+            className={`max-h-16 md:max-h-20 h-auto w-auto transition-all duration-300 ${
               (!scrolled && changeOnScroll) 
                 ? 'drop-shadow-lg filter brightness-110 contrast-110' 
                 : ''
