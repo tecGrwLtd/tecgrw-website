@@ -73,9 +73,7 @@ const ContactPage = () => {
 
   if (isSubmitted) {
     return (
-      <SuccessMessage
-          onSendAnotherMsg= {() => setIsSubmitted(false)}
-      />
+      <SuccessMessage />
     );
   }
   return (
