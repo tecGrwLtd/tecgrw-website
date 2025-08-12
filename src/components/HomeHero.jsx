@@ -3,8 +3,7 @@ import FadeInSection from './FadeInSection';
 
 const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
   const sectionStyle = {
-    // Increased overlay opacity for better navbar contrast
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${bgImg})`,
+    backgroundImage: `linear-gradient(rgba(10, 16, 108, 0.35), rgba(5, 18, 74, 0.35)), url(${bgImg})`,
   };
 
   return (
@@ -17,7 +16,7 @@ const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
       
       <div className="relative z-10 flex items-center min-h-screen max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-24">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 w-full py-8 md:py-12">
-          
+
           {/* Left: Headline */}
           <div className="flex-1">
             <FadeInSection direction="up">
