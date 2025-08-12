@@ -27,10 +27,10 @@ const Footer = () => {
                 <a href="https://x.com/tecgrw" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
                   <FaTwitter className="w-5 h-5" />
                 </a>
-                <a href="https://www.facebook.com/tecGrw1" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
+                <a href="https://www.instagram.com/tecgrw/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
                   <FaInstagram className="w-5 h-5" />
                 </a>
-                <a href="https://www.instagram.com/tecgrw/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
+                <a href="https://www.facebook.com/tecGrw1" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-300 hover:text-[#b2c935] transition-colors duration-200">
                   <FaFacebookF className="w-5 h-5" />
                 </a>
               </div>
@@ -42,7 +42,7 @@ const Footer = () => {
               <div className="space-y-3 text-sm text-gray-300">
                 <div className="flex items-center space-x-3">
                   <FaMapMarkerAlt className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
-                  <span>100 KG 9 Ave, Kigali, Rwanda</span>
+                  <span>100 KG 9 Ave, Third House from Life Care Hospital, Gacuriro, Kigali, Rwanda</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <FaEnvelope className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
