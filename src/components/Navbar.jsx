@@ -12,7 +12,7 @@ const Navbar = ({
   initialBgColor = 'bg-transparent',
   scrolledBgColor = 'bg-[#095aa3]',
 
-  initialTextColor = 'text-white',
+  initialTextColor = 'text-white/80',
   initialHoverColor = 'hover:text-[#b2c935]',
 
   scrolledTextColor = 'text-[#231f1f]',
@@ -20,7 +20,7 @@ const Navbar = ({
 
   scrolledShadow = 'shadow-md',
 
-  changeOnScroll = true,
+  changeOnScroll = false,
 
   scrollThreshold = 0,
 
@@ -46,7 +46,6 @@ const Navbar = ({
     }
   }
 
-  // Check if a link is active
   const isActiveLink = (href, isHash = false) => {
     if (isHash) {
       return location.pathname === '/' && location.hash === href.split('#')[1];
@@ -60,7 +59,7 @@ const Navbar = ({
   };
 
   const getLinkClasses = (href, isHash = false, hasChildren = false, children = null) => {
-    const baseClasses = `text-[#231f1f] ${scrolledHoverColor}`;
+    const baseClasses = `${initialTextColor} ${initialHoverColor}`;
 
     const isActive = hasChildren ? isActiveParent(children) : isActiveLink(href, isHash);
     const activeColor = 'text-[#b2c935]';
@@ -69,18 +68,18 @@ const Navbar = ({
     
     return `${baseClasses} ${isActive ? activeColor : ''} ${visibility} font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] rounded px-3 py-2`;
   };
+
   const getBgClass = () => {
     if (changeOnScroll && scrolled) {
       return `${scrolledBgColor} ${scrolledShadow}`;
     }
-    
     if (useBackdrop && !scrolled) {
       return 'bg-black/20 backdrop-blur-sm border-b border-white/10';
     }
     
     return initialBgColor;
   };
-
+  
   return (
     <nav
       aria-label="Main navigation"
@@ -97,7 +96,7 @@ const Navbar = ({
           <img
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
-            // 12-16
+
             className={`max-h-16 md:max-h-20 h-auto w-auto transition-all duration-300 ${
               (!scrolled && changeOnScroll) 
                 ? 'drop-shadow-lg filter brightness-110 contrast-110' 
@@ -207,7 +206,7 @@ const Navbar = ({
 
       {/* Mobile nav */}
       {menuOpen && (
-        <ul className="absolute right-4 top-16 bg-white shadow-lg rounded-lg py-4 px-6 flex flex-col gap-2 md:hidden z-40 min-w-[220px] border border-[#e5e7eb] animate-fade-in w-[90vw] max-w-xs">
+        <ul className="absolute right-4 top-16 bg-blue shadow-lg rounded-lg py-4 px-6 flex flex-col gap-2 md:hidden z-40 min-w-[220px] border border-[#e5e7eb] animate-fade-in w-[90vw] max-w-xs">
           {navItems.map((item, idx) => (
             <li key={item.name} className="relative">
               {item.children ? (
