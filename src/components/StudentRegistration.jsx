@@ -14,9 +14,8 @@ const StudentRegistration = () => {
             Ready to Shape Rwanda's Digital Future?
           </h2>
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Join our September 2025 session.
+            Join our AI Academy.
           </p>
-
           {selectedCourse ? (
             <div className="bg-white rounded-2xl p-8 mb-8">
               <h3 className="text-2xl font-bold text-[#231f1f] mb-4">
@@ -63,11 +62,11 @@ const StudentRegistration = () => {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-blue-100">
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5" />
-              <span>TecGrw HQ, Kigali City Center</span>
+              <span>100 KG 9 Ave, Gacuriro, Kigali, Rwanda</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
-              <span>After-school, Week days & Weekends </span>
+              <span>After school Weekdays and Weekends</span>
             </div>
           </div>
         </div>
