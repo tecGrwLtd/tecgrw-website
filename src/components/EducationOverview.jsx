@@ -1,7 +1,8 @@
 import { ArrowDown } from 'lucide-react';
 
 const EducationOverview = ({
-    scrollToRegistration
+    scrollToRegistration,
+    scrollToCustomizedCourse
 }) => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -15,26 +16,38 @@ const EducationOverview = ({
             <h2 className="text-xl md:text-2xl font-semibold text-[#095aa3] mb-6">
               Building Future-Ready Skills Through Real-World Learning
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              At TecGrw AI Academy, we're equipping children, teens, and adults in Rwanda with essential digital skills. 
-              From data science and machine learning to coding and AI, our courses are designed for learners starting as early as age 8.
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              At TecGrw AI Academy, we're equipping learners of all ages in Rwanda with essential digital skills. 
+              From data science and machine learning to coding and AI, our courses serve children starting as early as age 8, 
+              teens, and working professionals.
+            </p>
+            <p className="text-base text-gray-600 leading-relaxed mb-8">
+              Whether you're looking to give your child a head start in technology or seeking professional AI training 
+              for your career, we have programs designed to meet your learning goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={scrollToRegistration}
+              <button
+                 onClick={scrollToRegistration}
                 className="inline-flex items-center px-6 py-3 rounded-full bg-[#b2c935] text-[#231f1f] font-semibold shadow-lg hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
               >
-                Join our September 2025 session
+                Join our AI Academy
                 <ArrowDown className="ml-2 w-4 h-4" />
+              </button>
+              <button
+                 onClick={scrollToCustomizedCourse}
+                className="inline-flex items-center px-6 py-3 rounded-full bg-[#b2c935] text-[#231f1f] font-semibold shadow-lg hover:bg-[#095aa3] hover:text-white transition-colors duration-200"
+              >
+                Join our Customized AI Course
+                <ArrowDown className="ml-2 w-4 h-4"/>
               </button>
             </div>
           </div>
-          
+                   
           {/* Image */}
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <img 
-                src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754304806/al_students_bow_graduation_day_pkwbv8.jpg"
+              <img
+                 src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754304806/al_students_bow_graduation_day_pkwbv8.jpg"
                 alt="Students learning data science and programming"
                 className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               />
@@ -44,7 +57,7 @@ const EducationOverview = ({
                     <span className="text-white font-bold text-lg">AI</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-[#231f1f]">Age 8 and above</p>
+                    <p className="font-semibold text-[#231f1f]">All Ages Welcome</p>
                     <p className="text-sm text-gray-600">Future Tech Leaders</p>
                   </div>
                 </div>

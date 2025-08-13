@@ -11,10 +11,10 @@ import HomePage from './pages/HomePage';
 import About from './pages/about';
 import SmartAgriculture from './pages/SmartAgriculture';
 import AIEducation from './pages/AIEducation';
+import AdultAICourses from './components/AdultAICourses';
 import BusinessAI from './pages/BusinessAI';
 import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
-import BlogDetail from './pages/BlogDetail';
 import Newsletter from './pages/Newsletter';
 import ContactPage from './pages/ContactPage';
 import Gallery from './pages/Gallery';
@@ -34,6 +34,7 @@ const App = () => {
         <Route path="/team" element={<Team />} />
         <Route path="/solutions/smart-agriculture" element={<SmartAgriculture />} />
         <Route path="/solutions/ai-education" element={<AIEducation />} />
+        <Route path="/solutions/ai-education/short-course-for-adults" element={<AdultAICourses />} />
         <Route path="/solutions/business-ai" element={<BusinessAI />} />
         <Route path="/resources/case-studies" element={<CaseStudies />} />
         <Route path="/resources/blog" element={<Blog />} />

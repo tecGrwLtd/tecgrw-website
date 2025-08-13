@@ -14,15 +14,20 @@ const AIEducation = () => {
 const scrollToRegistration = () => {
     document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
   };
+const scrollToCustomizedCourse = () => {
+    document.getElementById('customized-course').scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
       <EducationOverview
           scrollToRegistration = {scrollToRegistration}
+          scrollToCustomizedCourse = {scrollToCustomizedCourse}
         />
       <ProgramHighlights />
       <CourseOfferings 
             scrollToRegistration = {scrollToRegistration}
+            scrollToCustomizedCourse = {scrollToCustomizedCourse}
             setSelectedCourse = {setSelectedCourse}
       />
       <WhyChooseAiAcademy />
