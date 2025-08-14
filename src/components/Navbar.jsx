@@ -39,10 +39,22 @@ const Navbar = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [changeOnScroll, scrollThreshold]);
 
+  const handleDropdownToggle = (idx) => {
+    setOpenDropdown(openDropdown === idx ? null : idx);
+  };
+
+  const handleMouseEnter = (idx) => {
+    setOpenDropdown(idx);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenDropdown(null);
+  };
+
   function handleKeyDown(e, idx) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      setOpenDropdown(openDropdown === idx ? null : idx);
+      handleDropdownToggle(idx);
     }
   }
 
@@ -96,7 +108,6 @@ const Navbar = ({
           <img
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
-
             className={`max-h-16 md:max-h-20 h-auto w-auto transition-all duration-300 ${
               (!scrolled && changeOnScroll) 
                 ? 'drop-shadow-lg filter brightness-110 contrast-110' 
@@ -111,19 +122,28 @@ const Navbar = ({
         {/* Desktop nav */}
         <ul className="hidden md:flex gap-6 lg:gap-8 items-center flex-1 justify-end pr-2">
           {navItems.map((item, idx) => (
-            <li key={item.name} className="relative group">
+            <li 
+              key={item.name} 
+              className="relative"
+              onMouseEnter={() => item.children && handleMouseEnter(idx)}
+              onMouseLeave={() => item.children && handleMouseLeave()}
+            >
               {item.children ? (
                 <>
                   <button
                     className={`flex items-center gap-1 ${getLinkClasses(item.href, false, true, item.children)}`}
                     aria-haspopup="true"
-                    aria-expanded="false"
+                    aria-expanded={openDropdown === idx}
                     tabIndex={0}
+                    onClick={() => handleDropdownToggle(idx)}
                     onKeyDown={(e) => handleKeyDown(e, idx)}
                   >
                     {item.name}
                     <svg
-                      className="w-4 h-4 ml-1"
+                      className={classNames(
+                        'w-4 h-4 ml-1 transition-transform duration-200',
+                        openDropdown === idx ? 'rotate-180' : ''
+                      )}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
@@ -132,14 +152,22 @@ const Navbar = ({
                       <path d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  <ul className="absolute left-0 top-full mt-2 min-w-[180px] bg-white shadow-lg rounded-lg py-2 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-all z-50 border border-[#e5e7eb]">
+                  <ul className={classNames(
+                    'absolute left-0 top-full mt-3 min-w-[200px] w-max bg-white/95 backdrop-blur-sm border border-white/20 rounded-xl shadow-2xl shadow-black/20 py-2 px-1 z-50 transition-all duration-300 ease-out',
+                    openDropdown === idx 
+                      ? 'opacity-100 visible translate-y-0 scale-100' 
+                      : 'opacity-0 invisible translate-y-2 scale-95'
+                  )}>
                     {item.children.map((sub) => (
                       <li key={sub.name}>
                         <NavLink
                           to={sub.href}
-                          className={`block px-4 py-2 text-[#231f1f] hover:bg-[#f8f9fa] hover:text-[#b2c935] focus:bg-[#f8f9fa] focus:text-[#b2c935] rounded transition-colors duration-200 ${
-                            isActiveLink(sub.href) ? 'bg-[#f8f9fa] text-[#b2c935]' : ''
-                          }`}
+                          className={classNames(
+                            'block w-full px-4 py-3 mx-1 rounded-lg text-[#231f1f] font-medium text-sm transition-all duration-200 ease-out focus:outline-none active:scale-[0.98]',
+                            isActiveLink(sub.href) 
+                              ? 'bg-[#b2c935]/10 text-[#095aa3] shadow-sm' 
+                              : 'hover:bg-[#095aa3]/8 hover:text-[#095aa3] hover:shadow-sm hover:translate-x-1 focus:bg-[#095aa3]/8 focus:text-[#095aa3]'
+                          )}
                           tabIndex={0}
                         >
                           {sub.name}
@@ -170,10 +198,10 @@ const Navbar = ({
 
         {/* Mobile menu toggle */}
         <button
-          className={`md:hidden ml-2 p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] flex-shrink-0 transition-all duration-300 ${
+          className={`md:hidden ml-2 p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] flex-shrink-0 transition-all duration-300 ${
             (!scrolled && changeOnScroll) 
               ? 'bg-white/90 backdrop-blur-sm text-[#231f1f] drop-shadow-md' 
-              : 'text-[#231f1f]'
+              : 'text-[#231f1f] bg-white/10 backdrop-blur-sm'
           }`}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
@@ -206,76 +234,91 @@ const Navbar = ({
 
       {/* Mobile nav */}
       {menuOpen && (
-        <ul className="absolute right-4 top-16 bg-blue shadow-lg rounded-lg py-4 px-6 flex flex-col gap-2 md:hidden z-40 min-w-[220px] border border-[#e5e7eb] animate-fade-in w-[90vw] max-w-xs">
-          {navItems.map((item, idx) => (
-            <li key={item.name} className="relative">
-              {item.children ? (
-                <>
-                  <button
-                    className={`flex items-center justify-between w-full text-left text-[#231f1f] font-medium py-2 px-2 rounded hover:text-[#b2c935] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] ${
-                      isActiveParent(item.children) ? 'text-[#b2c935]' : ''
-                    }`}
-                    aria-haspopup="true"
-                    aria-expanded={openDropdown === idx}
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === idx ? null : idx)
-                    }
-                  >
-                    <span>{item.name}</span>
-                    <svg
+        <div className="absolute right-4 top-16 bg-white/95 backdrop-blur-sm border border-white/20 shadow-2xl rounded-2xl py-4 px-2 md:hidden z-40 min-w-[240px] w-[90vw] max-w-sm animate-fade-in">
+          <ul className="flex flex-col gap-1">
+            {navItems.map((item, idx) => (
+              <li key={item.name} className="relative">
+                {item.children ? (
+                  <>
+                    <button
                       className={classNames(
-                        'w-4 h-4 ml-1 transition-transform',
-                        openDropdown === idx ? 'rotate-180' : ''
+                        'flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-[#231f1f] font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
+                        isActiveParent(item.children) ? 'bg-[#b2c935]/10 text-[#095aa3]' : ''
                       )}
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
+                      aria-haspopup="true"
+                      aria-expanded={openDropdown === idx}
+                      onClick={() => handleDropdownToggle(idx)}
                     >
-                      <path d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {openDropdown === idx && (
-                    <ul className="pl-4 py-1">
-                      {item.children.map((sub) => (
-                        <li key={sub.name}>
-                          <NavLink
-                            to={sub.href}
-                            className={`block px-4 py-2 text-[#231f1f] hover:bg-[#f8f9fa] hover:text-[#b2c935] focus:bg-[#f8f9fa] focus:text-[#b2c935] rounded transition-colors duration-200 ${
-                              isActiveLink(sub.href) ? 'bg-[#f8f9fa] text-[#b2c935]' : ''
-                            }`}
-                          >
-                            {sub.name}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : item.isHash ? (
-                <HashLink
-                  smooth
-                  to={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`block px-2 py-2 text-[#231f1f] hover:text-[#b2c935] font-medium rounded transition-colors duration-200 ${
-                    isActiveLink(item.href, true) ? 'text-[#b2c935]' : ''
-                  }`}
-                >
-                  {item.name}
-                </HashLink>
-              ) : (
-                <NavLink
-                  to={item.href}
-                  className={`block px-2 py-2 text-[#231f1f] hover:text-[#b2c935] font-medium rounded transition-colors duration-200 ${
-                    isActiveLink(item.href) ? 'text-[#b2c935]' : ''
-                  }`}
-                >
-                  {item.name}
-                </NavLink>
-              )}
-            </li>
-          ))}
-        </ul>
+                      <span>{item.name}</span>
+                      <svg
+                        className={classNames(
+                          'w-4 h-4 transition-transform duration-300',
+                          openDropdown === idx ? 'rotate-180' : ''
+                        )}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div className={classNames(
+                      'overflow-hidden transition-all duration-300 ease-out',
+                      openDropdown === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    )}>
+                      <ul className="pl-4 pr-2 py-2 space-y-1">
+                        {item.children.map((sub) => (
+                          <li key={sub.name}>
+                            <NavLink
+                              to={sub.href}
+                              className={classNames(
+                                'block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none active:scale-[0.98]',
+                                isActiveLink(sub.href)
+                                  ? 'bg-[#b2c935]/10 text-[#095aa3] shadow-sm'
+                                  : 'text-[#231f1f]/80 hover:bg-[#095aa3]/5 hover:text-[#095aa3] hover:translate-x-1 focus:bg-[#095aa3]/5 focus:text-[#095aa3]'
+                              )}
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              {sub.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ) : item.isHash ? (
+                  <HashLink
+                    smooth
+                    to={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={classNames(
+                      'block px-4 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
+                      isActiveLink(item.href, true) 
+                        ? 'bg-[#b2c935]/10 text-[#095aa3]' 
+                        : 'text-[#231f1f]'
+                    )}
+                  >
+                    {item.name}
+                  </HashLink>
+                ) : (
+                  <NavLink
+                    to={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={classNames(
+                      'block px-4 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
+                      isActiveLink(item.href) 
+                        ? 'bg-[#b2c935]/10 text-[#095aa3]' 
+                        : 'text-[#231f1f]'
+                    )}
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </nav>
   );
