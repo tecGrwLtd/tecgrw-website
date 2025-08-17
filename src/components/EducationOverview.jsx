@@ -17,7 +17,7 @@ const EducationOverview = ({
               Building Future-Ready Skills Through Real-World Learning
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              At TecGrw AI Academy, we're equipping learners of all ages in Rwanda with essential digital skills. 
+              At tecGrw AI Academy, we're equipping learners of all ages in Rwanda with essential digital skills. 
               From data science and machine learning to coding and AI, our courses serve children starting as early as age 8, 
               teens, and working professionals.
             </p>
