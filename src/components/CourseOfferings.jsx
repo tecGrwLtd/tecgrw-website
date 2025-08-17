@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { courses } from '../assets/data/aIEducation';
 
-const CourseOfferings = ({
-  scrollToRegistration,
-  setSelectedCourse
-}) => {
+const CourseOfferings = () => {
   const courseImages = {
     basic: [
       "https://plus.unsplash.com/premium_photo-1724634778253-f4a6390656c8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -22,7 +19,7 @@ const CourseOfferings = ({
     <>
     <section className="px-4 sm:px-6 lg:px-8 py-16">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div id="registration" className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#231f1f] mb-4">
             Our Course Offerings
           </h2>
@@ -90,22 +87,21 @@ const CourseOfferings = ({
 
                     {/* Schedule Info */}
                     {course.schedule && (
-                      <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                      <div id="customized-course"  className="bg-gray-50 rounded-lg p-3 mb-4">
                         <p className="text-xs font-medium text-gray-700">{course.schedule}</p>
                       </div>
                     )}
-                                   
-                    {/* Button - Always at bottom */}
-                    <button
-                      onClick={() => {
-                        setSelectedCourse(course.id);
-                        scrollToRegistration();
-                      }}
-                      className="w-full py-3 px-4 bg-[#095aa3] text-white rounded-lg font-semibold hover:bg-[#074a8a] transition-all duration-200 flex items-center justify-center gap-2 group mt-auto"
+                    
+                    {/* Enroll Button - Direct to Registration Form */}
+                    <a
+                      href={course.registrationForm}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 px-4 bg-[#095aa3] text-white rounded-lg font-semibold hover:bg-[#074a8a] transition-all duration-200 flex items-center justify-center gap-2 group mt-auto text-center"
                     >
-                      Enroll in {course.level} Course
+                      Register for {course.level} Course
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </a>
                   </div>
 
                   {/* Right Side - Overlapping Circular Images */}
@@ -141,7 +137,7 @@ const CourseOfferings = ({
         </div>
         </section>
         {/* Adult Courses Section */}
-        <section id="customized-course">
+        <section>
         <div className="mt-12 bg-gradient-to-r from-[#095aa3] to-[#4f93ce] rounded-2xl p-8 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-4xl md:text-3xl font-bold mb-4">
