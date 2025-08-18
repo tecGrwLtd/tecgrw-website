@@ -8,17 +8,9 @@ const PartnersSection = () => {
   return (
     <section className="py-20 bg-white relative">
       {/* Scroll anchor positioned above the section to account for fixed navbar */}
-      <div id="partners" className="absolute -top-24"></div>
+      <div id="partners" className="absolute -top-40"></div>
       
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center bg-gradient-to-r from-[#095aa3]/10 to-[#b2c935]/10 rounded-full px-6 py-3 mb-6 shadow-sm border border-[#095aa3]/20">
-            <div className="w-2 h-2 bg-[#b2c935] rounded-full mr-3 animate-pulse"></div>
-            <span className="text-sm font-semibold text-[#095aa3] uppercase tracking-wider">Partners</span>
-          </div>
-        </div>
-
         {/* Partners Grid/Scroll */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-gray-50/50 to-white p-8">
           {shouldSlide && (
