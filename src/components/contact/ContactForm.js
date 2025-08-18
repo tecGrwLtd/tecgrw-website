@@ -13,7 +13,7 @@ const ContactForm = ({
     <div>
       <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100 sticky top-8">
         <h3 className="text-2xl font-bold text-[#231f1f] mb-2">Send us a Message</h3>
-        <p className="text-gray-600 mb-8">We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+        <p className="text-gray-600 mb-8">We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

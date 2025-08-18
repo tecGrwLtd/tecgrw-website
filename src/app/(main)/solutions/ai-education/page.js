@@ -1,4 +1,4 @@
-import EducationOverview from '@/components/education/CallToAction';
+import EducationOverview from '@/components/education/Overview';
 import ProgramHighlights from '@/components/education/ProgramHighlights';
 import CourseOfferings from '@/components/education/CourseOfferings';
 import WhyChooseAiAcademy from '@/components/education/WhyChooseAiAcademy';

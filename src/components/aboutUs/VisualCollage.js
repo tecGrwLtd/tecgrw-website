@@ -1,13 +1,15 @@
+import Image from "next/image"
 
 const VisualCollage = () => {
   return (
     <div className="grid grid-cols-2 gap-4 h-[400px]">
         {/* Main large image */}
         <div className="col-span-2 row-span-1 relative overflow-hidden rounded-xl shadow-lg">
-        <img
+        <Image
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg"
             alt="Smart Greenhouse"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#095aa3]/70 to-transparent"></div>
         <div className="absolute bottom-4 left-4 text-white">
@@ -17,10 +19,11 @@ const VisualCollage = () => {
         </div>
         {/* Bottom left image */}
         <div className="relative overflow-hidden rounded-xl">
-        <img
+        <Image
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754304806/al_students_bow_graduation_day_pkwbv8.jpg"
             alt="Students learning programming and AI concepts"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
         />
         {/* from-[#b2c935]/70 to-transparent */}
         <div className="absolute inset-0 bg-gradient-to-t"></div>
@@ -31,10 +34,11 @@ const VisualCollage = () => {
         </div>
         {/* Bottom right image */}
         <div className="relative overflow-hidden rounded-xl shadow-lg">
-        <img
+        <Image
             src="https://images.unsplash.com/photo-1509718443690-d8e2fb3474b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Business team using AI-powered analytics"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#231f1f]/70 to-transparent"></div>
         <div className="absolute bottom-3 left-3 text-white">

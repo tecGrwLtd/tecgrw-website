@@ -1,4 +1,4 @@
-import React from 'react'
+import Image from "next/image"
 
 const AgricultureTechnology = () => {
   return (
@@ -12,7 +12,7 @@ const AgricultureTechnology = () => {
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Our solutions are designed for real-world farming conditions in Rwanda. From remote GSM monitoring 
                 in rural areas to sophisticated AI analysis that runs on mobile devices, we build technology 
-                that's both advanced and accessible.
+                that&apos;s both advanced and accessible.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Every system we deploy is tested, trained, and supported locally, ensuring farmers can maximize 
@@ -20,10 +20,13 @@ const AgricultureTechnology = () => {
               </p>
             </div>
             <div>
-              <img 
+              <Image
                 src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948409/mahama_greenhouse_rjbkku.jpg"
                 alt="Smart agriculture technology in action"
+                width={600}
+                height={400}
                 className="rounded-xl shadow-xl w-full h-[400px] object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>

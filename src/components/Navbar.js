@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 
 import { navItems } from '@/data/navItems';
@@ -136,17 +137,18 @@ const Navbar = ({
           tabIndex={0}
           aria-label="Tecgrw homepage"
         >
-          <img
+          <Image
             src="https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753948168/logo_uo6lrf.png"
             alt="Tecgrw logo"
+            width={80}
+            height={80}
             className={`max-h-16 md:max-h-20 h-auto w-auto transition-all duration-300 ${
               (!scrolled && changeOnScroll) 
                 ? 'drop-shadow-lg filter brightness-110 contrast-110' 
                 : ''
             }`}
-            loading="lazy"
-            width={48}
-            height={48}
+            priority
+            sizes="(max-width: 768px) 64px, 80px"
           />
         </Link>
 

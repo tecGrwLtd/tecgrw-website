@@ -20,7 +20,7 @@ const WhatWeOffer = () => {
         <div className="text-center mt-12">
           <div className="bg-gradient-to-r from-[#095aa3] to-blue-700 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
-              Whichever business issue you're addressing
+              Whichever business issue you&apos;re addressing
             </h3>
             <p className="text-xl text-blue-100">
               tecGrw builds AI frameworks tailored to your mission.

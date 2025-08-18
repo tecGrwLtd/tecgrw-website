@@ -1,9 +1,8 @@
 "use client";
 
-import {Users, Clock, MapPin, Check, ChevronRight } from 'lucide-react'
-
-import { courses } from "@/data/education"
-
+import Image from 'next/image';
+import {Users, Clock, MapPin, Check, ChevronRight } from 'lucide-react';
+import { courses } from "@/data/education";
 
 const CourseOfferingCard = () => {
   const courseImages = {
@@ -16,6 +15,7 @@ const CourseOfferingCard = () => {
       "https://images.unsplash.com/photo-1583770539147-581738d1310a?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   };
+
   return (
     <div className="grid md:grid-cols-2 gap-8">
       {courses.map((course) => (
@@ -49,14 +49,16 @@ const CourseOfferingCard = () => {
               )}
             </div>
           </div>
-          {/* Content Section - Flex grow to fill space */}
+
+          {/* Content Section */}
           <div className="p-6 flex flex-col flex-1">
             <div className="flex gap-4 flex-1">
               <div className="flex-1 flex flex-col">
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">{course.description}</p>
-                {/* What You'll Learn Section - Fixed height container */}
+
+                {/* What You'll Learn */}
                 <div className="flex-1">
-                  <h4 className="font-semibold text-[#231f1f] mb-3 text-sm">What You'll Learn:</h4>
+                  <h4 className="font-semibold text-[#231f1f] mb-3 text-sm">What You&apos;ll Learn:</h4>
                   <div className="space-y-2 mb-6">
                     {course.highlights.map((highlight, idx) => (
                       <div key={idx} className="flex items-start gap-2">
@@ -66,20 +68,19 @@ const CourseOfferingCard = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {course.id === 'adult' && (
                   <p className="text-xs text-gray-500 italic mb-4">
                     No prior knowledge of AI needed
                   </p>
                 )}
-                {/* Schedule Info */}
+
                 {course.schedule && (
-                  <div id="customized-course"  className="bg-gray-50 rounded-lg p-3 mb-4">
+                  <div id="customized-course" className="bg-gray-50 rounded-lg p-3 mb-4">
                     <p className="text-xs font-medium text-gray-700">{course.schedule}</p>
                   </div>
                 )}
-                
-                {/* Enroll Button - Direct to Registration Form */}
+
                 <a
                   href={course.registrationForm}
                   target="_blank"
@@ -90,37 +91,41 @@ const CourseOfferingCard = () => {
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
+
               {/* Right Side - Overlapping Circular Images */}
               <div className="flex-shrink-0 ml-2">
                 <div className="relative">
                   {/* First Circle */}
                   <div className="relative z-30">
-                    <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg">
-                      <img
+                    <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg relative">
+                      <Image
                         src={courseImages[course.id][0]}
                         alt={`${course.title} student 1`}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     </div>
-                  </div>   
-                  {/* Second Circle - Overlapping */}
+                  </div>
+                  {/* Second Circle */}
                   <div className="relative z-20 -mt-6 ml-2">
-                    <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg">
-                      <img
+                    <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden bg-white shadow-lg relative">
+                      <Image
                         src={courseImages[course.id][1]}
                         alt={`${course.title} student 2`}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default CourseOfferingCard
+export default CourseOfferingCard;

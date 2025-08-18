@@ -7,17 +7,17 @@ const CallToAction = () => {
       <section className="py-16 lg:py-20 bg-gradient-to-r from-[#095aa3] to-blue-700">
         <div className="max-w-4xl mx-auto text-center px-6 lg:px-8">
           <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <span className="text-[#b2c935] font-semibold text-sm">Let's Build Together</span>
+            <span className="text-[#b2c935] font-semibold text-sm">Let&apos;s Build Together</span>
           </div>
 
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            AI isn't just for big corporations
+            AI isn&apos;t just for big corporations
           </h2>
           <p className="text-xl text-blue-100 mb-6">
-            It's for communities, too.
+            It&apos;s for communities, too.
           </p>
           <p className="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
-            Whether you're planning a pilot or scaling a national program, TecGrw is 
+            Whether you&apos;re planning a pilot or scaling a national program, tecGrw is 
             your AI implementation partner. From ideation to deployment, we work 
             with your team to turn raw data into powerful action.
           </p>

@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import teamMembers from "@/data/teamMembers"
 
 const MeetOurTeam = () => {
@@ -9,7 +11,7 @@ const MeetOurTeam = () => {
             Meet Our Team
         </h2>
         <p className="text-lg text-[#231f1f]/70 max-w-3xl mx-auto">
-            Get to know the passionate people behind Tecgrw's mission to revolutionize agriculture through innovative technology solutions.
+            Get to know the passionate people behind tecgrw&apos;s mission to revolutionize agriculture through innovative technology solutions.
         </p>
         </div>
 
@@ -24,10 +26,14 @@ const MeetOurTeam = () => {
             <div className="h-64 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                 <div className="text-center">
                 {member.image ? (
-                    <img 
+                    <Image
                     src={member.image}
                     alt={member.name}
+                    width={80}
+                    height={80}
+                    priority
                     className="w-20 h-20 rounded-full object-cover mx-auto border-4 border-[#b2c935] shadow"
+                    sizes="80px"
                     />
                 ) : (
                     <div className="w-20 h-20 bg-[#b2c935] rounded-full flex items-center justify-center mx-auto">
@@ -50,7 +56,7 @@ const MeetOurTeam = () => {
                 </p>
                 
                 <p className="text-gray-600 text-sm leading-relaxed italic">
-                "{member.quote}"
+                &apos;{member.quote}&apos;
                 </p>
             </div>
             </div>

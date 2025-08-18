@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import FadeInSection from '../FadeInSection';
 
 const accreditations = [
@@ -38,11 +39,13 @@ const AccreditationsSection = () => {
               <div className="group flex flex-col items-center text-center max-w-xs">
                 {/* Logo Container */}
                 <div className="w-32 h-24 md:w-40 md:h-28 mb-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg rounded-lg overflow-hidden bg-white border border-gray-100">
-                  <img 
+                  <Image 
                     src={accreditation.logo}
                     alt={`${accreditation.name} logo`}
+                    width={160}
+                    height={112}
                     className="w-full h-full object-contain p-2"
-                    loading="lazy"
+                    sizes="(max-width: 768px) 128px, 160px"
                   />
                 </div>
                 

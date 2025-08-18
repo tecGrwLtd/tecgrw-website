@@ -20,7 +20,7 @@ const SmartAgricultureOverview = (
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
-            At <span className="font-semibold text-[#095aa3]">tecGrw</span>, we're revolutionizing agriculture by combining cutting-edge technology with deep understanding 
+            At <span className="font-semibold text-[#095aa3]">tecGrw</span>, we&apos;re revolutionizing agriculture by combining cutting-edge technology with deep understanding 
             of local farming challenges. Our smart agriculture solutions help farmers increase productivity, reduce costs, 
             and build sustainable farming practices that protect both their livelihoods and the environment.
           </p>

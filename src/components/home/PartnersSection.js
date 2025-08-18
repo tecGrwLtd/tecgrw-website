@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import partners from "@/data/partners";
 
 const PartnersSection = () => {
@@ -22,17 +23,20 @@ const PartnersSection = () => {
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
             </>
           )}
-          
+                     
           <div className={`flex gap-8 ${shouldSlide ? 'animate-scroll' : 'justify-center flex-wrap'}`}>
             {displayPartners.map((partner, index) => (
               <div key={`${partner.id}-${index}`} className="flex-shrink-0">
                 <div className="w-40 h-24 bg-white rounded-lg shadow-sm flex items-center justify-center p-4 hover:shadow-md transition-shadow">
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-                    loading="lazy"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      fill
+                      className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      sizes="(max-width: 768px) 160px, 160px"
+                    />
+                  </div>
                 </div>
               </div>
             ))}

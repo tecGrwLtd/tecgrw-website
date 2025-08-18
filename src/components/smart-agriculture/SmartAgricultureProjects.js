@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { projects, projectImages } from "@/data/agriculture";
 
@@ -49,11 +50,14 @@ const SmartAgricultureProjects = () => {
               {displayedImages[0] && (
                 <div className="lg:col-span-2">
                   <div className="sticky top-8">
-                    <div className="rounded-xl overflow-hidden shadow-lg group bg-gray-100">
-                      <img
+                    <div className="rounded-xl overflow-hidden shadow-lg group bg-gray-100 relative">
+                      <Image
                         src={displayedImages[0].src}
                         alt={displayedImages[0].alt}
+                        width={400}
+                        height={450}
                         className="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
                       />
                       {displayedImages[0].caption && displayedImages[0].caption !== "<>" && (
                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
