@@ -55,7 +55,7 @@ const ProjectSpotlight = () => {
         {/* Footer note */}
         <div className="text-center mt-12">
           <p className="text-sm text-gray-500 font-medium">
-            we are using AI not for <span className="text-[#095aa3] font-semibold">impact</span>.
+            Together, we&apos;re using AI not for profit — but for <span className="text-[#095aa3] font-semibold">impact</span>.
           </p>
         </div>
       </div>
