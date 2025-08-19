@@ -20,7 +20,6 @@ export const navItems = [
     name: 'Resources',
     children: [
       { name: 'Blog', href: '/resources/blog' },
-      { name: 'Newsletter', href: '/resources/newsletter' },
       { name: 'Case Studies', href: '/resources/case-studies' },
       { name: 'Gallery', href: '/resources/gallery' },
     ],
