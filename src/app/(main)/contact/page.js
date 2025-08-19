@@ -61,7 +61,7 @@ export default function ContactPage() {
             Thank you for your message!
           </h2>
           <p className="text-gray-600 mb-8">
-            We'll get back to you as soon as possible.
+            We&apos;ll get back to you as soon as possible.
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
