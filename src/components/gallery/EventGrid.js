@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { Calendar, ChevronDown, ChevronUp } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 const EventCard = ({ event, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

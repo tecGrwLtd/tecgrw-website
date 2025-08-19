@@ -22,7 +22,7 @@ const MoreEvents = ({ onLoadMore, hasMoreEvents = true, isLoading = false }) => 
     return (
       <div className="text-center mt-16 py-8">
         <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gray-100 text-gray-600">
-          <span className="font-medium">You've seen all our events</span>
+          <span className="font-medium">You&apos;ve seen all our events</span>
           <div className="w-2 h-2 bg-[#b2c935] rounded-full"></div>
         </div>
       </div>
