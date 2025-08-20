@@ -1,11 +1,11 @@
 import BlogCard from './BlogCard';
 import SectionHeader from './SectionHeader';
 
-const BlogGrid = ({ articles }) => {
-  if (!articles || articles.length === 0) {
+const BlogGrid = ({ title, blogs }) => {
+  if (!blogs || blogs.length === 0) {
     return (
       <section>
-        <SectionHeader title="Latest Blog Posts" />
+        <SectionHeader title={title} />
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">No blog posts available at the moment.</p>
         </div>
@@ -15,13 +15,13 @@ const BlogGrid = ({ articles }) => {
 
   return (
     <section>
-      <SectionHeader title="Latest Blog Posts" />
-      
+      <SectionHeader title={title} />
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {articles.map((article, index) => (
-          <BlogCard 
-            key={article.slug || index} 
-            article={article} 
+        {blogs.map((blog, index) => (
+          <BlogCard
+            key={blog.slug || index}
+            article={blog}
           />
         ))}
       </div>
