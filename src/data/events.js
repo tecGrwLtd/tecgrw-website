@@ -9,7 +9,7 @@ const events = [
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1755625220/WhatsApp_Image_2025-08-19_at_19.36.59_11efaae4_vcsdxh.jpg",
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1755628165/WhatsApp_Image_2025-08-19_at_20.28.44_7a93a57b_ee58lq.jpg"
     ],
-    description: "3-day immersive training organized by tecGrw Ltd, a leading Agritech company driving innovation in smart agriculture and AI-powered solutions. This hands-on training covered smart greenhouse operations, real-time monitoring systems, automated irrigation, and AI-powered agriculture solutions. students, young professionals, and organizations were trained.",
+    description: "3-day training organized by tecGrw Ltd, a leading Agritech company driving innovation in smart agriculture and AI-powered solutions. This hands-on training covered smart greenhouse operations, real-time monitoring systems, automated irrigation, and AI-powered agriculture solutions. students, young professionals, and organizations were trained.",
     category: "Training"
   },
   {
@@ -34,10 +34,10 @@ const events = [
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754995855/linear-regression-img_fsx6le.jpg",
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754991287/screen-pres_crdinq.jpg",
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1755627381/DSC00350_eda15q.jpg",
-      "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1754205153/junior_datascientist_graduation_june_21_i1anuq.png",
+      "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1755627380/DSC00513_kzuf7y.jpg",
       "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1755627380/DSC00486_cyh05r.jpg",
     ],
-    description: "Junior Data Science graduates of tecGrw AI Academy. A new generation of thinkers and creators who've taken their first step into the world of AI & tech. Celebrating the achievements of our students who have completed intensive training in data science, machine learning, and AI applications.",
+    description: "Junior Data Science graduates of tecGrw AI Academy. A new generation of thinkers and creators who've taken their first step into the world of AI & tech. Celebrating the achievements of our Students who have completed intensive training in data science, machine learning, and AI applications.",
     category: "Graduation"
   },
   {
