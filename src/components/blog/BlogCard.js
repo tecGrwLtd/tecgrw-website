@@ -1,23 +1,30 @@
 'use client';
-
+import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock } from 'lucide-react';
-import CategoryBadge from './CategoryBadge';
+import { Clock } from 'lucide-react';
 import ArticleMeta from './ArticleMeta';
 
 const BlogCard = ({ article }) => {
   return (
-    <article className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group">
-      <div className="p-6">
-        <div className="mb-4">
-          <CategoryBadge category={article.category} />
-        </div>
+    <article className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+      <div className="p-6 flex-1 flex flex-col">
+       <div className="w-full h-[250px] relative mb-4">
+        {article.coverImage && (
+          <Image
+            src={article.coverImage}
+            alt={article.title}
+            fill
+            className="object-cover rounded-t-lg"
+            sizes="(max-width: 1024px) 100vw, 400px"
+          />
+        )}
+      </div>
 
         <h3 className="text-lg font-bold text-[#231f1f] mb-3 leading-tight group-hover:text-[#095aa3] transition-colors duration-200">
           {article.title}
         </h3>
         
-        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
           {article.excerpt}
         </p>
         
@@ -30,7 +37,7 @@ const BlogCard = ({ article }) => {
         <div className="mt-4">
           {article.status === 'published' ? (
             <Link 
-              href={`/blog/${article.slug}`}
+              href={`/resources/blog/${article.slug}`}
               className="inline-flex items-center text-[#095aa3] hover:text-[#b2c935] font-medium transition-colors duration-200 group"
             >
               Read More
@@ -61,4 +68,3 @@ const BlogCard = ({ article }) => {
 }
 
 export default BlogCard;
-

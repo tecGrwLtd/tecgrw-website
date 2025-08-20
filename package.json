@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@datocms/cda-client": "^0.2.7",
     "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.2.7",
     "lucide-react": "^0.539.0",
