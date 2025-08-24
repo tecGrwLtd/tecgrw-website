@@ -1,21 +1,34 @@
 'use client';
 
-import { FaPaperPlane, FaExclamationCircle } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
+import { useActionState, useEffect } from 'react';
+import { toast } from 'sonner';
 
-const ContactForm = ({ 
-  formData,
-  handleInputChange,
-  isSubmitting,
-  submissionError,
-  handleSubmit
-}) => {
+import { sendEmail } from '@/actions/email.action';
+
+const SendEmailForm = () => {
+  const [state, formAction ] = useActionState(sendEmail, {success: false, message: ''});
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!state.success && !state.error) return;
+    const timer = setTimeout(() => {
+      if (state.success){
+        toast.success(state.message);
+        router.push("/")
+      }else{
+        toast.error(state.error)
+      }
+    }, 1000)
+    return () => clearTimeout(timer);
+  }, [state, router])
   return (
     <div>
       <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100 sticky top-8">
         <h3 className="text-2xl font-bold text-[#231f1f] mb-2">Send us a Message</h3>
         <p className="text-gray-600 mb-8">We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form action={formAction} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-[#231f1f] mb-2">
@@ -25,9 +38,6 @@ const ContactForm = ({
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
                 placeholder="Your full name"
               />
@@ -41,8 +51,6 @@ const ContactForm = ({
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleInputChange}
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
                 placeholder="your.email@example.com"
@@ -57,8 +65,6 @@ const ContactForm = ({
             <select
               id="subject"
               name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
             >
@@ -79,8 +85,6 @@ const ContactForm = ({
             <textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleInputChange}
               required
               rows={6}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none resize-none"
@@ -88,29 +92,11 @@ const ContactForm = ({
             />
           </div>
           
-          {submissionError && (
-            <div className="flex items-center text-red-600 text-sm mt-2">
-              <FaExclamationCircle className="mr-2" />
-              {submissionError}
-            </div>
-          )}
-          
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2"
           >
-            {isSubmitting ? (
-              <>
-                <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
-                <span>Sending...</span>
-              </>
-            ) : (
-              <>
-                <FaPaperPlane className="w-5 h-5" />
-                <span>Send Message</span>
-              </>
-            )}
+            Send Message
           </button>
         </form>
         
@@ -122,4 +108,4 @@ const ContactForm = ({
   );
 };
 
-export default ContactForm;
+export default SendEmailForm;

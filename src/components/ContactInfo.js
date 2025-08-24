@@ -3,10 +3,10 @@
 import { Suspense } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 
-import SocialMedia from '../SocialMedia';
-import Map from '../Map';
+import SocialMedia from './SocialMedia';
+import Map from './Map';
 
-const CompanyInfo = () => {
+const ContactInfo = () => {
   return (
     <div className="space-y-8">
       <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
@@ -69,4 +69,4 @@ const CompanyInfo = () => {
   );
 };
 
-export default CompanyInfo;
+export default ContactInfo;

@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Toaster } from 'sonner';
 
-// const Navbar = dynamic(() => import("@/components/Navbar"), {ssr: false});
 
 export default function MainLayout({ children }){
   return (
@@ -13,6 +13,7 @@ export default function MainLayout({ children }){
       />
       <main className="flex-1 pt-16">
       { children }
+      <Toaster position="top-center"/>
       </main>
       <Footer />
     </div>
