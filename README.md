@@ -30,10 +30,9 @@ tecGrw website serves as the digital gateway to our company.
 
 ## Tech Stack
 ```
-Frontend:     Next.js 15, React 18, TypeScript
+Framework:     Next.js 15
 Styling:      Tailwind CSS
 Deployment:   Vercel
-Performance:  Next.js Image Optimization
 ```
 
 ## Quick Start
@@ -41,6 +40,12 @@ Performance:  Next.js Image Optimization
 ```bash
 # Clone the repository
 git clone https://github.com/tecgrw/tecgrw-website.git
+
+#navigate into the root directory
+cd tecgrw-website
+
+# set required env variables
+cp .env.example .env
 
 # Install dependencies
 npm install
