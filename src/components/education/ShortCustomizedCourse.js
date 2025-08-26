@@ -30,7 +30,7 @@ const ShortCustomizedCourse = () => {
 
         {/* Course Details */}
         <div className="p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">What You'll Learn</h3>
+          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">What You&apos;ll Learn</h3>
           <ul className="space-y-2 mb-6">
             {courseFeatures.map((feature, idx) => (
               <li key={idx} className="flex items-center gap-2 text-gray-700">
