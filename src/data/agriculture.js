@@ -77,15 +77,15 @@ const projects = [
 
 const stats = [
     {
-      number: "3",
+      number: "4",
       label: "Districts Served",
-      subtitle: "Bugesera, Nyaruguru, Gatsibo",
+      subtitle: "Bugesera, Nyaruguru, Gatsibo, Kirehe",
       icon: MapPin
     },
     {
       number: "90%",
       label: "Water Savings", 
-      subtitle: "Through hydroponic systems",
+      subtitle: "Through efficient drip irrigation",
       icon: Droplets
     },
     {
@@ -113,7 +113,5 @@ export const projectImages = [
       caption: "<>"
     }
   ];
-
-
 
 export { features, projects, stats };
