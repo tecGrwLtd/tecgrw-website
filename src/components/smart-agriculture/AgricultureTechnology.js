@@ -10,13 +10,10 @@ const AgricultureTechnology = () => {
                 Technology That Works in the Field
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Our solutions are designed for real-world farming conditions in Rwanda. From remote GSM monitoring 
-                in rural areas to sophisticated AI analysis that runs on mobile devices, we build technology 
-                that&apos;s both advanced and accessible.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Every system we deploy is tested, trained, and supported locally, ensuring farmers can maximize 
-                their benefits from day one while building long-term sustainability.
+                Our solutions are designed for real-world farming conditions in Rwanda. 
+                Through GSM-controlled smart greenhouses, we provide farmers in rural 
+                areas with reliable, easy-to-use technology that improves productivity 
+                and access without requiring constant internet connectivity.
               </p>
             </div>
             <div>

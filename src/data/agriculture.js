@@ -43,11 +43,13 @@ const features = [
     icon: Users
   },
   {
-    title: "Credit Score App",
-    description: `In this app farmers get credit scores that help them get interest 
-                  free loans from banks. The scores based of AI models that take 
-                  in to account the farm, the farmer and the farming process. 
-                  Higher the credit score, more chances of getting loans..`,
+    title: "AI-powered Farm-to-Market Credit Platform",
+    description: `An AI-powered, end-to-end application that supports farmers 
+                  across the entire value chain—from production to market access. 
+                  Along the journey, farmers earn credits that unlock financial 
+                  support, resources, and new opportunities. The platform is built 
+                  to improve farmers' livelihoods, ensure fair value for their work, 
+                  and create sustainable pathways from farm to fork.`,
     icon: Wallet
   },
 ];
@@ -62,7 +64,7 @@ const projects = [
                   `
   },
   {
-    location: "Mahama refugee camp, Kihera Ditrict",
+    location: "Mahama refugee camp, Kirehe Ditrict",
     title: "Smart Green House Initiative",
     description: `tecGrw in partnership with PLAN International built a smart greenhouse in 
                   Mahama. This initiative directly supports a community of 22 refugees, 
