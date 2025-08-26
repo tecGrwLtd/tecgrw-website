@@ -1,9 +1,7 @@
 import ShortCustomizedCourse from "@/components/education/ShortCustomizedCourse"
 
-const ShortCourse = () => {
+export default function ShortCourse(){
     return (
         <ShortCustomizedCourse />
     )
 }
-
-export default ShortCourse;
