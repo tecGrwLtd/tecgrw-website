@@ -1,56 +1,114 @@
-import Link from 'next/link'
-import Image from 'next/image'
+"use client";
 
-import CTA from '../CTA';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import CTA from '@/components/CTA';
 import FadeInSection from '../FadeInSection';
 
-const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
-  return (
-    <section className="relative w-full min-h-screen overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src={bgImg}
-        alt="Hero background"
-        fill
-        className="object-cover object-center"
-        priority
-        quality={85}
-      />
-      
-      {/* Strong overlay for dashboard bgimage visibility*/}
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.75)] via-[rgba(0,0,0,0.45)] to-[rgba(0,0,0,0.65)] z-10"></div>
-      
-      {/* tech-themed accent overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[rgba(9,90,163,0.2)] via-transparent to-[rgba(178,201,53,0.15)] z-15"></div>
-      {/*  for navbar area */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/50 to-transparent z-20"></div>
+const HomeHero = ({ 
+  headline, 
+  description, 
+  dashboardImages = [],
+  getInTouch = false 
+}) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-      <div className="relative z-30 flex items-center min-h-screen max-w-10xl mx-auto px-4 md:px-8 pt-20 md:pt-24">
-        <div className="w-full py-5 md:py-12 flex">
-          <div className="max-w-2xl">
-            <FadeInSection direction="up">
-              <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                <h1 className="text-2xl md:text-6xl font-extrabold mb-6 text-white drop-shadow-2xl leading-tight">
+  // Auto-slide images if multiple provided
+  useEffect(() => {
+    if (dashboardImages.length <= 1) return;
+    
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % dashboardImages.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [dashboardImages.length]);
+
+  // Default dashboard images if none provided
+  const defaultImages = [
+    "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1756278106/dashboard_soil_data_uqneek.png"
+  ];
+  
+  const images = dashboardImages.length > 0 ? dashboardImages : defaultImages;
+
+  return (
+    <section className="relative w-full min-h-screen bg-white overflow-hidden">
+      {/* Navbar backdrop area */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#095aa3]/10 to-transparent z-20"></div>
+      
+      <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-6 pt-24 pb-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)]">
+          
+          {/* Left Column - Content */}
+          <div className="space-y-8 order-2 lg:order-1">
+            <FadeInSection direction="left">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#095aa3] leading-tight">
                   {headline}
                 </h1>
-                <p className="text-lg md:text-xl text-white font-medium whitespace-pre-line mb-8 drop-shadow-lg leading-relaxed">
+                
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed whitespace-pre-line">
                   {description}
                 </p>
+                
                 {getInTouch && (
-                  // <Link
-                  //   href="/contact"
-                  //   className="animate-pulse inline-block px-8 py-4 rounded-lg bg-[#b2c935] text-white font-bold text-lg shadow-lg hover:bg-[#9db82a] hover:shadow-xl transform hover:scale-105 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                  // >
-                  //   Get in Touch
-                  // </Link>
-                  <CTA />
+                  <div className="pt-4">
+                    <CTA />
+                  </div>
                 )}
+              </div>
+            </FadeInSection>
+          </div>
+
+          {/* Right Column - Dashboard Images */}
+          <div className="relative order-1 lg:order-2">
+            <FadeInSection direction="right">
+              <div className="relative">
+                {/* Main Dashboard Display */}
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200">
+                  <Image
+                    src={images[currentImageIndex]}
+                    alt="Dashboard preview"
+                    fill
+                    className="object-cover object-center transition-opacity duration-500"
+                    priority
+                    quality={90}
+                  />
+                  
+                  {/* Subtle tech overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#095aa3]/5 via-transparent to-[#b2c935]/5 pointer-events-none"></div>
+                </div>
+
+                {/* Multiple Images Indicator */}
+                {images.length > 1 && (
+                  <div className="flex justify-center mt-6 space-x-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                          index === currentImageIndex 
+                            ? 'bg-[#095aa3] scale-110' 
+                            : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                        aria-label={`View dashboard ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#b2c935]/20 to-transparent rounded-full blur-xl"></div>
+                <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-gradient-to-tr from-[#095aa3]/10 to-transparent rounded-full blur-2xl"></div>
               </div>
             </FadeInSection>
           </div>
 
         </div>
       </div>
+
+      {/* Bottom gradient transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
     </section>
   );
 };
