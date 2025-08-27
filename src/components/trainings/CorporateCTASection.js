@@ -9,7 +9,7 @@ const CorporateCTASection = () => {
             Ready to Transform Your Business?
           </h3>
           <p className="text-lg opacity-90 max-w-lg mx-auto leading-relaxed">
-            Elevate your team's skills with our AI and Machine Learning corporate training programs.
+            Elevate your team&apos;s skills with our AI and Machine Learning corporate training programs.
           </p>
         </div>
         <CTA />
