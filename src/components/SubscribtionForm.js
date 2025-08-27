@@ -9,14 +9,15 @@ import { emailSubscribe } from "@/actions/email.action"
 const SubscriptionForm = () => {
   const [state, formAction, isPending] = useActionState(emailSubscribe, {success: false, message: ''});
   useEffect(() => {
+    if (!state.message) return;
     if (state.success) {
       toast.success(state.message);
       const form = document.querySelector('form');
       form?.reset();
-    } else if(!state.success){
+    } else if(state.success === false){
       toast.error(state.message);
     }
-  }, [state])
+  }, [state, isPending])
   return (
     <div className="space-y-6">
       <form action={formAction} className="max-w-md mx-auto">
