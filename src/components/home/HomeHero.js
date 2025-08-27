@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import CTA from '../CTA';
 import FadeInSection from '../FadeInSection';
 
 const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
@@ -36,12 +37,13 @@ const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
                   {description}
                 </p>
                 {getInTouch && (
-                  <Link
-                    href="/contact"
-                    className="animate-pulse inline-block px-8 py-4 rounded-lg bg-[#b2c935] text-white font-bold text-lg shadow-lg hover:bg-[#9db82a] hover:shadow-xl transform hover:scale-105 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                  >
-                    Get in Touch
-                  </Link>
+                  // <Link
+                  //   href="/contact"
+                  //   className="animate-pulse inline-block px-8 py-4 rounded-lg bg-[#b2c935] text-white font-bold text-lg shadow-lg hover:bg-[#9db82a] hover:shadow-xl transform hover:scale-105 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  // >
+                  //   Get in Touch
+                  // </Link>
+                  <CTA />
                 )}
               </div>
             </FadeInSection>

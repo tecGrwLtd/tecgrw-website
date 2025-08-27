@@ -17,6 +17,13 @@ export const navItems = [
     ],
   },
   {
+    name: 'Trainings',
+    children: [
+      { name: 'Corporate Trainings', href: '/trainings/corporate-trainings' },
+      { name: 'In-house Trainings', href: '/trainings/in-house-trainings' }
+    ],
+  },
+  {
     name: 'Resources',
     children: [
       { name: 'Blog', href: '/resources/blog' },
