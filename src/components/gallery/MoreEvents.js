@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
 
-const MoreEvents = ({ onLoadMore, hasMoreEvents = true, isLoading = false }) => {
+const MoreEvents = ({onLoadMore, hasMoreEvents = true, isLoading }) => {
   const [clicked, setClicked] = useState(false);
 
   const handleLoadMore = async () => {
@@ -13,7 +13,6 @@ const MoreEvents = ({ onLoadMore, hasMoreEvents = true, isLoading = false }) => 
     if (onLoadMore) {
       await onLoadMore();
     }
-    
     // Reset clicked state after animation
     setTimeout(() => setClicked(false), 300);
   };
@@ -28,7 +27,6 @@ const MoreEvents = ({ onLoadMore, hasMoreEvents = true, isLoading = false }) => 
       </div>
     );
   }
-
   return (
     <div className="text-center mt-16">
       <div className="space-y-4">
@@ -55,7 +53,6 @@ const MoreEvents = ({ onLoadMore, hasMoreEvents = true, isLoading = false }) => 
             </>
           )}
         </button>
-        
         <p className="text-gray-500 text-sm">
           Discover more moments from our community
         </p>
