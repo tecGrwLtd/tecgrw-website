@@ -13,7 +13,7 @@ const SubscriptionForm = () => {
       toast.success(state.message);
       const form = document.querySelector('form');
       form?.reset();
-    } else{
+    } else if(!state.success){
       toast.error(state.message);
     }
   }, [state])
