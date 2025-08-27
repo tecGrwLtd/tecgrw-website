@@ -42,3 +42,29 @@ export async function sendEmail(initialState, formData) {
         return { success: false, error: "Failed to send message. Please try again."};
     }
 }
+
+export async function emailSubscribe(initialState, formData){
+    const email = formData.get('email');
+    const URL = "https://api.brevo.com/v3/contacts"
+    try {
+      const res = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "api-key": process.env.BREVO_API_KEY,
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          listIds: [2],
+          updateEnabled: true
+        })
+      });
+      if (!res.ok) {
+        return { success: false, message: "error subscribing, please try again!" };
+      }
+      return { success: true, message: "Subscribed successfully!" };
+    } catch (error) {
+      return { success: false, message: "Internal server error" };
+    }
+}

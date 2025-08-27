@@ -1,4 +1,4 @@
-import CTA from "../CTA"
+import SubscriptionForm from "../SubscribtionForm"
 
 const UpcommingEvents = () => {
   return (
@@ -14,7 +14,7 @@ const UpcommingEvents = () => {
                 Join our upcoming in-house training.
               </p>
             </div>
-            <CTA supportCTA={true}/>
+            <SubscriptionForm />
           </div>
         </div>
     </div>
