@@ -1,7 +1,7 @@
 export const navItems = [
   { name: 'Home', href: '/' },
   {
-    name: 'About Us',
+    name: 'About tecGrw',
     children: [
       {name: 'Our Story', href: '/our-story'},
       { name: 'Team', href: "/team" }
