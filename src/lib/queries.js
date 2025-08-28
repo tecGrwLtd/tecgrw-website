@@ -1,3 +1,4 @@
+// Get all blogs
 export const ALL_BLOGS_QUERY = `
   query AllBlogs {
     allBlogs(orderBy: publishDate_DESC) {
@@ -5,47 +6,43 @@ export const ALL_BLOGS_QUERY = `
       title
       slug
       excerpt
-      author{
-      name
+      author {
+        name
       }
       publishDate
       coverImage {
         url
         alt
       }
-      content {
-        value
-      }
+      content(markdown: true)
       _status
       _firstPublishedAt
     }
   }
 `;
 
+// Get a single blog by slug
 export const BLOG_BY_SLUG_QUERY = `
-  query BlogBySlug($slug: String!) {
-    blog(filter: { slug: { eq: $slug } }) {
-      id
-      title
-      slug
-      excerpt
-      author{
-      name
-      }
-      publishDate
-      coverImage {
-        url
-        alt
-      }
-      content {
-        value
-      }
-      _status
-      _firstPublishedAt
+  query BLOG_BY_SLUG_QUERY($slug: String) {
+  blog(filter: { slug: { eq: $slug } }) {
+    id
+    title
+    slug
+    excerpt
+    publishDate
+    coverImage {
+      url
+      alt
     }
+    author {
+      name
+    }
+    content(markdown: true)
   }
+}
 `;
 
+// Get all slugs for static paths
 export const ALL_BLOG_SLUGS_QUERY = `
   query AllBlogSlugs {
     allBlogs {
@@ -54,9 +51,10 @@ export const ALL_BLOG_SLUGS_QUERY = `
   }
 `;
 
+
 export const transformBlogPost = (datoCmsBlog) => {
   if (!datoCmsBlog) return null;
-  
+
   return {
     id: datoCmsBlog.id,
     title: datoCmsBlog.title,
@@ -71,8 +69,8 @@ export const transformBlogPost = (datoCmsBlog) => {
     coverImage: datoCmsBlog.coverImage?.url,
     content: datoCmsBlog.content,
     status: datoCmsBlog._status === 'published' ? 'published' : 'draft',
-    category: 'Tech Insights', // add this field to DatoCMS or derive it
-    readTime: calculateReadTime(datoCmsBlog.content?.value)
+    category: 'Tech Insights',
+    readTime: calculateReadTime(datoCmsBlog.content)
   };
 };
 
@@ -80,9 +78,9 @@ const calculateReadTime = (content) => {
   if (!content) return '5 min read';
 
   const wordsPerMinute = 200;
-  const textContent = JSON.stringify(content).replace(/[^\w\s]/gi, '');
+  const textContent = content.replace(/[^\w\s]/gi, '');
   const wordCount = textContent.split(/\s+/).length;
   const readTime = Math.ceil(wordCount / wordsPerMinute);
-  
+
   return `${readTime} min read`;
 };

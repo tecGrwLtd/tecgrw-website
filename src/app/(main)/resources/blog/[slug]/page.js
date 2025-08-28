@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+
 import { getAllBlogs, getBlogBySlug, getAllBlogSlugs } from '@/lib/blogService';
 import CategoryBadge from '@/components/blog/CategoryBadge';
 import BlogGrid from '@/components/blog/BlogGrid';
@@ -103,9 +104,8 @@ export default async function BlogPost({ params }) {
         )}
 
         {/* Article Content */}
-        <div className="prose prose-lg max-w-none">
-          <BlogContent content={blog.content} />
-        </div>
+        <div className="prose prose-lg" dangerouslySetInnerHTML={{ __html: blog.content }} />
+
       </article>
       <footer className="mt-12 pt-8 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,66 +115,5 @@ export default async function BlogPost({ params }) {
     </>
   );
 }
-
-// Component to render DatoCMS structured content
-function BlogContent({ content }) {
-  if (!content?.value) {
-    return <p>Content not available.</p>;
-  }
-
-  return (
-    <div className="space-y-6">
-      {content.value.document.children.map((block, index) => {
-        switch (block.type) {
-          case 'paragraph':
-            return (
-              <p key={index} className="text-gray-700 leading-relaxed">
-                {block.children.map((child, childIndex) => {
-                  if (child.type === 'span') {
-                    return <span key={childIndex}>{child.value}</span>;
-                  }
-                  return null;
-                })}
-              </p>
-            );
-          
-          case 'heading':
-            const HeadingTag = `h${block.level}`;
-            return (
-              <HeadingTag key={index} className="font-bold text-[#231f1f] mt-8 mb-4">
-                {block.children.map((child, childIndex) => {
-                  if (child.type === 'span') {
-                    return <span key={childIndex}>{child.value}</span>;
-                  }
-                  return null;
-                })}
-              </HeadingTag>
-            );
-          
-          case 'list':
-            const ListTag = block.style === 'numbered' ? 'ol' : 'ul';
-            return (
-              <ListTag key={index} className="space-y-2 ml-6">
-                {block.children.map((listItem, listIndex) => (
-                  <li key={listIndex} className="text-gray-700">
-                    {listItem.children.map((child, childIndex) => {
-                      if (child.type === 'span') {
-                        return <span key={childIndex}>{child.value}</span>;
-                      }
-                      return null;
-                    })}
-                  </li>
-                ))}
-              </ListTag>
-            );
-          
-          default:
-            return null;
-        }
-      })}
-    </div>
-  );
-}
-
 // Enable ISR with 1-hour revalidation
 export const revalidate = 3600;
