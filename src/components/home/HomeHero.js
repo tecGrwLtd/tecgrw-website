@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import CTA from '../CTA';
 
@@ -7,9 +6,9 @@ import FadeInSection from '../FadeInSection';
 const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
   return (
     <section className="relative w-full min-h-screen bg-[#f8f9fa] overflow-hidden">
-      {/* Tech-inspired background pattern */}
+      {/*  background pattern */}
       <div className="absolute inset-0">
-        {/* Subtle grid pattern */}
+        {/* grid pattern */}
         <div className="absolute inset-0 opacity-30" 
              style={{
                backgroundImage: `
@@ -32,18 +31,17 @@ const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
       <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-4 md:px-8 pt-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-6rem)]">
           
-          {/* Left Column - Content */}
-          <div className="space-y-8 order-2 lg:order-1">
+          {/* Left Column*/}
+          <div className="space-y-8 order-2 lg:order-1 pb-12"> {/* pb-12 to prevent CTA going so down into below section*/}
             <FadeInSection direction="up">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#095aa3] leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-[#095aa3] via-[#b2c935] to-[#095aa3] text-transparent bg-clip-text">
                   {headline}
                 </h1>
                 
                 <p className="text-lg md:text-xl text-gray-700 leading-relaxed whitespace-pre-line">
                   {description}
-                </p>
-                
+                </p> 
                 {getInTouch && (
                   <CTA />
                 )}
@@ -51,7 +49,7 @@ const HomeHero = ({ headline, description, bgImg, getInTouch = false }) => {
             </FadeInSection>
           </div>
 
-          {/* Right Column - Dashboard Image */}
+          {/* Right Column */}
           <div className="order-1 lg:order-2">
             <FadeInSection direction="right">
               <div className="relative">
