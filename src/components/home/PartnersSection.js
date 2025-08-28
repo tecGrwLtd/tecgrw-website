@@ -23,13 +23,13 @@ const PartnersSection = () => {
           <div className={`flex gap-12 ${shouldSlide ? 'animate-scroll' : 'justify-center flex-wrap'}`}>
             {displayPartners.map((partner, index) => (
               <div key={`${partner.id}-${index}`} className="flex-shrink-0">
-                <div className="w-48 h-32 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center p-6 hover:shadow-lg hover:border-[#b2c935]/30 transition-all duration-300 group">
+                <div className="w-48 h-32 bg-white rounded-xl border border-gray-100 flex items-center justify-center p-6  hover:border-[#b2c935]/30 transition-all duration-300 group">
                   <div className="relative w-full h-full">
                     <Image
                       src={partner.logo}
                       alt={`${partner.name} logo`}
                       fill
-                      className="object-contain opacity-75 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                      className="object-contain opacity-80  transition-all duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 192px, 192px"
                     />
                   </div>

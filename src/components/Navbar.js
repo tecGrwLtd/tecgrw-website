@@ -12,7 +12,7 @@ const classNames = (...classes) => {
 }
 
 const Navbar = ({ 
-  initialBgColor = 'bg-transparent',
+  initialBgColor = 'bg-[#095aa3]',
   scrolledBgColor = 'bg-[#095aa3]',
 
   initialTextColor = 'text-white/80',
@@ -64,7 +64,6 @@ const Navbar = ({
 
   const isActiveLink = (href, isHash = false) => {
     if (isHash) {
-      // For hash links, check if we're on the home page and the hash matches
       return pathname === '/' && (typeof window !== 'undefined' && window.location.hash === href.split('#')[1]);
     }
     return pathname === href;
@@ -75,7 +74,6 @@ const Navbar = ({
     return children.some(child => pathname === child.href);
   };
 
-  // Custom smooth scroll function for hash links
   const handleHashLink = async (href, e) => {
     e.preventDefault();
     const targetId = href.split('#')[1];
@@ -87,21 +85,18 @@ const Navbar = ({
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         } else {
-          // Retry after 50ms until found
           setTimeout(scrollToElement, 50);
         }
       };
-
       scrollToElement();
     } else {
       const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
 
     setMenuOpen(false);
   };
+
   const getLinkClasses = (href, isHash = false, hasChildren = false, children = null) => {
     const baseClasses = `${initialTextColor} ${initialHoverColor}`;
 
@@ -110,7 +105,7 @@ const Navbar = ({
 
     const visibility = (!scrolled && changeOnScroll) ? 'drop-shadow-md' : '';
     
-    return `${baseClasses} ${isActive ? activeColor : ''} ${visibility} font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] rounded px-3 py-2`;
+    return `${baseClasses} ${isActive ? activeColor : ''} font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b2c935] rounded px-3 py-2`;
   };
 
   const getBgClass = () => {
@@ -142,7 +137,7 @@ const Navbar = ({
             alt="Tecgrw logo"
             width={80}
             height={80}
-            className={`max-h-16 md:max-h-20 h-auto w-auto transition-all duration-300 ${
+            className={`max-h-16 md:max-h-20 h-auto w-auto opacity-100 transition-all duration-300 ${
               (!scrolled && changeOnScroll) 
                 ? 'drop-shadow-lg filter brightness-110 contrast-110' 
                 : ''
@@ -153,9 +148,9 @@ const Navbar = ({
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex gap-6 lg:gap-8 items-center flex-1 justify-end pr-2">
+        <ul className="hidden md:flex gap-4 lg:gap-6 items-center flex-1 justify-end pr-2">
           {navItems.map((item, idx) => (
-            <li 
+            <li
               key={item.name} 
               className="relative"
               onMouseEnter={() => item.children && handleMouseEnter(idx)}
@@ -186,7 +181,7 @@ const Navbar = ({
                     </svg>
                   </button>
                   <ul className={classNames(
-                    'absolute left-0 top-full mt-3 min-w-[200px] w-max bg-white/95 backdrop-blur-sm border border-white/20 rounded-xl shadow-2xl shadow-black/20 py-2 px-1 z-50 transition-all duration-300 ease-out',
+                    'absolute left-0 top-full mt-3 min-w-[200px] w-max bg-[#095aa3] rounded-xl py-2 px-1 z-50 transition-all duration-300 ease-out',
                     openDropdown === idx 
                       ? 'opacity-100 visible translate-y-0 scale-100' 
                       : 'opacity-0 invisible translate-y-2 scale-95'
@@ -195,12 +190,7 @@ const Navbar = ({
                       <li key={sub.name}>
                         <Link
                           href={sub.href}
-                          className={classNames(
-                            'block w-full px-4 py-3 mx-1 rounded-lg text-[#231f1f] font-medium text-sm transition-all duration-200 ease-out focus:outline-none active:scale-[0.98]',
-                            isActiveLink(sub.href) 
-                              ? 'bg-[#b2c935]/10 text-[#095aa3] shadow-sm' 
-                              : 'hover:bg-[#095aa3]/8 hover:text-[#095aa3] hover:shadow-sm hover:translate-x-1 focus:bg-[#095aa3]/8 focus:text-[#095aa3]'
-                          )}
+                          className="block w-full px-4 py-3 mx-1 rounded-lg text-white font-medium text-sm transition-all duration-200 ease-out focus:outline-none active:scale-[0.98] hover:bg-white/10 hover:text-[#b2c935]"
                           tabIndex={0}
                         >
                           {sub.name}
@@ -266,7 +256,7 @@ const Navbar = ({
 
       {/* Mobile nav */}
       {menuOpen && (
-        <div className="absolute right-4 top-16 bg-white/95 backdrop-blur-sm border border-white/20 shadow-2xl rounded-2xl py-4 px-2 md:hidden z-40 min-w-[240px] w-[90vw] max-w-sm animate-fade-in">
+        <div className="absolute right-4 top-16 bg-[#095aa3] rounded-2xl py-4 px-2 md:hidden z-40 animate-fade-in min-w-[240px] w-[90vw] max-w-sm">
           <ul className="flex flex-col gap-1">
             {navItems.map((item, idx) => (
               <li key={item.name} className="relative">
@@ -274,8 +264,8 @@ const Navbar = ({
                   <>
                     <button
                       className={classNames(
-                        'flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-[#231f1f] font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
-                        isActiveParent(item.children) ? 'bg-[#b2c935]/10 text-[#095aa3]' : ''
+                        'flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-white font-medium transition-all duration-200 focus:outline-none active:scale-[0.98]',
+                        isActiveParent(item.children) ? 'bg-[#095aa3]' : ''
                       )}
                       aria-haspopup="true"
                       aria-expanded={openDropdown === idx}
@@ -304,12 +294,7 @@ const Navbar = ({
                           <li key={sub.name}>
                             <Link
                               href={sub.href}
-                              className={classNames(
-                                'block px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none active:scale-[0.98]',
-                                isActiveLink(sub.href)
-                                  ? 'bg-[#b2c935]/10 text-[#095aa3] shadow-sm'
-                                  : 'text-[#231f1f]/80 hover:bg-[#095aa3]/5 hover:text-[#095aa3] hover:translate-x-1 focus:bg-[#095aa3]/5 focus:text-[#095aa3]'
-                              )}
+                              className="block px-4 py-2 rounded-lg text-white text-sm font-medium transition-all duration-200 focus:outline-none active:scale-[0.98] hover:bg-white/10 hover:text-[#b2c935]"
                               onClick={() => setMenuOpen(false)}
                             >
                               {sub.name}
@@ -323,10 +308,8 @@ const Navbar = ({
                   <button
                     onClick={(e) => handleHashLink(item.href, e)}
                     className={classNames(
-                      'block w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
-                      isActiveLink(item.href, true) 
-                        ? 'bg-[#b2c935]/10 text-[#095aa3]' 
-                        : 'text-[#231f1f]'
+                      'block w-full text-left px-4 py-3 rounded-xl font-medium text-white transition-all duration-200 focus:outline-none active:scale-[0.98]',
+                      isActiveLink(item.href, true) ? 'bg-[#095aa3]' : ''
                     )}
                   >
                     {item.name}
@@ -336,10 +319,8 @@ const Navbar = ({
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className={classNames(
-                      'block px-4 py-3 rounded-xl font-medium transition-all duration-200 hover:bg-[#095aa3]/8 hover:text-[#095aa3] focus:outline-none focus:bg-[#095aa3]/8 focus:text-[#095aa3] active:scale-[0.98]',
-                      isActiveLink(item.href) 
-                        ? 'bg-[#b2c935]/10 text-[#095aa3]' 
-                        : 'text-[#231f1f]'
+                      'block px-4 py-3 rounded-xl font-medium text-white transition-all duration-200 focus:outline-none active:scale-[0.98]',
+                      isActiveLink(item.href) ? 'bg-[#095aa3]' : ''
                     )}
                   >
                     {item.name}
@@ -353,5 +334,4 @@ const Navbar = ({
     </nav>
   );
 }
-
 export default Navbar;
