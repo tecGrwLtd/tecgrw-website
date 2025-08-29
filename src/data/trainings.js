@@ -12,7 +12,7 @@ export const howWeWork = [
     "Feedback surveys",
   ];
 
-
+// add create event endpoint later to fetch all past events
 export const pastEvents = [
   {
     title: "Smart Greenhouse Training",
