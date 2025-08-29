@@ -44,12 +44,11 @@ const features = [
   },
   {
     title: "AI-powered Farm-to-Market Credit Platform",
-    description: `An AI-powered, end-to-end application that supports farmers 
-                  across the entire value chain—from production to market access. 
-                  Along the journey, farmers earn credits that unlock financial 
-                  support, resources, and new opportunities. The platform is built 
-                  to improve farmers' livelihoods, ensure fair value for their work, 
-                  and create sustainable pathways from farm to fork.`,
+    description: `An AI-powered, end-to-end application that supports farmers
+                  across the entire value chain—from production to market access.
+                  Along the journey, farmers earn credits that unlock financial support, resources, and new opportunities.
+                  These credit scores also give farmers access to interest-free loans, helping them invest in growth without the burden of debt.
+                  The platform is built to improve farmers' livelihoods, ensure fair value for their work, and create sustainable pathways from farm to fork.`,
     icon: Wallet
   },
 ];
