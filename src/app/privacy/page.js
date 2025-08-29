@@ -24,8 +24,7 @@ export default function PrivacyPolicy() {
           content.
         </p>
         <p className="mb-4">
-          We do not sell or share your data with third parties, except as
-          required by law. All information is stored securely and used
+          We do not sell or share your data with third parties. All information is stored securely and used
           exclusively for communication with you.
         </p>
         <p>

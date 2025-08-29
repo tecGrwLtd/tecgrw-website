@@ -16,7 +16,7 @@ export default function TermsOfUse() {
           ). By accessing or using our website, you agree to these Terms of Use.
         </p>
         <p className="mb-4">
-          Our website serves as the digital gateway to tecGrw — showcasing our
+          Our website serves as the digital gateway to tecGrw LTD — showcasing our
           services, solutions, and contact details. You agree not to misuse the
           site, attempt unauthorized access, or use the content for purposes
           other than informational and business engagement with us.
