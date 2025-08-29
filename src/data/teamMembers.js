@@ -39,7 +39,7 @@
     {
       name: "NIYONSHUTI Emmanuel",
       role: "Software Engineer Intern",
-      quote: "Creating innovative solutions that empower farmers drives my passion for software development.",
+      quote: "Piece by piece unlearning, learning, and relearning I believe progress takes shape.",
       image: "https://res.cloudinary.com/dx8m9dy9d/image/upload/v1753975545/NIYONSHUTI_Emmanuel_pdaqpi.jpg"
     }
   ];

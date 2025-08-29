@@ -1,6 +1,7 @@
 import BlogGrid from '@/components/blog/BlogGrid';
 import { getAllBlogs } from '@/lib/blogService';
 
+
 export default async function BlogPage() {
   const { latestBlog, olderBlogs } = await getAllBlogs();
 
@@ -16,7 +17,6 @@ export default async function BlogPage() {
 export const metadata = {
   title: 'Blog | tecGrw - Latest in AgriTech & AI',
   description: 'Stay updated with the latest insights on smart agriculture, AI education, and technology innovations from tecGrw.',
-  keywords: 'agriculture blog, AI insights, smart farming, Rwanda tech, tecGrw'
 };
 
 // revalidate every hour

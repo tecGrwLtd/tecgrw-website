@@ -18,18 +18,19 @@ export default function CorporateTrainingPage() {
               </p>
             </div>
             <Features />
-          </div>
-          
-          {/* Right Column */}
-          <div className="space-y-8 order-2 lg:order-2">
-            <HowWeWork />
-            
             {/* CTA Section - hidden on mobile, shows on desktop */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block mt-16">
               <CorporateCTASection />
             </div>
           </div>
+          
+          {/* Right Column */}
+          <div className="space-y-6 order-2 lg:order-2">
+            <HowWeWork />
+            {/* <div>Hello image waiting...</div> */}
+          </div>
         </div>
+        {/* shows on smaller screens */}
         <div className="block lg:hidden mt-8">
           <CorporateCTASection />
         </div>

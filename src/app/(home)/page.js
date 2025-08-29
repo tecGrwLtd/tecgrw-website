@@ -4,6 +4,14 @@ import ServicesSection from '@/components/home/ServicesSection';
 import MetricsSection from '@/components/home/MetricsSection';
 import AccreditationsSection from '@/components/home/AccreditionsSection';
 
+
+export const metadata = {
+  title: "tecGrw | Agriculture Technology & AI Solutions Rwanda | Smart Farming Kigali",
+  description: "Transform your agriculture and business with tecGrw's cutting-edge solutions. Hydroponics, smart farming technology, AI for business, game park security, and tech education in Rwanda. Serving governments and enterprises across East Africa.",
+  keywords: "tecGrw, agriculture technology Rwanda, AI solutions Kigali, hydroponics systems, smart farming Rwanda, agritech East Africa, AI business solutions, tech education Rwanda",
+};
+
+
 export default function HomePage(){
   return (
     <>

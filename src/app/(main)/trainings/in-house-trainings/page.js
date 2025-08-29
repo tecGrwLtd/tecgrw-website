@@ -1,6 +1,11 @@
 import PastEvents from "@/components/trainings/PastEvents";
 import UpcommingEvents from "@/components/trainings/UpcommingEvents";
 
+export const metadata = {
+  title: "Agriculture & AI Training Programs | tecGrw Rwanda | Tech Education Kigali",
+  description: "Professional training programs in agriculture technology, artificial intelligence, and data science. tecGrw offers specialized courses for businesses, government agencies, and individuals in Rwanda and East Africa."
+};
+
 export default function InhouseTrainingPage() {
   return (
     <>
