@@ -51,6 +51,16 @@ export const ALL_BLOG_SLUGS_QUERY = `
   }
 `;
 
+const calculateReadTime = (content) => {
+  if (!content) return '5 min read';
+
+  const wordsPerMinute = 200;
+  const textContent = content.replace(/[^\w\s]/gi, '');
+  const wordCount = textContent.split(/\s+/).length;
+  const readTime = Math.ceil(wordCount / wordsPerMinute);
+
+  return `${readTime} min read`;
+};
 
 export const transformBlogPost = (datoCmsBlog) => {
   if (!datoCmsBlog) return null;
@@ -72,15 +82,4 @@ export const transformBlogPost = (datoCmsBlog) => {
     category: 'Tech Insights',
     readTime: calculateReadTime(datoCmsBlog.content)
   };
-};
-
-const calculateReadTime = (content) => {
-  if (!content) return '5 min read';
-
-  const wordsPerMinute = 200;
-  const textContent = content.replace(/[^\w\s]/gi, '');
-  const wordCount = textContent.split(/\s+/).length;
-  const readTime = Math.ceil(wordCount / wordsPerMinute);
-
-  return `${readTime} min read`;
 };

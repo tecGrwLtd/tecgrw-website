@@ -10,7 +10,7 @@ export async function getAllBlogs() {
   try {
     const data = await performRequest(ALL_BLOGS_QUERY);
     if (!data.allBlogs) {
-      return { featuredArticle: null, recentBlogs: [] };
+      return { olderBlogs: null, recentBlogs: [] };
     }
 
     const publishedBlogs = data.allBlogs
@@ -24,7 +24,7 @@ export async function getAllBlogs() {
     }
   } catch (error) {
     console.error('Error fetching blogs:', error);
-    return { featuredArticle: null, recentBlogs: [] };
+    return { olderBlogs: null, recentBlogs: [] };
   }
 }
 
