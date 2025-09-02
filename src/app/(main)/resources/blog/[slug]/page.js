@@ -7,15 +7,17 @@ import { getAllBlogs, getBlogBySlug, getAllBlogSlugs } from '@/lib/blogService';
 import CategoryBadge from '@/components/blog/CategoryBadge';
 import BlogGrid from '@/components/blog/BlogGrid';
 
+// it Returns a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
-  
   return slugs.map((slug) => ({
     slug: slug,
   }));
 }
 
+// plugs in metadata in the html meta tag
 export async function generateMetadata({ params }) {
+  // read route params
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPost({ params }) {
+  console.log("dynamic Params:", await params);
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
