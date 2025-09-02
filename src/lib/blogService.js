@@ -6,6 +6,7 @@ import {
   transformBlogPost 
 } from './queries';
 
+// retrieve all blogs
 export async function getAllBlogs() {
   try {
     const data = await performRequest(ALL_BLOGS_QUERY);
@@ -16,15 +17,14 @@ export async function getAllBlogs() {
     const publishedBlogs = data.allBlogs
       .map(transformBlogPost)
       .filter(blog => blog.status === 'published');
-
-    const [latestBlog, ...olderBlogs] = publishedBlogs;
+    const [recentBlog, ...olderBlogs] = publishedBlogs;
     return {
-      latestBlog: latestBlog,
+      recentBlog: recentBlog,
       olderBlogs: olderBlogs
     }
   } catch (error) {
     console.error('Error fetching blogs:', error);
-    return { olderBlogs: null, recentBlogs: [] };
+    return { olderBlogs: null, recentBlog: [] };
   }
 }
 
