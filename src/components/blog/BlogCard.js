@@ -8,7 +8,7 @@ const BlogCard = ({ article }) => {
   return (
     <article className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
       <div className="p-6 flex-1 flex flex-col">
-       <div className="w-full h-[250px] relative mb-4">
+       <div className="w-full aspect-[16/9] relative mb-4">
         {article.coverImage && (
           <Image
             src={article.coverImage}
@@ -24,12 +24,12 @@ const BlogCard = ({ article }) => {
           {article.title}
         </h3>
         
-        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
           {article.excerpt}
         </p>
         
         <ArticleMeta 
-          date={article.date} 
+          date={article.date}
           readTime={article.readTime} 
           size="sm" 
         />
