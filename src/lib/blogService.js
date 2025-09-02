@@ -4,7 +4,7 @@ import {
   BLOG_BY_SLUG_QUERY, 
   ALL_BLOG_SLUGS_QUERY,
   transformBlogPost 
-} from './queries';
+} from './blogQueries';
 
 // retrieve all blogs
 export async function getAllBlogs() {

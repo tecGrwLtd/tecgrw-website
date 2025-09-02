@@ -1,10 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { caseStudies } from "@/data/caseStudies"; 
 
-const CaseStudiesGrid = () => {
+
+const CaseStudiesGrid = ({ caseStudies }) => {
+  if (!caseStudies || caseStudies.length === 0) {
+    return (
+      <section>
+        <div className="text-center py-12">
+          <p className="text-gray-500 text-lg">No case studies available at the moment.</p>
+        </div>
+      </section>
+    );
+  }
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 mt-0">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
@@ -14,17 +23,12 @@ const CaseStudiesGrid = () => {
             >
               <div className="relative h-48 w-full">
                 <Image
-                  src={study.image} 
+                  src={study.coverImage} 
                   alt={study.title}
                   fill
                   className="object-cover"
                   priority={false}
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-[#b2c935] text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {study.category}
-                  </span>
-                </div>
               </div>
               
               <div className="p-6">
@@ -33,16 +37,12 @@ const CaseStudiesGrid = () => {
                 </h3>
                 
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {study.description}
+                  {study.excerpt}
                 </p>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
-                    {study.readTime}
-                  </span>
-                  
                   <Link 
-                    href={`/case-studies/${study.slug}`}
+                    href={`/resources/case-studies/${study.slug}`}
                     className="inline-flex items-center text-[#095aa3] hover:text-[#b2c935] font-medium transition-colors duration-200"
                   >
                     Read More
