@@ -25,7 +25,8 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-[#b2c935] mb-4">tecGrw</h3>
+              <h3 className="text-xl font-bold text-white  hover:text-[#b2c935] mb-4"><Link href='/'>tecGrw</Link></h3>
+              <p className="text-sm text-white mb-2">Connect with us:</p>
               <div className="flex space-x-4 pt-2">
                 <a href="https://www.linkedin.com/company/tecgrw.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-gray-300 hover:text-[#b2c935] transition-all duration-200 hover:scale-110">
                   <FaLinkedinIn className="w-5 h-5" />
@@ -46,10 +47,18 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
               <div className="space-y-3 text-sm text-gray-300">
-                <div className="flex items-center space-x-3 hover:text-gray-200 transition-colors duration-200">
-                  <FaMapMarkerAlt className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
-                  <span>100 KG 9 Ave, Third House from Life Care Hospital, Gacuriro, Kigali, Rwanda</span>
-                </div>
+              
+              <div className="flex items-center space-x-3">
+                <FaMapMarkerAlt className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
+                <a
+                  href="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-200 hover:text-[#b2c935]"
+                >
+                  100 KG 9 Ave, Third House from Life Care Hospital, Gacuriro, Kigali, Rwanda
+                </a>
+              </div>
                 <div className="flex items-center space-x-3">
                   <FaEnvelope className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
                   <a href="mailto:info@tecgrw.com" className="hover:text-[#b2c935] transition-colors duration-200">info@tecgrw.com</a>
@@ -69,19 +78,19 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/our-story" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200 hover:translate-x-1 transform">About tecGrw</Link>
-                <Link href="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200 hover:translate-x-1 transform">AI Education</Link>
-                <Link href="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200 hover:translate-x-1 transform">Smart Agriculture</Link>
-                <Link href="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935] transition-colors duration-200 hover:translate-x-1 transform">Business AI</Link>
+                <Link href="/our-story" className="block text-gray-300 hover:text-[#b2c935]">About tecGrw</Link>
+                <Link href="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935]">AI Education</Link>
+                <Link href="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935]">Smart Agriculture</Link>
+                <Link href="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935]">Business AI</Link>
               </div>
             </div>
           </div>
-
+        
           {/* CTA Button - above bottom bar on mobile */}
           <div className="flex justify-center mb-6 md:mb-0 md:hidden">
             <Link
               href="/contact"
-              className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-bold text-sm shadow-lg hover:shadow-xl hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#095aa3] focus-visible:ring-offset-2"
+              className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-bold text-sm shadow-lg hover:shadow-xl hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white"
             >
               <FaEnvelope className="w-4 h-4 mr-2" />
               Get in Touch
@@ -109,7 +118,7 @@ const Footer = () => {
             <div className="hidden md:flex justify-center md:justify-end">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-bold text-sm shadow-lg hover:shadow-xl hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#095aa3] focus-visible:ring-offset-2"
+                className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-bold text-sm shadow-lg hover:shadow-xl hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white"
               >
                 <FaEnvelope className="w-4 h-4 mr-2" />
                 Get in Touch
