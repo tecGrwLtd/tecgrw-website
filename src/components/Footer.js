@@ -11,6 +11,8 @@ import {
   FaPhone
 } from 'react-icons/fa';
 
+import NewsLetter from './NewsLetter';
+
 const Footer = () => {
   return (
     <>
@@ -22,7 +24,7 @@ const Footer = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Company Info */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white  hover:text-[#b2c935] mb-4"><Link href='/'>tecGrw</Link></h3>
@@ -78,12 +80,14 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
               <div className="space-y-2 text-sm">
-                <Link href="/our-story" className="block text-gray-300 hover:text-[#b2c935]">About tecGrw</Link>
-                <Link href="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935]">AI Education</Link>
-                <Link href="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935]">Smart Agriculture</Link>
-                <Link href="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935]">Business AI</Link>
+                <Link href="/our-story" className="block text-gray-300 hover:text-[#b2c935] max-w-max">About tecGrw</Link>
+                <Link href="/solutions/ai-education" className="block text-gray-300 hover:text-[#b2c935] max-w-max">AI Education</Link>
+                <Link href="/solutions/smart-agriculture" className="block text-gray-300 hover:text-[#b2c935] max-w-max">Smart Agriculture</Link>
+                <Link href="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935] max-w-max">Business AI</Link>
               </div>
             </div>
+            {/* Newsletter */}
+            <NewsLetter />
           </div>
         
           {/* CTA Button - above bottom bar on mobile */}
