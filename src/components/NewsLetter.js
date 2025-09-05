@@ -4,6 +4,7 @@ import { useActionState, useState, useEffect } from "react";
 import { toast } from "sonner";
 
 import { emailSubscribe } from "@/actions/email.action";
+import SubscriptionSuccess from "./SubscriptionSuccess";
 
 const initialState = { success: false, message: '' }
 
@@ -14,16 +15,16 @@ const NewsLetter = () => {
 
   useEffect(() => {
     if (!state.message) return;
+    
     if (state.success) {
       setIsSuccess(true);
       toast.success(state.message);
-      setEmail(""); 
-      // Reset form and success state after 3 seconds
+      setEmail("");
       const timer = setTimeout(() => {
         setIsSuccess(false);
         const form = document.querySelector('form');
         form?.reset();
-      }, 3000);
+      }, 5000);
       
       return () => clearTimeout(timer);
     } else if (state.success === false) {
@@ -33,22 +34,9 @@ const NewsLetter = () => {
 
   if (isSuccess) {
     return (
-      <div className="space-y-4 min-w-0">
-        <h4 className="text-lg font-semibold text-white mb-4">Newsletter</h4>
-        <div className="flex items-center justify-center py-8">
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-[#b2c935] rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-[#231f1f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <p className="text-white font-semibold mb-2">Successfully subscribed!</p>
-            {/* <p className="text-sm text-gray-300">Please check your email for confirmation.</p> */}
-          </div>
-        </div>
-      </div>
-    );
-  }
+          <SubscriptionSuccess />
+        );
+      }
 
   return (
     <div className="space-y-4 min-w-0">

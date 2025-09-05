@@ -1,23 +1,38 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useState, useEffect } from "react";
 import { Mail } from "lucide-react";
-import { toast } from "sonner";
 
 import { emailSubscribe } from "@/actions/email.action"
+import SubscriptionSuccess from "./SubscriptionSuccess";
 
 const SubscriptionForm = () => {
   const [state, formAction, isPending] = useActionState(emailSubscribe, {success: false, message: ''});
+  const [email, setEmail] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     if (!state.message) return;
+    
     if (state.success) {
-      toast.success(state.message);
-      const form = document.querySelector('form');
-      form?.reset();
-    } else if(state.success === false){
+      setIsSuccess(true);
+      setEmail("");
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+        const form = document.querySelector('form');
+        form?.reset();
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    } else if (state.success === false) {
       toast.error(state.message);
     }
-  }, [state, isPending])
+  }, [state]);
+
+  if (isSuccess) {
+    return (
+          <SubscriptionSuccess />
+    );
+  }
   return (
     <div className="space-y-6">
       <form action={formAction} className="max-w-md mx-auto">
@@ -30,13 +45,14 @@ const SubscriptionForm = () => {
               placeholder="Enter your email address"
               required
               disabled={isPending}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#b2c935] focus:border-transparent transition-all duration-200 disabled:opacity-50"
             />
           </div>
           <button
             type="submit"
-            disabled={isPending}
-            className="px-6 py-3 bg-[#b2c935] hover:bg-[#9db82a] disabled:hover:bg-[#b2c935] text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 transform shadow-lg hover:shadow-xl whitespace-nowrap disabled:cursor-not-allowed"
+            disabled={!email || isPending}
+            className="px-6 py-3 bg-[#b2c935] hover:bg-[#9db82a] text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 transform shadow-lg hover:shadow-xl whitespace-nowrap disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
           >
             {isPending ? (
               <div className="flex items-center justify-center gap-2">
