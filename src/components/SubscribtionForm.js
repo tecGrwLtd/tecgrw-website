@@ -7,8 +7,10 @@ import { toast } from "sonner";
 import { emailSubscribe } from "@/actions/email.action"
 import SubscriptionStatus from "./SubscriptionStatus";
 
+const initialState = { success: null, message: "" };
+
 const SubscriptionForm = () => {
-  const [state, formAction, isPending] = useActionState(emailSubscribe, {success: false, message: ''});
+  const [state, formAction, isPending] = useActionState(emailSubscribe, initialState);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState(null);
 
