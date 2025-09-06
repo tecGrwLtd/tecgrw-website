@@ -1,42 +1,13 @@
 "use client";
 
-import { useActionState, useState, useEffect } from "react";
 import { Mail } from "lucide-react";
-import { toast } from "sonner";
 
-import { emailSubscribe } from "@/actions/email.action"
-import SubscriptionStatus from "./SubscriptionStatus";
+import { useSubscriptionForm } from "@/hooks/useSubscriptionForm";
+import SubscriptionStatus from "../SubscriptionStatus";
 
-const initialState = { success: null, message: "" };
 
 const SubscriptionForm = () => {
-  const [state, formAction, isPending] = useActionState(emailSubscribe, initialState);
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(null);
-
-  useEffect(() => {
-    if (state.success === null) return;
-
-    if (state.success) {
-      setStatus(true);
-      toast.success(state.message);
-      setEmail("");
-
-      const timer = setTimeout(() => {
-        setStatus(null);
-        document.querySelector("form")?.reset();
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    } else {
-      setStatus(false);
-      toast.error(state.message);
-
-      const timer = setTimeout(() => setStatus(null), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [state]);
-
+  const { email, setEmail, formAction, pending, status, setStatus } = useSubscriptionForm();
   if (status !== null) {
     return (
       <SubscriptionStatus
@@ -56,17 +27,17 @@ const SubscriptionForm = () => {
               name="email"
               placeholder="Enter your email address"
               required
-              disabled={isPending}
+              disabled={pending}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full pl-11 pr-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-[#b2c935] focus:border-transparent transition-all duration-200 disabled:opacity-50"
             />
           </div>
           <button
             type="submit"
-            disabled={!email || isPending}
+            disabled={!email || pending}
             className="px-6 py-3 bg-[#b2c935] hover:bg-[#9db82a] text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 transform shadow-lg hover:shadow-xl whitespace-nowrap disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
           >
-            {isPending ? (
+            {pending ? (
               <div className="flex items-center justify-center gap-2">
                 <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />

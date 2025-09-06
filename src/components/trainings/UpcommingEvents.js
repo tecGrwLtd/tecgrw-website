@@ -1,4 +1,4 @@
-import SubscriptionForm from "../SubscribtionForm"
+import SubscriptionForm from "./SubscriptionForm"
 
 const UpcommingEvents = () => {
   return (

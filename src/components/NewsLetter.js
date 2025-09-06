@@ -1,41 +1,8 @@
-"use client";
-
-import { useActionState, useState, useEffect } from "react";
-import { toast } from "sonner";
-
-import { emailSubscribe } from "@/actions/email.action";
+import { useSubscriptionForm } from "@/hooks/useSubscriptionForm";
 import SubscriptionStatus from "./SubscriptionStatus";
 
-const initialState = { success: null, message: "" };
-
 const NewsLetter = () => {
-  const [state, formAction, pending] = useActionState(emailSubscribe, initialState);
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(null); // tracks the status of the subscription (null, true, false)
-
-  useEffect(() => {
-    if (state.success === null) return;
-
-    if (state.success) {
-      setStatus(true);
-      toast.success(state.message);
-      setEmail("");
-
-      const timer = setTimeout(() => {
-        setStatus(null);
-        document.querySelector("form")?.reset();
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    } else {
-      setStatus(false);
-      toast.error(state.message);
-
-      const timer = setTimeout(() => setStatus(null), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [state]);
-
+  const {email, setEmail, formAction, pending, status, setStatus} = useSubscriptionForm();
   if (status !== null) {
     return (
       <SubscriptionStatus
