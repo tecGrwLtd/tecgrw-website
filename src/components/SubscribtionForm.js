@@ -4,33 +4,42 @@ import { useActionState, useState, useEffect } from "react";
 import { Mail } from "lucide-react";
 
 import { emailSubscribe } from "@/actions/email.action"
-import SubscriptionSuccess from "./SubscriptionSuccess";
+import SubscriptionStatus from "./SubscriptionStatus";
 
 const SubscriptionForm = () => {
   const [state, formAction, isPending] = useActionState(emailSubscribe, {success: false, message: ''});
   const [email, setEmail] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [status, setStatus] = useState(null);
+
   useEffect(() => {
-    if (!state.message) return;
-    
+    if (state.success === null) return;
+
     if (state.success) {
-      setIsSuccess(true);
+      setStatus(true);
+      toast.success(state.message);
       setEmail("");
+
       const timer = setTimeout(() => {
-        setIsSuccess(false);
-        const form = document.querySelector('form');
-        form?.reset();
+        setStatus(null);
+        document.querySelector("form")?.reset();
       }, 5000);
-      
+
       return () => clearTimeout(timer);
-    } else if (state.success === false) {
+    } else {
+      setStatus(false);
       toast.error(state.message);
+
+      const timer = setTimeout(() => setStatus(null), 5000);
+      return () => clearTimeout(timer);
     }
   }, [state]);
 
-  if (isSuccess) {
+  if (status !== null) {
     return (
-          <SubscriptionSuccess />
+      <SubscriptionStatus
+        fail={!status}
+        onClose={() => setStatus(null)}
+      />
     );
   }
   return (

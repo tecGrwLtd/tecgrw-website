@@ -4,44 +4,54 @@ import { useActionState, useState, useEffect } from "react";
 import { toast } from "sonner";
 
 import { emailSubscribe } from "@/actions/email.action";
-import SubscriptionSuccess from "./SubscriptionSuccess";
+import SubscriptionStatus from "./SubscriptionStatus";
 
-const initialState = { success: false, message: '' }
+const initialState = { success: null, message: "" };
 
 const NewsLetter = () => {
   const [state, formAction, pending] = useActionState(emailSubscribe, initialState);
   const [email, setEmail] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [status, setStatus] = useState(null); // tracks the status of the subscription (null, true, false)
 
   useEffect(() => {
-    if (!state.message) return;
-    
+    if (state.success === null) return;
+
     if (state.success) {
-      setIsSuccess(true);
+      setStatus(true);
       toast.success(state.message);
       setEmail("");
+
       const timer = setTimeout(() => {
-        setIsSuccess(false);
-        const form = document.querySelector('form');
-        form?.reset();
+        setStatus(null);
+        document.querySelector("form")?.reset();
       }, 5000);
-      
+
       return () => clearTimeout(timer);
-    } else if (state.success === false) {
+    } else {
+      setStatus(false);
       toast.error(state.message);
+
+      const timer = setTimeout(() => setStatus(null), 5000);
+      return () => clearTimeout(timer);
     }
   }, [state]);
 
-  if (isSuccess) {
+  if (status !== null) {
     return (
-          <SubscriptionSuccess />
-        );
-      }
+      <SubscriptionStatus
+        fail={!status}
+        onClose={() => setStatus(null)}
+      />
+    );
+  }
 
   return (
     <div className="space-y-4 min-w-0">
       <h4 className="text-lg font-semibold text-white mb-4">Newsletter</h4>
-      <p className="text-sm text-gray-300 mb-4">Stay updated with our latest insights and innovations.</p>
+      <p className="text-sm text-gray-300 mb-4">
+        Stay updated with our latest insights and innovations.
+      </p>
+
       <form action={formAction} className="flex space-x-2 w-full">
         <input
           type="email"
@@ -60,9 +70,24 @@ const NewsLetter = () => {
         >
           {pending ? (
             <div className="flex items-center justify-center gap-2 min-w-[90px]">
-              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              <svg
+                className="animate-spin h-4 w-4"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
               </svg>
               <span>Sending...</span>
             </div>

@@ -45,7 +45,7 @@ export async function sendEmail(initialState, formData) {
 
 export async function emailSubscribe(initialState, formData){
     const email = formData.get('email');
-    const URL = "https://api.brevo.com/v3/contacts"
+    const URL = "https://api.brevo.com/v3/contacts/doubleOptinConfirmation"
     try {
       const res = await fetch(URL, {
         method: "POST",
@@ -56,8 +56,9 @@ export async function emailSubscribe(initialState, formData){
         },
         body: JSON.stringify({
           email,
-          listIds: [2],
-          updateEnabled: true
+          includeListIds: [6],
+          templateId: process.env.BRAVO_TEMPLATE_ID,
+          redirectionUrl: process.env.NODE_ENV !== "development" ? "https://tecgrw.com" : process.env.BASE_URL
         })
       });
       if (!res.ok) {
