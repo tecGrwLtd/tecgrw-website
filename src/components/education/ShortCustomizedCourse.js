@@ -1,7 +1,8 @@
 "use client";
 
-import Link from 'next/link';
-import { Clock, Users, MapPin, CheckCircle, Phone, Mail } from 'lucide-react';
+import { Clock, Users, MapPin, CheckCircle} from 'lucide-react';
+
+import TrainingCTA from "@/components/trainings/TrainingCTA";
 
 const ShortCustomizedCourse = () => {
   const courseFeatures = [
@@ -44,28 +45,11 @@ const ShortCustomizedCourse = () => {
           </p>
         </div>
       </div>
-
-      {/* CTA Section */}
-      <div className="mt-12 bg-gradient-to-br from-[#b2c935] to-[#9db82a] rounded-2xl p-6 sm:p-8 text-white text-center">
-        <h3 className="text-xl sm:text-2xl font-bold mb-3">Ready to Get Started?</h3>
-        <p className="text-green-100 mb-6">Contact us to discuss a customized program for you or your team.</p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            href="/contact"
-            className="flex-1 sm:flex-none w-full sm:w-auto text-center py-3 px-6 bg-white text-[#095aa3] font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200"
-          >
-            Contact Us
-          </Link>
-          <div className="flex flex-col sm:flex-row gap-4 text-sm justify-center">
-            <a href="tel:+250798975878" className="flex items-center gap-1.5 text-green-100 hover:text-white transition-colors">
-              <Phone className="w-4 h-4" /> +250 798 975 878
-            </a>
-            <a href="mailto:info@tecgrw.com" className="flex items-center gap-1.5 text-green-100 hover:text-white transition-colors">
-              <Mail className="w-4 h-4" /> info@tecgrw.com
-            </a>
-          </div>
-        </div>
-      </div>
+      <TrainingCTA heading={"Ready to Get Started?"}
+                    subHeading={"Contact us to discuss a customized program for you or your team."}
+                    bgColor={"bg-gradient-to-br from-[#b2c935] to-[#9db82a]"}
+                    contactUs={"Let's connect"}
+      />
     </section>
   );
 };

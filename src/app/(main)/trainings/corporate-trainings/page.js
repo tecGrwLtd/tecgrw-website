@@ -1,7 +1,7 @@
 import Features from "@/components/trainings/Features";
 import HowWeWork from "@/components/trainings/HowWeWork";
 import FAQSection from "@/components/trainings/FQA"
-import CorporateCTASection from "@/components/trainings/CorporateCTASection";
+import TrainingCTA from "@/components/trainings/TrainingCTA";
 
 export default function CorporateTrainingPage() {
   return (
@@ -24,7 +24,12 @@ export default function CorporateTrainingPage() {
         <div className="mb-16">
           <FAQSection />
         </div>
-        <CorporateCTASection />
+        <TrainingCTA
+                  heading={"Ready to Train Your Team in AI?"}
+                  subHeading={"Elevate your team skills with our AI and Machine Learning corporate training programs."}
+                  bgColor={"bg-gradient-to-r from-[#095aa3] to-blue-600"}
+                  contactUs={"Reach Us"}
+        />
       </section>
     </>
   );
