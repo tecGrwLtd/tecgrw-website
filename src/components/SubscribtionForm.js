@@ -2,6 +2,7 @@
 
 import { useActionState, useState, useEffect } from "react";
 import { Mail } from "lucide-react";
+import { toast } from "sonner";
 
 import { emailSubscribe } from "@/actions/email.action"
 import SubscriptionStatus from "./SubscriptionStatus";
