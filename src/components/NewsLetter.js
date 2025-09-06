@@ -33,7 +33,7 @@ const NewsLetter = () => {
         <button
           type="submit"
           disabled={!email || pending}
-          className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-semibold text-sm hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white transition-all duration-200 flex-shrink-0 disabled:cursor-not-allowed"
+          className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#b2c935] to-[#9db82a] text-[#231f1f] font-semibold text-sm hover:from-[#095aa3] hover:to-[#074a8c] hover:text-white transition-all duration-200 flex-shrink-0 cursor-pointer disabled:cursor-not-allowed"
         >
           {pending ? (
             <div className="flex items-center justify-center gap-2 min-w-[90px]">

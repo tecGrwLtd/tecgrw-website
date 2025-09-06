@@ -1,15 +1,19 @@
 'use client';
 
-import { useActionState, useEffect } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 import { sendEmail } from '@/actions/email.action';
 
 const SendEmailForm = () => {
-  const [state, formAction, isPending] = useActionState(sendEmail, {success: false, message: ''});
-
+  const [state, formAction, pending] = useActionState(sendEmail, {success: null, message: ''});
+  const [ email, setEmail ] = useState("");
+  const [ message, setMessage ] = useState("");
   useEffect(() => {
+    if (state.success === null) return; 
     if (state.success) {
+      setEmail("");
+      setMessage("");
       toast.success(state.message);
       const form = document.querySelector('form');
       form?.reset();
@@ -34,7 +38,7 @@ const SendEmailForm = () => {
                 type="text"
                 id="name"
                 name="name"
-                disabled={isPending}
+                disabled={pending}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none disabled:opacity-60 disabled:cursor-not-allowed"
                 placeholder="Your full name"
               />
@@ -49,8 +53,9 @@ const SendEmailForm = () => {
                 id="email"
                 name="email"
                 required
-                disabled={isPending}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none disabled:opacity-60 disabled:cursor-not-allowed"
+                disabled={pending}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none"
                 placeholder="your.email@example.com"
               />
             </div>
@@ -64,7 +69,7 @@ const SendEmailForm = () => {
               id="subject"
               name="subject"
               required
-              disabled={isPending}
+              disabled={pending}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <option value="">Select a subject</option>
@@ -86,7 +91,8 @@ const SendEmailForm = () => {
               name="message"
               required
               rows={6}
-              disabled={isPending}
+              disabled={pending}
+              onChange={(e) => setMessage(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#095aa3] focus:border-transparent transition-all outline-none resize-none disabled:opacity-60 disabled:cursor-not-allowed"
               placeholder="Tell us about your project, questions, or how we can help you..."
             />
@@ -94,10 +100,10 @@ const SendEmailForm = () => {
           
           <button
             type="submit"
-            disabled={isPending}
-            className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-[#b2c935] disabled:hover:text-[#231f1f]"
+            disabled={!email || !message || pending}
+            className="w-full bg-[#b2c935] text-[#231f1f] py-4 px-6 rounded-lg hover:bg-[#095aa3] hover:text-white transition-all font-semibold text-lg flex items-center justify-center space-x-2 cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-[#b2c935] disabled:hover:text-[#231f1f]"
           >
-            {isPending ? (
+            {pending ? (
               <>
                 <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />

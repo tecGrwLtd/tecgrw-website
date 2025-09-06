@@ -2,7 +2,6 @@
 
 import { Resend } from "resend";
 
-
 export async function sendEmail(initialState, formData) {
     if (!process.env.RESEND_API_KEY){
     return {success: false, message: "Server configuration error"};
