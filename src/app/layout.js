@@ -1,4 +1,5 @@
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata = {
   title: "tecGrw | Agriculture Tech & AI Solutions Rwanda | Hydroponics & Business AI",
@@ -16,9 +17,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        {children}
+          {children}
+          <GoogleAnalytics />
       </body>
     </html>
   );
