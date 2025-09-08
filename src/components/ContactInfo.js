@@ -19,7 +19,7 @@ const ContactInfo = () => {
             </div>
             <div>
               <h4 className="font-semibold text-[#231f1f]">Office Address</h4>
-              <p className="text-gray-600">100 KG 9 Ave, Kigali, Rwanda</p>
+              <p className="text-gray-600">KG 317, Kibagabaga, Kigali, Rwanda</p>
               <div className="mt-2 w-48 h-32 rounded-lg overflow-hidden">
                 <Suspense fallback={<div className="w-48 h-32 bg-[#e5e7eb] animate-pulse" />}>
                   <Map />

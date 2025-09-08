@@ -49,7 +49,6 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
               <div className="space-y-3 text-sm text-gray-300">
-              
               <div className="flex items-center space-x-3">
                 <FaMapMarkerAlt className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
                 <a
@@ -58,7 +57,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="transition-colors duration-200 hover:text-[#b2c935]"
                 >
-                  100 KG 9 Ave, Third House from Life Care Hospital, Gacuriro, Kigali, Rwanda
+                  KG 317, Kibagabaga, Kigali, Rwanda
                 </a>
               </div>
                 <div className="flex items-center space-x-3">
@@ -86,7 +85,6 @@ const Footer = () => {
                 <Link href="/solutions/business-ai" className="block text-gray-300 hover:text-[#b2c935] max-w-max">Business AI</Link>
               </div>
             </div>
-            {/* Newsletter */}
             <NewsLetter />
           </div>
         
