@@ -6,8 +6,9 @@ import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 import { getAllBlogs, getBlogBySlug, getAllBlogSlugs } from '@/lib/blogService';
 import CategoryBadge from '@/components/blog/CategoryBadge';
 import BlogGrid from '@/components/blog/BlogGrid';
+import { normalizeBlogHtml } from '@/lib/normalizeBlogHtml';
 
-// it Returns a list of `params` to populate the [slug] dynamic segment
+
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
   return slugs.map((slug) => ({
@@ -39,7 +40,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPost({ params }) {
-  console.log("dynamic Params:", await params);
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
@@ -48,7 +48,9 @@ export default async function BlogPost({ params }) {
   }
   const { latestBlog, olderBlogs } = await getAllBlogs();
   const allBlogs = latestBlog ? [latestBlog, ...olderBlogs] : olderBlogs;
-  const otherBlogs = allBlogs.filter(b => b.slug !== slug);
+  const otherBlogs = allBlogs.filter((b) => b.slug !== slug);
+
+  const normalizedHtml = normalizeBlogHtml(blog.content);
 
   return (
     <>
@@ -107,7 +109,10 @@ export default async function BlogPost({ params }) {
         )}
 
         {/* Article Content */}
-        <div className="prose prose-lg" dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div
+          className="prose prose-lg max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:my-5 prose-ul:my-5 prose-ol:my-5 prose-li:my-1 prose-img:rounded-xl prose-img:my-6"
+          dangerouslySetInnerHTML={{ __html: normalizedHtml }}
+        />
 
       </article>
       <footer className="mt-12 pt-8 border-t border-gray-200">
