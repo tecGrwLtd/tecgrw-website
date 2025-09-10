@@ -10,7 +10,7 @@ const PageHeader = () => {
             Growing solutions, <strong>delivering impact</strong>
         </p>
         <p className="text-lg text-gray-600 leading-relaxed">
-          We harness agritech, AI, and educational programs to deliver impactful solutions for farmers, enterprises, and students, driving growth, innovation, and knowledge across agriculture and technology..
+          We harness agritech, AI, and educational programs to deliver impactful solutions for farmers, enterprises, and students, driving growth, innovation, and knowledge across agriculture and technology.
         </p>
         </div>
     </div>
