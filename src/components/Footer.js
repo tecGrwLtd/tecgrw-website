@@ -52,7 +52,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <FaMapMarkerAlt className="w-4 h-4 text-[#b2c935] flex-shrink-0" />
                 <a
-                  href="https://www.google.com/maps?q=100+KG+9+Ave,+Kigali,+Rwanda"
+                  href="https://www.google.com/maps?q=KG+317,+Kibagabaga,+Kigali,+Rwanda"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors duration-200 hover:text-[#b2c935]"
