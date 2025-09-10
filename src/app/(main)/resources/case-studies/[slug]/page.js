@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, Calendar, Building2, Target, Lightbulb, TrendingUp } from 'lucide-react';
 
 import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/lib/caseStudyServices"
+import { normalizeBlogHtml } from '@/lib/normalizeBlogHtml';
 
 
 export async function generateStaticParams() {
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
   const caseStudy = await getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function CaseStudyPage({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
   const caseStudy = await getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
@@ -76,10 +77,6 @@ export default async function CaseStudyPage({ params }) {
               <Calendar size={16} />
               <span className="text-sm">{caseStudy.date}</span>
             </div>
-            {/* <div className="flex items-center gap-2">
-              <Clock size={16} />
-              <span className="text-sm">{caseStudy.readTime}</span>
-            </div> */}
           </div>
 
           <p className="text-xl text-gray-700 leading-relaxed">
@@ -109,7 +106,10 @@ export default async function CaseStudyPage({ params }) {
                 <Target className="w-6 h-6 text-red-600" />
                 <h2 className="text-2xl font-bold text-red-900">The Challenge</h2>
               </div>
-              <div className="prose prose-lg text-red-800" dangerouslySetInnerHTML={{ __html: caseStudy.challenge }} />
+              <div
+                className="prose prose-lg text-red-800 max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:my-5 prose-ul:my-5 prose-ol:my-5 prose-li:my-1"
+                dangerouslySetInnerHTML={{ __html: normalizeBlogHtml(caseStudy.challenge) }}
+              />
             </section>
           )}
 
@@ -120,7 +120,10 @@ export default async function CaseStudyPage({ params }) {
                 <Lightbulb className="w-6 h-6 text-[#095aa3]" />
                 <h2 className="text-2xl font-bold text-[#095aa3]">Our Solution</h2>
               </div>
-              <div className="prose prose-lg text-gray-800" dangerouslySetInnerHTML={{ __html: caseStudy.solution }} />
+              <div
+                className="prose prose-lg text-gray-800 max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:my-5 prose-ul:my-5 prose-ol:my-5 prose-li:my-1"
+                dangerouslySetInnerHTML={{ __html: normalizeBlogHtml(caseStudy.solution) }}
+              />
             </section>
           )}
 
@@ -131,7 +134,10 @@ export default async function CaseStudyPage({ params }) {
                 <TrendingUp className="w-6 h-6 text-[#b2c935]" />
                 <h2 className="text-2xl font-bold text-[#b2c935]">Results & Impact</h2>
               </div>
-              <div className="prose prose-lg text-gray-800" dangerouslySetInnerHTML={{ __html: caseStudy.results }} />
+              <div
+                className="prose prose-lg text-gray-800 max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:my-5 prose-ul:my-5 prose-ol:my-5 prose-li:my-1"
+                dangerouslySetInnerHTML={{ __html: normalizeBlogHtml(caseStudy.results) }}
+              />
             </section>
           )}
 
@@ -139,7 +145,10 @@ export default async function CaseStudyPage({ params }) {
           {caseStudy.content && (
             <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <h2 className="text-2xl font-bold text-[#231f1f] mb-6">Full Case Study</h2>
-              <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: caseStudy.content }} />
+              <div
+                className="prose prose-lg max-w-none prose-headings:mt-8 prose-headings:mb-3 prose-p:my-5 prose-ul:my-5 prose-ol:my-5 prose-li:my-1 prose-img:rounded-xl prose-img:my-6"
+                dangerouslySetInnerHTML={{ __html: normalizeBlogHtml(caseStudy.content) }}
+              />
             </section>
           )}
         </div>
