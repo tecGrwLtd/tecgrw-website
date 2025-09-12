@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const caseStudy = await getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function CaseStudyPage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const caseStudy = await getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
